@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 15:51:30 by vsavilov          #+#    #+#             */
-/*   Updated: 2022/09/09 15:01:52 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:45:35 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 //first part
 

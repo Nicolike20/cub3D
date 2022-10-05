@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
+#    Updated: 2022/10/05 18:49:37 by nortolan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 ############################
 ###   Program/s name/s   ###
 ############################
 
-NAME = Cub3D
+NAME = cub3D
 
 LIBFT_NAME = libft.a
 
@@ -22,7 +34,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 CFLAGS += -I ./$(INC_PATH) -I ./$(LIB_PATH)/inc
 
-CFLAGS += -fsanitize=address -g3
+#CFLAGS += -fsanitize=address -g3
 
 #################
 ###   Paths   ###
