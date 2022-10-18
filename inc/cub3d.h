@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/05 18:38:36 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:06:44 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <fcntl.h>
 # include <mlx.h>
 
-void	paco(void);
-
 typedef struct s_map
 {
 	char	*NO;
@@ -29,6 +27,16 @@ typedef struct s_map
 	char	*EA;
 	char	*C;
 	char	*F;
+	char	**map;
+	int		map_len;
 }t_map;
+
+void	paco(void);
+
+/*parse_utils.c*/
+t_map	vars_init(t_map *vars);
+void	get_id(t_map *vars, char *line);
+int		check_file(char *file);
+
 
 #endif
