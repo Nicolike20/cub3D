@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/18 15:07:42 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/10/19 12:42:20 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	is_map(char *line)
 	i = -1;
 	while (line[++i])
 	{
-		if ((line[i] != '1' && line[i] != ' ' && line[i] != '\n') || line[0] == '\n')
+		if ((line[i] != '1' && line[i] != ' ' && line[i] != '\n')
+			|| line[0] == '\n')
 			return (0);
 	}
 	return (1);
@@ -70,7 +71,7 @@ void	get_lines(t_map *vars, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nF=%s\nC=%s\n", vars->NO, vars->SO, vars->WE, vars->EA, vars->F, vars->C);
+	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nF=%s\nC=%s\n", vars->no, vars->so, vars->we, vars->ea, vars->f, vars->c);
 	free(line);
 }
 
@@ -83,7 +84,7 @@ void	first_read(t_map *vars, int fd)
 	in_map = 0;
 	i = -1;
 	line = get_next_line(fd);
-	while(line)
+	while (line)
 	{
 		if (in_map == 1)
 			vars->map_len++;
@@ -112,6 +113,22 @@ void	first_read(t_map *vars, int fd)
 	}
 	free(line);
 	printf("Map Length: %d\n", vars->map_len);
+}
+
+void	freedom(t_map *vars)
+{
+	int	i;
+
+	i = -1;
+	while (++i < vars->map_len)
+		free(vars->map[i]);
+	free(vars->map);
+	free(vars->no);
+	free(vars->so);
+	free(vars->we);
+	free(vars->ea);
+	free(vars->f);
+	free(vars->c);
 }
 
 void	file_read(char *file)
@@ -147,6 +164,7 @@ void	file_read(char *file)
 		printf("<%s", vars.map[i]);
 	}
 	printf("<%s", vars.map[i]);
+	freedom(&vars);
 	//free vars;
 	/*if (vars.NO)
 		free(vars.NO);
@@ -162,7 +180,7 @@ void	leaks(void)
 	system("leaks -q cub3D");
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	atexit(leaks);
 	if (argc != 2)
