@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/19 12:02:54 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:07:08 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,19 @@ typedef struct s_map
 	char	*ea;
 	char	*c;
 	char	*f;
+	char	*tmp;
+	char	*tmp_aux;
 	char	**map;
 	int		map_len;
 }t_map;
 
-void	paco(void);
+/*parse.c*/
+void	file_read(char *file);
 
 /*parse_utils.c*/
 t_map	vars_init(t_map *vars);
+void	freedom(t_map *vars);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);
-
 
 #endif
