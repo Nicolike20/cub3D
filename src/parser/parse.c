@@ -6,17 +6,16 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:43:19 by nicolike         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:23:00 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //TODO: comprobar que cada cero esté rodeado de caracteres validos (aka no espacios);
-//TODO: comprobar que solo haya un caracter de jugador en el mapa;
+//TODO: ^^^^^^^^^^^^^^^^^ check diagonales;
 //TODO: hacer un primer barrido del mapa encontrando elementos invalidos;
 //TODO: liberar elementos de vars;
-//TODO: comrpobar elementos del mapa (por ejemplo que no haya mas de una letra);
 //TODO: espacios en los elementos?;
 //TODO: check leaks;
 
@@ -56,7 +55,7 @@ static void	get_lines(t_map *vars, int fd)
 	}
 	while (line)
 	{
-		printf(">%s", line);
+		//printf(">%s", line);
 		if (in_map == 0)
 		{
 			in_map = is_map(line);
@@ -64,7 +63,8 @@ static void	get_lines(t_map *vars, int fd)
 		} //por aqui mas o menos hay que copiar el mapa en el doble array
 		if (in_map == 1)
 		{
-			vars->map[i++] = ft_strdup(line);
+			//vars->map[i++] = ft_strdup(line);
+			vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
 			//printf("wooo mapa\n");
 		}
 		vars->map[i] = NULL;
@@ -155,7 +155,7 @@ void	file_read(char *file)
 		exit (1);
 	}
 	first_read(&vars, fd);
-	printf("--------------------------\n");
+//	printf("--------------------------\n");
 	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -172,7 +172,7 @@ void	file_read(char *file)
 	printf("---------TEST-----------\n");
 	while (vars.map[++i])
 	{
-		printf("<%s", vars.map[i]);
+		printf("<'%s'\n", vars.map[i]);
 	}
 	printf("<%s", vars.map[i]);
 	///////////TEST///////////////

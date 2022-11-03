@@ -10,7 +10,7 @@ int	valid_chars(t_map *vars, int i, int j)
 		j = -1;
 		while (vars->map[i][++j])
 		{
-			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ' && vars->map[i][j] != '\n')
+			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ')
 			{
 				if (vars->map[i][j] == 'N' || vars->map[i][j] == 'S' || vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
 				{
@@ -24,6 +24,27 @@ int	valid_chars(t_map *vars, int i, int j)
 			}
 		}
 	}
+	if (player)
+		return (0);
+	return (1);
+}
+
+int	open_walls(t_map *vars, int i, int j)
+{
+	int	len;
+	while (vars->map[++i])
+	{
+		j = -1;
+		len = ft_strlen(vars->map[i]);
+		while (++j <= len)
+		{
+			if (vars->map[i][j] != ' ' && vars->map[i][j] != '1' && vars->map[i][j]) //check diagonales;
+			{
+				if (vars->map[i - 1][j] == ' ' || vars->map[i + 1][j] == ' ' || (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0') || (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0')) //check que la linea no acabe? (\0);
+					return (1);
+			}
+		}
+	}
 	return (0);
 }
 
@@ -33,7 +54,7 @@ int	valid_chars(t_map *vars, int i, int j)
 //30 31 32 33 34
 //40 41 42 43 44
 
-int	void_in_map(t_map *vars, int i, int j)
+/*int	void_in_map(t_map *vars, int i, int j)
 {
 	while (vars->map[++i])
 	{
@@ -44,7 +65,7 @@ int	void_in_map(t_map *vars, int i, int j)
 				//?;
 		}
 	}
-}
+}*/
 
 void	map_checker(t_map *vars)
 {
@@ -53,14 +74,20 @@ void	map_checker(t_map *vars)
 
 	i = -1;
 	j = -1;
-	if (valid_chars(vars, i, j))
+	if (valid_chars(vars, -1, -1)) //juntar todos los checks en este exit?;
 	{
+		printf("holaaaaa??\n");
 		write (1, "Invalid characters in map\n", 26);
 		exit (1);
 	}
-	if (void_in_map(vars, i, j))
+	if (open_walls(vars, 0, -1))
+	{
+		write (1, "Map must have walls all around\n", 31);
+		exit (1);
+	}
+/*	if (void_in_map(vars, i, j))
 	{
 		write (1, "Invalid voids in map\n", 21);
 		exit (1);
-	}
+	}*/
 }
