@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/20 19:16:40 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:10:48 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 {
 	system("leaks -q cub3D");
 }*/
-
 /*	atexit(leaks);*/
+
 int	main(int argc, char **argv)
 {
 	if (argc != 2)

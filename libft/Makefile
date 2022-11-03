@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 16:56:48 by vsavilov          #+#    #+#              #
-#    Updated: 2022/10/05 17:46:12 by nortolan         ###   ########.fr        #
+#    Updated: 2022/11/03 14:04:58 by nicolike         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,7 @@ SRCS_NAME = ft_isdigit.c \
 		ft_lstclear_bonus.c \
 		ft_lstiter_bonus.c \
 		ft_lstmap_bonus.c \
-		get_next_line.c \
-		get_next_line_utils.c
+		get_next_line.c
 
 
 #######################

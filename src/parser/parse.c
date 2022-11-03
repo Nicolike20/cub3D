@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/20 19:17:29 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:23:32 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,40 @@ static void	first_read(t_map *vars, int fd)
 	char	*line;
 
 	in_map = 0;
-	i = -1;
 	line = get_next_line(fd);
 	while (line)
 	{
+		i = -1;
 		if (in_map == 1)
 			vars->map_len++;
+		else
+		{
+			while (*line == ' ' && *line)
+			{
+//				printf("hola111?\n");
+//				printf("linea: '%s'i = %d\n", line, i);
+//				printf("'%c'\n", line[i]);
+				i++;
+				line++;
+			}
+		}
+//			printf("adios111?\n");
+//			printf("'%c'\n", *line);
 		if (ft_strncmp(line, "NO ", 3) != 0 && ft_strncmp(line, "SO ", 3) != 0 && ft_strncmp(line, "WE ", 3) != 0 && ft_strncmp(line, "EA ", 3) != 0 && ft_strncmp(line, "F ", 2) != 0 && ft_strncmp(line, "C ", 2) != 0 && in_map == 0)
 		{
 			//printf("hola?\n\n");
 			if (in_map == 0 && line[0] != '\n')
 			{
-				while(line[++i] == ' ')
-					;
+				while(line[i] == ' ')
+				{
+//					printf("hola222?\n");
+//					printf("linea: '%s'i = %d\n", line, i);
+//					printf("'%c'\n", line[i]);
+					line++;
+					i++;
+				}
+//				printf("adios222?\n");
+//				printf("'%c'\n", line[i]);
 				if (line[i] != '1')
 				{
 					//printf("CHAR: %c", line[i]);
@@ -106,6 +127,12 @@ static void	first_read(t_map *vars, int fd)
 					vars->map_len++;
 				}
 			}
+		}
+		while (i-- >= 0)
+		{
+//			printf("ulti linea: '%s'i = %d\n", line, i);
+//			printf("ulti '%c'\n", line[i]);
+			line--;
 		}
 		free(line);
 		line = get_next_line(fd);

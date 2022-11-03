@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/20 19:07:08 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:03:02 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <mlx.h>
+//# include <mlx.h>
 
 typedef struct s_map
 {

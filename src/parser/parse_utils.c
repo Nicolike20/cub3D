@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2022/10/20 19:07:50 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:24:13 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	get_id(t_map *vars, char *line)
 {
 	vars->tmp = NULL;
 	vars->tmp_aux = NULL;
+	while (*line == ' ')
+		line++;
 	get_id_aux(vars, line);
 	if (!ft_strncmp(line, "F ", 2))
 	{
