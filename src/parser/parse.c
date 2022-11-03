@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:23:32 by nicolike         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:43:19 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //TODO: liberar elementos de vars;
 //TODO: comrpobar elementos del mapa (por ejemplo que no haya mas de una letra);
 //TODO: espacios en los elementos?;
+//TODO: check leaks;
 
 static int	is_map(char *line)
 {
@@ -176,5 +177,6 @@ void	file_read(char *file)
 	printf("<%s", vars.map[i]);
 	///////////TEST///////////////
 	//continuar flow del programa (check_map)-> check caracteres y 0s rodeados);
+	map_checker(&vars);
 	freedom(&vars);
 }

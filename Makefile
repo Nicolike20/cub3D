@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2022/10/18 14:12:03 by nortolan         ###   ########.fr        #
+#    Updated: 2022/11/03 16:06:07 by nicolike         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ OBJ_DIR = $(addprefix $(OBJ_PATH)/, $(OBJ_DIR_ALL))
 
 SRCS_MAIN =	main.c
 
-SRCS_PARSER =	parse.c parse_utils.c
+SRCS_PARSER =	parse.c parse_utils.c check_map.c
 
 SRCS_NAME =	$(SRCS_MAIN) \
 		$(addprefix $(SRC_DIR_PARSER)/, $(SRCS_PARSER)) \

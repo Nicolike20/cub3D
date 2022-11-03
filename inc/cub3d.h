@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/03 14:03:02 by nicolike         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:06:55 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ t_map	vars_init(t_map *vars);
 void	freedom(t_map *vars);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);
+
+/*check_map.c*/
+void	map_checker(t_map *vars);
 
 #endif
