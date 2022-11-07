@@ -17,7 +17,7 @@ int	valid_chars(t_map *vars, int i, int j)
 					if (player == 0)
 						player = 1;
 					else
-						return (1);
+						return (2);
 				}
 				else
 					return (1);
@@ -69,15 +69,19 @@ int	open_walls(t_map *vars, int i, int j)
 
 void	map_checker(t_map *vars)
 {
-//	int	i;
+	int	check;
 //	int	j;
 
-//	i = -1;
+	check = valid_chars(vars, -1, -1);
 //	j = -1;
-	if (valid_chars(vars, -1, -1)) //juntar todos los checks en este exit?;
+	if (check == 1) //juntar todos los checks en este exit?;
 	{
-		printf("holaaaaa??\n");
 		write (1, "Invalid characters in map\n", 26);
+		exit (1);
+	}
+	if (check == 2) //juntar todos los checks en este exit?;
+	{
+		write (1, "Multiple players in map\n", 24);
 		exit (1);
 	}
 	if (open_walls(vars, 0, -1))
