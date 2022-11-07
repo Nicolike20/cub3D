@@ -69,11 +69,11 @@ int	open_walls(t_map *vars, int i, int j)
 
 void	map_checker(t_map *vars)
 {
-	int	i;
-	int	j;
+//	int	i;
+//	int	j;
 
-	i = -1;
-	j = -1;
+//	i = -1;
+//	j = -1;
 	if (valid_chars(vars, -1, -1)) //juntar todos los checks en este exit?;
 	{
 		printf("holaaaaa??\n");

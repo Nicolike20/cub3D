@@ -6,12 +6,14 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/03 19:23:00 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:35:15 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+//TODO: fallo de parseo si el mapa no empieza con un espacio
+//TODO: cambiar error msg cuando no hay jugador?
 //TODO: comprobar que cada cero esté rodeado de caracteres validos (aka no espacios);
 //TODO: ^^^^^^^^^^^^^^^^^ check diagonales;
 //TODO: hacer un primer barrido del mapa encontrando elementos invalidos;
@@ -79,8 +81,10 @@ static void	first_read(t_map *vars, int fd)
 {
 	int		in_map;
 	int		i;
+	int		ns;
 	char	*line;
 
+	ns = 0;
 	in_map = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -108,14 +112,20 @@ static void	first_read(t_map *vars, int fd)
 			{
 				while(line[i] == ' ')
 				{
-//					printf("hola222?\n");
+					printf("hola222?\n");
 //					printf("linea: '%s'i = %d\n", line, i);
 //					printf("'%c'\n", line[i]);
 					line++;
 					i++;
 				}
+				if (i == -1)
+				{
+					i = 0;
+					ns = 1;
+				}
 //				printf("adios222?\n");
-//				printf("'%c'\n", line[i]);
+				printf("'%c'\n", line[i]);
+				printf("'%d'\n", i);
 				if (line[i] != '1')
 				{
 					//printf("CHAR: %c", line[i]);
@@ -129,6 +139,8 @@ static void	first_read(t_map *vars, int fd)
 				}
 			}
 		}
+		if (ns == 1)
+			i -= 1;
 		while (i-- >= 0)
 		{
 //			printf("ulti linea: '%s'i = %d\n", line, i);
