@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:24:13 by nicolike         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:24:15 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_map	vars_init(t_map *vars)
 	vars->c = NULL;
 	vars->f = NULL;
 	vars->map_len = 0;
+	vars->in_map = 0;
+	vars->ns = 0;
 	return (*vars);
 }
 
