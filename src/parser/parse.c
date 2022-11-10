@@ -6,13 +6,17 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/08 15:23:59 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:15:27 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//TODO: comprobar que cada cero esté rodeado de caracteres validos (aka no espacios);
+//TODO: TESTING, COMPROBACIONES, Y LUEGO AÑADIR BONUS;
+//TODO: quitar Invalid Putas xD;
+//TODO: espacios despues de una linea del mapa?;
+//TODO: puede haber saltos de linea tras el mapa?;
+//TODO: puede haber lineas con solo espacios en medio del archivo?;
 //TODO: espacios en los elementos?;
 //TODO: check leaks;
 
@@ -58,13 +62,24 @@ static void	get_lines(t_map *vars, int fd)
 			in_map = is_map(line);
 			get_id(vars, line);
 		}
+		if (in_map == 2 && ft_strncmp(line, "\n", ft_strlen(line) != 0))
+		{
+			write (1, "Invalid map\n", 12);
+			exit (1);
+		}
 		if (in_map == 1)
 		{
 			//vars->map[i++] = ft_strdup(line);
-			vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
+			if (line[0] == '\n')
+			{
+				in_map = 2;
+				printf("teeeeest\n");
+			}
+			else
+				vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
 			//printf("wooo mapa\n");
+			vars->map[i] = NULL; //probar si funciona debajo de esto;
 		}
-		vars->map[i] = NULL;
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -102,7 +117,11 @@ int	line_cmp(t_map *vars, char *line, int i)
 			else
 			{
 				vars->in_map = 1;
+//				if (ft_strncmp("\n", line, ft_strlen(line) != 0))
+//				{
+//					printf("lineaa: '%s'", line);
 				vars->map_len++;
+//				}
 			}
 		}
 	}
@@ -118,7 +137,7 @@ static void	first_read(t_map *vars, int fd)
 	while (line)
 	{
 		i = -1;
-		if (vars->in_map == 1)
+		if (vars->in_map == 1 && ft_strncmp("\n", line, ft_strlen(line) != 0))
 			vars->map_len++;
 		else
 		{
@@ -128,6 +147,12 @@ static void	first_read(t_map *vars, int fd)
 				i++;
 				line++;
 			}
+			/*printf("Esto que es: '%c'\n", *line);
+			if (*line == '\0')
+			{
+				write (1, "Invalid putas\n", 14);
+				exit (1);
+			}*/
 		}
 //			printf("'%c'\n", *line);
 		i = line_cmp(vars, line, i);

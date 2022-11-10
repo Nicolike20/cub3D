@@ -8,6 +8,14 @@ int	valid_chars(t_map *vars, int i, int j)
 	while (vars->map[++i])
 	{
 		j = -1;
+		while (vars->map[i][++j] == ' ')
+			;
+		if (vars->map[i][j] == '\0')
+		{
+			write (1, "Invalid putas\n", 14);
+			exit (1);
+		}
+		j = -1;
 		while (vars->map[i][++j])
 		{
 			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ')
