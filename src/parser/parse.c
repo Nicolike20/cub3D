@@ -6,13 +6,14 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/10 19:15:27 by nicolike         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:24:15 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //TODO: TESTING, COMPROBACIONES, Y LUEGO AÑADIR BONUS;
+//TODO: añadir bonus de puertas;
 //TODO: quitar Invalid Putas xD;
 //TODO: espacios despues de una linea del mapa?;
 //TODO: puede haber saltos de linea tras el mapa?;
