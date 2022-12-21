@@ -6,19 +6,15 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/12/20 21:24:15 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:42:36 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//TODO: TESTING, COMPROBACIONES, Y LUEGO AÑADIR BONUS;
-//TODO: añadir bonus de puertas;
-//TODO: quitar Invalid Putas xD;
-//TODO: espacios despues de una linea del mapa?;
+//TODO: guardar coordenadas de las puertas?;
 //TODO: puede haber saltos de linea tras el mapa?;
-//TODO: puede haber lineas con solo espacios en medio del archivo?;
-//TODO: espacios en los elementos?;
+//TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
 //TODO: check leaks;
 
 static int	is_map(char *line)
@@ -84,7 +80,7 @@ static void	get_lines(t_map *vars, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nF=%s\nC=%s\n", vars->no, vars->so, vars->we, vars->ea, vars->f, vars->c);
+	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nD=%s\nF=%s\nC=%s\n", vars->no, vars->so, vars->we, vars->ea, vars->d, vars->f, vars->c);
 	free(line);
 }
 
@@ -94,7 +90,8 @@ int	line_cmp(t_map *vars, char *line, int i)
 			&& ft_strncmp(line, "WE ", 3) != 0
 			&& ft_strncmp(line, "EA ", 3) != 0
 			&& ft_strncmp(line, "F ", 2) != 0
-			&& ft_strncmp(line, "C ", 2) != 0 && vars->in_map == 0)
+			&& ft_strncmp(line, "C ", 2) != 0
+			&& ft_strncmp(line, "D ", 2) != 0 && vars->in_map == 0)
 	{
 		if (vars->in_map == 0 && line[0] != '\n')
 		{

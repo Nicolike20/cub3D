@@ -12,13 +12,13 @@ int	valid_chars(t_map *vars, int i, int j)
 			;
 		if (vars->map[i][j] == '\0')
 		{
-			write (1, "Invalid putas\n", 14);
+			write (1, "Invalid map\n", 12);
 			exit (1);
 		}
 		j = -1;
 		while (vars->map[i][++j])
 		{
-			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ')
+			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ' && vars->map[i][j] != 'D')
 			{
 				if (vars->map[i][j] == 'N' || vars->map[i][j] == 'S' || vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
 				{
@@ -27,7 +27,7 @@ int	valid_chars(t_map *vars, int i, int j)
 					else
 						return (2);
 				}
-				else
+				else //quitar la D del if de arriba y crear aqui algo para guardar coordenadas?
 					return (1);
 			}
 		}

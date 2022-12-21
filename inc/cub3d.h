@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/08 15:24:24 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:20:02 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_map
 	char	*so;
 	char	*we;
 	char	*ea;
+	char	*d;
 	char	*c;
 	char	*f;
 	char	*tmp;

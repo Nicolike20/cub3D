@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2022/11/08 15:24:15 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:24:08 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_map	vars_init(t_map *vars)
 	vars->so = NULL;
 	vars->we = NULL;
 	vars->ea = NULL;
+	vars->d = NULL;
 	vars->c = NULL;
 	vars->f = NULL;
 	vars->map_len = 0;
@@ -38,6 +39,7 @@ void	freedom(t_map *vars)
 	free(vars->so);
 	free(vars->we);
 	free(vars->ea);
+	free(vars->d);
 	free(vars->f);
 	free(vars->c);
 }
@@ -77,6 +79,12 @@ void	get_id(t_map *vars, char *line)
 	while (*line == ' ')
 		line++;
 	get_id_aux(vars, line);
+	if (!ft_strncmp(line, "D ", 2))
+	{
+		vars->tmp_aux = ft_substr(line, 2, ft_strlen(line) - 3);
+		vars->tmp = ft_strtrim(vars->tmp_aux, " ");
+		vars->d = ft_strdup(vars->tmp);
+	}
 	if (!ft_strncmp(line, "F ", 2))
 	{
 		vars->tmp_aux = ft_substr(line, 2, ft_strlen(line) - 3);
