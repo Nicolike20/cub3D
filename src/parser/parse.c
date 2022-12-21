@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/12/21 01:42:36 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:38:44 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	get_lines(t_map *vars, int fd)
 	}
 	while (line)
 	{
-		//printf(">%s", line);
 		if (in_map == 0)
 		{
 			in_map = is_map(line);
@@ -74,7 +73,6 @@ static void	get_lines(t_map *vars, int fd)
 			}
 			else
 				vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
-			//printf("wooo mapa\n");
 			vars->map[i] = NULL; //probar si funciona debajo de esto;
 		}
 		free(line);
@@ -97,7 +95,6 @@ int	line_cmp(t_map *vars, char *line, int i)
 		{
 			while(line[i] == ' ')
 			{
-//				printf("linea: '%s'i = %d\n", line, i);
 				line++;
 				i++;
 			}
@@ -108,18 +105,13 @@ int	line_cmp(t_map *vars, char *line, int i)
 			}
 			if (line[i] != '1')
 			{
-				//printf("CHAR: %c", line[i]);
 				write (1, "Invalid character in file\n", 26);
 				exit (1);
 			}
 			else
 			{
 				vars->in_map = 1;
-//				if (ft_strncmp("\n", line, ft_strlen(line) != 0))
-//				{
-//					printf("lineaa: '%s'", line);
 				vars->map_len++;
-//				}
 			}
 		}
 	}
@@ -145,22 +137,12 @@ static void	first_read(t_map *vars, int fd)
 				i++;
 				line++;
 			}
-			/*printf("Esto que es: '%c'\n", *line);
-			if (*line == '\0')
-			{
-				write (1, "Invalid putas\n", 14);
-				exit (1);
-			}*/
 		}
-//			printf("'%c'\n", *line);
 		i = line_cmp(vars, line, i);
 		if (vars->ns == 1)
 			i -= 1;
 		while (i-- >= 0)
-		{
-//			printf("ulti linea: '%s'i = %d\n", line, i);
 			line--;
-		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -181,7 +163,6 @@ void	file_read(char *file)
 		exit (1);
 	}
 	first_read(&vars, fd);
-//	printf("--------------------------\n");
 	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
