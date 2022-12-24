@@ -1,5 +1,24 @@
 #include <cub3d.h>
 
+int	valid_chars_aux(t_map *vars, int i, int j, int player)
+{
+	if (vars->map[i][j] != '1' && vars->map[i][j] != '0'
+	&& vars->map[i][j] != ' ' && vars->map[i][j] != 'D')
+	{
+		if (vars->map[i][j] == 'N' || vars->map[i][j] == 'S'
+		|| vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
+		{
+			if (player == 0)
+				player = 1;
+			else
+				return (2);
+		}
+		else //quitar la D del if de arriba y crear aqui algo para guardar coordenadas?
+			return (1);
+	}
+	return (player);
+}
+
 int	valid_chars(t_map *vars, int i, int j)
 {
 	int	player;
@@ -17,24 +36,11 @@ int	valid_chars(t_map *vars, int i, int j)
 		}
 		j = -1;
 		while (vars->map[i][++j])
-		{
-			if (vars->map[i][j] != '1' && vars->map[i][j] != '0' && vars->map[i][j] != ' ' && vars->map[i][j] != 'D')
-			{
-				if (vars->map[i][j] == 'N' || vars->map[i][j] == 'S' || vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
-				{
-					if (player == 0)
-						player = 1;
-					else
-						return (2);
-				}
-				else //quitar la D del if de arriba y crear aqui algo para guardar coordenadas?
-					return (1);
-			}
-		}
+			player = valid_chars_aux(vars, i, j, player);
 	}
-	if (player)
-		return (0);
-	return (1);
+	//if (player != 1)
+	return (player);
+	//return (1);
 }
 
 int	open_walls(t_map *vars, int i, int j)
@@ -46,9 +52,12 @@ int	open_walls(t_map *vars, int i, int j)
 		len = ft_strlen(vars->map[i]);
 		while (++j <= len)
 		{
-			if (vars->map[i][j] != ' ' && vars->map[i][j] != '1' && vars->map[i][j]) //check diagonales;
+			if (vars->map[i][j] != ' ' && vars->map[i][j]
+				!= '1' && vars->map[i][j]) //check diagonales;
 			{
-				if (vars->map[i - 1][j] == ' ' || vars->map[i + 1][j] == ' ' || (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0') || (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0'))
+				if (vars->map[i - 1][j] == ' ' || vars->map[i + 1][j] == ' '
+				|| (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0')
+				|| (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0'))
 					return (1);
 			}
 		}
@@ -61,7 +70,7 @@ void	map_checker(t_map *vars)
 	int	check;
 
 	check = valid_chars(vars, -1, -1);
-	if (check == 1)
+	if (check == 0)
 	{
 		write (1, "Invalid characters in map\n", 26);
 		exit (1);
