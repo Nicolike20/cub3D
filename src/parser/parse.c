@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/12/21 10:38:44 by nortolan         ###   ########.fr       */
+/*   Updated: 2022/12/24 16:43:01 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //TODO: guardar coordenadas de las puertas?;
 //TODO: puede haber saltos de linea tras el mapa?;
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
+//TODO: puede haber lineas en el mapa rollo 111111111       1 (sin conectar con el mapa);
 //TODO: check leaks;
 
 static int	is_map(char *line)
@@ -82,28 +83,25 @@ static void	get_lines(t_map *vars, int fd)
 	free(line);
 }
 
-int	line_cmp(t_map *vars, char *line, int i)
+
+int	line_cmp(t_map *vars, char *l, int i)
 {
-	if (ft_strncmp(line, "NO ", 3) != 0 && ft_strncmp(line, "SO ", 3) != 0
-			&& ft_strncmp(line, "WE ", 3) != 0
-			&& ft_strncmp(line, "EA ", 3) != 0
-			&& ft_strncmp(line, "F ", 2) != 0
-			&& ft_strncmp(line, "C ", 2) != 0
-			&& ft_strncmp(line, "D ", 2) != 0 && vars->in_map == 0)
+	if (ft_strncmp(l, "NO ", 3) != 0 && ft_strncmp(l, "SO ", 3) != 0
+			&& ft_strncmp(l, "WE ", 3) != 0 && ft_strncmp(l, "EA ", 3) != 0
+			&& ft_strncmp(l, "F ", 2) != 0 && ft_strncmp(l, "C ", 2) != 0
+			&& ft_strncmp(l, "D ", 2) != 0 && vars->in_map == 0)
 	{
-		if (vars->in_map == 0 && line[0] != '\n')
+		if (vars->in_map == 0 && l[0] != '\n')
 		{
-			while(line[i] == ' ')
+			/*while(l[i] == ' ') por la cara aqui no entra
 			{
-				line++;
+				printf("VALOR DE I: %d\n", i);
+				l++;
 				i++;
-			}
-			if (i == -1)
-			{
-				i = 0;
+			}*/
+			if (i == -1 && ++i == 0)
 				vars->ns = 1;
-			}
-			if (line[i] != '1')
+			if (l[i] != '1')
 			{
 				write (1, "Invalid character in file\n", 26);
 				exit (1);
@@ -131,12 +129,8 @@ static void	first_read(t_map *vars, int fd)
 			vars->map_len++;
 		else
 		{
-			while (*line == ' ' && *line)
-			{
-//				printf("linea: '%s'i = %d\n", line, i);
-				i++;
+			while (*line == ' ' && *line && (++i || i == 0))
 				line++;
-			}
 		}
 		i = line_cmp(vars, line, i);
 		if (vars->ns == 1)
