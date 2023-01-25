@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/01/25 17:16:15 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:07:09 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 //TODO: puede haber saltos de linea tras el mapa?;
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
 //TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
-//TODO: caracteres que no san un 1 en la ultima fila danproblemas;
+//TODO: '101' en la ultima linea no pilla que no hay paredes;
+//TODO: algo que no sea 1 en la primera linea de seg fault;
+//TODO: checkear cosas con \0
 //TODO: check leaks;
 
 static int	is_map(char *line)
