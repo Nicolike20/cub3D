@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
+/*   Updated: 2023/01/25 16:50:11 by nortolan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 int	valid_chars_aux(t_map *vars, int i, int j, int player)
@@ -13,7 +25,7 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 			else
 				return (2);
 		}
-		else //quitar la D del if de arriba y crear aqui algo para guardar coordenadas?
+		else //quitar la D del if de arriba y crear aqui algo pa guardar coords?
 			return (1);
 	}
 	return (player);
@@ -46,6 +58,7 @@ int	valid_chars(t_map *vars, int i, int j)
 int	open_walls(t_map *vars, int i, int j)
 {
 	int	len;
+
 	while (vars->map[++i])
 	{
 		j = -1;

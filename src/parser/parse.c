@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2022/12/24 16:43:01 by nicolike         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:16:15 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 //TODO: guardar coordenadas de las puertas?;
 //TODO: puede haber saltos de linea tras el mapa?;
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
-//TODO: puede haber lineas en el mapa rollo 111111111       1 (sin conectar con el mapa);
+//TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
+//TODO: caracteres que no san un 1 en la ultima fila danproblemas;
 //TODO: check leaks;
 
 static int	is_map(char *line)
@@ -83,13 +84,12 @@ static void	get_lines(t_map *vars, int fd)
 	free(line);
 }
 
-
 int	line_cmp(t_map *vars, char *l, int i)
 {
 	if (ft_strncmp(l, "NO ", 3) != 0 && ft_strncmp(l, "SO ", 3) != 0
-			&& ft_strncmp(l, "WE ", 3) != 0 && ft_strncmp(l, "EA ", 3) != 0
-			&& ft_strncmp(l, "F ", 2) != 0 && ft_strncmp(l, "C ", 2) != 0
-			&& ft_strncmp(l, "D ", 2) != 0 && vars->in_map == 0)
+		&& ft_strncmp(l, "WE ", 3) != 0 && ft_strncmp(l, "EA ", 3) != 0
+		&& ft_strncmp(l, "F ", 2) != 0 && ft_strncmp(l, "C ", 2) != 0
+		&& ft_strncmp(l, "D ", 2) != 0 && vars->in_map == 0)
 	{
 		if (vars->in_map == 0 && l[0] != '\n')
 		{
