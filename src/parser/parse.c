@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/01/25 20:07:09 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:42:26 by nicolike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,11 @@ int	line_cmp(t_map *vars, char *l, int i)
 				vars->ns = 1;
 			if (l[i] != '1')
 			{
-				write (1, "Invalid character in file\n", 26);
+				if (l[i] == 'D' || l[i] == '0' || l[i] == 'N' || l[i] == 'S'
+				|| l[i] == 'E' || l[i] == 'W' || l[i] == ' ')
+					write (1, "Walls must be closed\n", 21);
+				else
+					write (1, "Invalid character in file\n", 26);
 				exit (1);
 			}
 			else
