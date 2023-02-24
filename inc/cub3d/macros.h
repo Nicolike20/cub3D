@@ -11,6 +11,10 @@
 #  define WIN_H 720
 # endif
 
+# ifndef MAX_FPS
+#  define MAX_FPS 60
+# endif
+
 /* Keys */
 
 # define KEY_A 0

@@ -11,6 +11,7 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_mlx {
+	int	frameRate;
 	void	*mlx;
 	void	*win;
 	t_img	img;
