@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/02/24 15:30:47 by Vsavilov         ###   ########.fr        #
+#    Updated: 2023/02/24 15:50:47 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ SRCS_MAIN =	main.c
 
 SRCS_PARSER =	parse.c parse_utils.c check_map.c
 
-SRCS_WINDOW =	manage_window.c game_loop.c keys.c
+SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c
 
 SRCS_NAME =	$(SRCS_MAIN) \
 		$(addprefix $(SRC_DIR_PARSER)/, $(SRCS_PARSER)) \
