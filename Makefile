@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2022/11/03 16:06:07 by nicolike         ###   ########.fr        #
+#    Updated: 2023/02/24 12:59:27 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@
 NAME = cub3D
 
 LIBFT_NAME = libft.a
+
+LMLX_NAME = libmlx.a
 
 ##############
 ###   OS   ###
@@ -32,7 +34,11 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS += -I ./$(INC_PATH) -I ./$(LIB_PATH)/inc
+CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
+
+CFLAGS += -O3
+
+MLX = -framework OpenGL -framework AppKit
 
 #CFLAGS += -fsanitize=address -g3
 
@@ -46,7 +52,11 @@ OBJ_PATH = obj
 
 INC_PATH = inc
 
-LIB_PATH = libft
+LIB_PATH = lib
+
+LIBFT_PATH = libft
+
+MLX_PATH = minilibx_macos
 
 #######################
 ###   Directories   ###
@@ -85,19 +95,29 @@ SRCS = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 
+#######################
+###   Create libs   ###
+#######################
+
+LIBFT =	$(LIB_PATH)/$(LIBFT_PATH)
+
+LMLX = $(LIB_PATH)/$(MLX_PATH)
+
 #################################
 ###   Rules can be executed   ###
 #################################
 
 all: $(NAME)
 
-## Object dir
+#######################
+###   Objects dir   ###
+#######################
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_DIR)
 		$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR): | $(OBJ_PATH)
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR) 2> /dev/null
 
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH) 2> /dev/null
@@ -107,15 +127,19 @@ $(OBJ_PATH):
 ########################
 
 $(LIBFT_NAME):
-	$(MAKE) all -sC $(LIB_PATH)
-	cp -r $(addprefix $(LIB_PATH)/, $(LIBFT_NAME)) $(LIBFT_NAME)
+	$(MAKE) all -sC $(LIBFT)
+	cp -r $(addprefix $(LIBFT)/, $(LIBFT_NAME)) $(LIBFT_NAME)
+
+$(LMLX_NAME):
+	$(MAKE) all -sC $(LMLX)
+	cp -r $(addprefix $(LMLX)/, $(LMLX_NAME)) $(LMLX_NAME)
 
 ######################
 ###   Compile .o   ###
 ######################
 
-$(NAME): $(LIBFT_NAME) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT_NAME)
+$(NAME): $(LMLX_NAME) $(LIBFT_NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME) $(LMLX_NAME) $(LIBFT_NAME)
 
 ############################
 ###   Sanitize (Linux)   ###
@@ -134,12 +158,18 @@ sanitize: $(NAME)
 
 clean:
 	rm -rf $(OBJ_PATH)
-	rm -rf $(LIBFT_NAME)
 
 fclean: clean
-	$(MAKE) fclean -sC $(LIB_PATH)
+	$(MAKE) fclean -sC $(LIBFT)
+	$(MAKE) clean -sC $(LMLX)
 	rm -rf $(NAME)
+	rm $(LIBFT_NAME)
+	rm $(LMLX_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re sanitize
+funsiona:
+	norminette $(INC_PATH)
+	norminette $(SRC_PATH)
+
+.PHONY: all clean fclean re sanitize funsiona
