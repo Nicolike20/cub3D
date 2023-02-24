@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/02/24 13:12:01 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:03:57 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 # include <cub3d/macros.h>
+# include <cub3d/structs.h>
+# include <cub3d/functions.h>
 
 typedef struct s_map
 {

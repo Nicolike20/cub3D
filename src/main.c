@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2022/12/21 01:45:12 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:02:47 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@ int	main(int argc, char **argv)
 		write (1, "Wrong number of arguments. Only one map expected\n", 49);
 		return (1);
 	}
-	if (check_file(argv[1]))
+	/*if (check_file(argv[1]))
 		return (1);
-	file_read(argv[1]);
+	file_read(argv[1]);*/
+	(void)argv;
+	t_mlx *mlx = (t_mlx *)malloc(sizeof(t_mlx));
+
+	init_window(mlx);
+
 	return (0);
 }

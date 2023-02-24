@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/02/24 12:59:27 by Vsavilov         ###   ########.fr        #
+#    Updated: 2023/02/24 14:57:56 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,10 @@ MLX_PATH = minilibx_macos
 #######################
 
 SRC_DIR_PARSER = parser
+SRC_DIR_WINDOW = window
 
 OBJ_DIR_ALL =	$(SRC_DIR_PARSER) \
+		$(SRC_DIR_WINDOW)
 
 OBJ_DIR = $(addprefix $(OBJ_PATH)/, $(OBJ_DIR_ALL))
 
@@ -76,8 +78,11 @@ SRCS_MAIN =	main.c
 
 SRCS_PARSER =	parse.c parse_utils.c check_map.c
 
+SRCS_WINDOW =	manage_window.c
+
 SRCS_NAME =	$(SRCS_MAIN) \
 		$(addprefix $(SRC_DIR_PARSER)/, $(SRCS_PARSER)) \
+		$(addprefix $(SRC_DIR_WINDOW)/, $(SRCS_WINDOW)) \
 
 ######################
 ###   Make rules   ###
