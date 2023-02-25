@@ -1,6 +1,8 @@
 #ifndef MACROS_H
 # define MACROS_H
 
+# define NAME "Cube3D"
+
 /* Window size */
 
 # ifndef WIN_W
@@ -14,6 +16,9 @@
 # ifndef MAX_FPS
 #  define MAX_FPS 60
 # endif
+
+# define FALSE 0
+# define TRUE 1
 
 /* Keys */
 

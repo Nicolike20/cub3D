@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/02/24 15:50:47 by Vsavilov         ###   ########.fr        #
+#    Updated: 2023/02/25 10:47:39 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
 CFLAGS += -O3
 
+CFLAGS += -fsanitize=address -g3
+
 MLX = -framework OpenGL -framework AppKit
 
 #CFLAGS += -fsanitize=address -g3
@@ -64,9 +66,11 @@ MLX_PATH = minilibx_macos
 
 SRC_DIR_PARSER = parser
 SRC_DIR_WINDOW = window
+SRC_DIR_UTILS = utils
 
 OBJ_DIR_ALL =	$(SRC_DIR_PARSER) \
-		$(SRC_DIR_WINDOW)
+		$(SRC_DIR_WINDOW) \
+		$(SRC_DIR_UTILS) \
 
 OBJ_DIR = $(addprefix $(OBJ_PATH)/, $(OBJ_DIR_ALL))
 
@@ -80,9 +84,12 @@ SRCS_PARSER =	parse.c parse_utils.c check_map.c
 
 SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c
 
+SRCS_UTILS = error.c
+
 SRCS_NAME =	$(SRCS_MAIN) \
 		$(addprefix $(SRC_DIR_PARSER)/, $(SRCS_PARSER)) \
 		$(addprefix $(SRC_DIR_WINDOW)/, $(SRCS_WINDOW)) \
+		$(addprefix $(SRC_DIR_UTILS)/, $(SRCS_UTILS))
 
 ######################
 ###   Make rules   ###

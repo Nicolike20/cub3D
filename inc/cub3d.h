@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/02/24 15:03:57 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:45:34 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,11 @@
 # include <cub3d/structs.h>
 # include <cub3d/functions.h>
 
-typedef struct s_map
-{
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*d;
-	char	*c;
-	char	*f;
-	char	*tmp;
-	char	*tmp_aux;
-	char	**map;
-	int		map_len;
-	int		in_map;
-	int		ns;
-}t_map;
-
 /*parse.c*/
-void	file_read(char *file);
+void	file_read(char *file, t_map *vars);
 
 /*parse_utils.c*/
-t_map	vars_init(t_map *vars);
+void	vars_init(t_map *vars);
 void	freedom(t_map *vars);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);
