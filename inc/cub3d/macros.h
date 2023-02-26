@@ -3,6 +3,23 @@
 
 # define NAME "Cube3D"
 
+//Colours
+
+# define WHITE 0xFFFFFF
+# define SILVER 0xC0C0C0
+# define RED 0xFF0000
+# define PURPLE 0x800080
+# define fuchsia 0xFF00FF
+# define LIME 0x00FF00
+# define YELLOW 0xFFFF00
+# define BLUE 0x0000FF
+# define CYAN 0x00FFFF
+
+# define FALSE 0
+# define TRUE 1
+
+# define CROSSHIRE_LEN 8
+
 /* Window size */
 
 # ifndef WIN_W
@@ -17,8 +34,6 @@
 #  define MAX_FPS 60
 # endif
 
-# define FALSE 0
-# define TRUE 1
 
 /* Keys */
 

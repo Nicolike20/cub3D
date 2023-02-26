@@ -12,9 +12,25 @@ typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int	bpp;
-	int	line_len;
+	int	ln_len;
 	int	endian;
 }	t_img;
+
+typedef struct s_crosshire {
+	int	x;
+	int	y;
+	int	ch_len;
+	int	color;
+}	t_crosshire;
+
+typedef struct s_raycasting {
+	int	x;
+	int	y;
+	int	map_x;
+	int	map_y;
+	int	draw_start;
+	int	draw_end;
+}	t_raycasting;
 
 typedef struct s_map {
 	char	*no;
