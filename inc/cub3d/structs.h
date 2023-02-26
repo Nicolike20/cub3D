@@ -19,7 +19,6 @@ typedef struct s_img {
 typedef struct s_crosshire {
 	int	x;
 	int	y;
-	int	ch_len;
 	int	color;
 }	t_crosshire;
 
