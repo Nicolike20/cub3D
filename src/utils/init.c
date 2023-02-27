@@ -4,7 +4,7 @@ void init_minimap(t_mlx *mlx, t_minimap *mmap)
 {
 	mmap->xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
 	mmap_mlx_image(mlx, mmap);
-	mmap_background(mlx, mmap);
+	mmap_background(*mmap);
 }
 
 void init_crosshire(t_crosshire *chre, char c)
@@ -25,4 +25,11 @@ void init_crosshire(t_crosshire *chre, char c)
 		chre->y = WIN_H / 2;
 	}
 	chre->color = CYAN;
+}
+
+void init_mlx(t_mlx *mlx)
+{
+	mlx->mlx = mlx_init();
+	mlx->img.img = mlx_new_image(mlx->mlx, WIN_W, WIN_H);
+	mlx->win = mlx_new_window(mlx->mlx, WIN_W, WIN_H, NAME);
 }

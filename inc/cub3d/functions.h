@@ -19,7 +19,7 @@ void draw(t_mlx *mlx);
 
 //minimap.c
 void	minimap(t_mlx *mlx);
-void	mmap_background(t_mlx *mlx, t_minimap *mmap);
+void	mmap_background(t_minimap mmap);
 void	mmap_mlx_image(t_mlx *mlx, t_minimap *mmap);
 
 //crosshire.c
@@ -37,5 +37,6 @@ int arg_error(void);
 //init.c
 void init_crosshire(t_crosshire *chre, char c);
 void init_minimap(t_mlx *mlx, t_minimap *mmap);
+void init_mlx(t_mlx *mlx);
 
 #endif

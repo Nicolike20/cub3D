@@ -17,11 +17,7 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_minimap {
-	void	*img;
-	char	*addr;
-	int	bpp;
-	int	ln_len;
-	int	endian;
+	t_img	img;
 	int	x;
 	int	y;
 	int	xy_large; //lado mas largo del mapa
