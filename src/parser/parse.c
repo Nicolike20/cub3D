@@ -150,19 +150,17 @@ static void	first_read(t_map *vars, int fd)
 	printf("Map Length: %d\n", vars->map_len);
 }
 
-void	file_read(char *file)
+void	file_read(char *file, t_map *vars)
 {
-	t_map	vars;
 	int		fd;
 
 	fd = open(file, O_RDONLY);
-	vars = vars_init(&vars);
 	if (fd < 0)
 	{
 		write (1, "Invalid file\n", 13);
 		exit (1);
 	}
-	first_read(&vars, fd);
+	first_read(vars, fd);
 	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -170,19 +168,19 @@ void	file_read(char *file)
 		write (1, "Error\n", 6);
 		exit (1);
 	}
-	get_lines(&vars, fd);
+	get_lines(vars, fd);
 	close(fd);
 	///////////TEST///////////////
 	int	i;
 
 	i = -1;
 	printf("---------TEST-----------\n");
-	while (vars.map[++i])
+	while (vars->map[++i])
 	{
-		printf("<'%s'\n", vars.map[i]);
+		printf("<'%s'\n", vars->map[i]);
 	}
-	printf("<%s", vars.map[i]);
+	printf("<%s", vars->map[i]);
 	///////////TEST///////////////
-	map_checker(&vars);
-	freedom(&vars);
+	map_checker(vars);
+	freedom(vars);
 }

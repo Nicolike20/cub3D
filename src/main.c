@@ -20,6 +20,8 @@
 
 int	main(int argc, char **argv)
 {
+	t_map	vars;
+
 	if (argc != 2)
 	{
 		write (1, "Wrong number of arguments. Only one map expected\n", 49);
@@ -27,6 +29,7 @@ int	main(int argc, char **argv)
 	}
 	if (check_file(argv[1]))
 		return (1);
-	file_read(argv[1]);
+	vars = vars_init(&vars);
+	file_read(argv[1], &vars);
 	return (0);
 }

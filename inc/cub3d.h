@@ -37,7 +37,7 @@ typedef struct s_map
 }t_map;
 
 /*parse.c*/
-void	file_read(char *file);
+void	file_read(char *file, t_map *vars);
 
 /*parse_utils.c*/
 t_map	vars_init(t_map *vars);
