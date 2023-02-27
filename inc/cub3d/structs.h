@@ -41,6 +41,8 @@ typedef struct s_raycasting {
 }	t_raycasting;
 
 typedef struct s_map {
+	int	width;
+	int	height;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -61,6 +63,7 @@ typedef struct s_mlx {
 	void	*mlx;
 	void	*win;
 	t_map	*map;
+	t_minimap mmap;
 	t_keys	keys;
 	t_img	img;
 }	t_mlx;
