@@ -16,6 +16,19 @@ typedef struct s_img {
 	int	endian;
 }	t_img;
 
+typedef struct s_minimap {
+	void	*img;
+	char	*addr;
+	int	bpp;
+	int	ln_len;
+	int	endian;
+	int	x;
+	int	y;
+	int	xy_large; //lado mas largo del mapa
+	int	or_x; //orientacion x
+	int	or_y; //orientacion y
+}	t_minimap;
+
 typedef struct s_crosshire {
 	int	x;
 	int	y;

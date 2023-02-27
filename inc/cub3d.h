@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/02/25 10:45:34 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:36:21 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include <mlx.h>
 
 # include <cub3d/macros.h>

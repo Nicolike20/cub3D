@@ -20,6 +20,8 @@
 
 # define CROSSHIRE_LEN 8
 
+# define MINIMAP_SCALE 16
+
 /* Window size */
 
 # ifndef WIN_W
