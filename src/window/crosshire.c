@@ -6,7 +6,7 @@ static void print_crosshire(t_img img, t_crosshire ch, char c)
 	int j;
 
 	j = -1;
-	printf("%d---%d\n", ch.x, ch.y);
+//	printf("%d---%d\n", ch.x, ch.y);
 	if (c == 'y')
 		while (j < 2) {
 			i = 0;

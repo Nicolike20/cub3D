@@ -31,14 +31,27 @@ typedef struct s_crosshire {
 	int	color;
 }	t_crosshire;
 
-typedef struct s_raycasting {
-	int	x;
-	int	y;
-	int	map_x;
-	int	map_y;
-	int	draw_start;
-	int	draw_end;
-}	t_raycasting;
+typedef struct s_plane {
+	float	posX;
+	float	posY;
+	float	dirX;
+	float	dirY;
+	float	planeX;
+	float	planeY;
+}	t_plane;
+
+typedef struct s_raycast {
+	float	rayDirX;
+	float	rayDirY;
+	float	camX;
+	float	camY;
+	int	mapX;
+	int	mapY;
+	float	sideDistX;
+	float	sideDistY;
+	float	deltaDisX;
+	float	deltaDisY;
+}	t_raycast;
 
 typedef struct s_map {
 	int	width;
@@ -64,6 +77,8 @@ typedef struct s_mlx {
 	void	*win;
 	t_map	*map;
 	t_minimap mmap;
+	t_raycast *ray;
+	t_plane plane;
 	t_keys	keys;
 	t_img	img;
 }	t_mlx;

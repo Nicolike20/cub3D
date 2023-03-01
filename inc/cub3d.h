@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/02/27 17:36:21 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:41:22 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 void	file_read(char *file, t_map *vars);
 
 /*parse_utils.c*/
-void	vars_init(t_map *vars);
+t_map	vars_init(t_map *vars);
 void	freedom(t_map *vars);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);

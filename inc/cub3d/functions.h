@@ -39,5 +39,6 @@ int arg_error(void);
 void init_crosshire(t_crosshire *chre, char c);
 void init_minimap(t_mlx *mlx);
 void init_mlx(t_mlx *mlx);
+void init_raycast(t_raycast *ray, t_plane *p, int x);
 
 #endif

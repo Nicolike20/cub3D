@@ -1,10 +1,28 @@
 #include <cub3d.h>
 
+void init_raycast(t_raycast *ray, t_plane *p, int x)
+{
+	ray = (t_raycast *)malloc(sizeof(t_raycast));
+	ray->camX = (2 * x) / (float)WIN_W - 1;
+	ray->rayDirX = p->dirX + p->planeX * ray->camX;
+	ray->rayDirY =p->dirY + p->planeY * ray->camX;
+	ray->mapX = (int)p->posX;
+	ray->mapY = (int)p->posY;
+	if (ray->rayDirX == 0)
+		ray->deltaDisX = 1e30;
+	else
+		ray->deltaDisX = fabs(1 / ray->rayDirX);
+	if (ray->rayDirY == 0)
+		ray->deltaDisY = 1e30;
+	else
+		ray->deltaDisY = fabs(1 / ray->rayDirY);
+}
+
 void init_minimap(t_mlx *mlx)
 {
 	mlx->mmap.xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
 	mmap_mlx_image(mlx);
-	//mmap_background(mlx->mmap);
+//	mmap_background(mlx->mmap);
 }
 
 void init_crosshire(t_crosshire *chre, char c)
