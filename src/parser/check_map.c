@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 13:57:55 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:35:28 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	valid_chars_aux(t_map *vars, int i, int j, int player)
 {
+//	printf("ayo???: %c\n", vars->map[i][j]);
 	if (vars->map[i][j] != '1' && vars->map[i][j] != '0'
 	&& vars->map[i][j] != ' ' && vars->map[i][j] != 'D')
 	{
@@ -28,6 +29,8 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		else //quitar la D del if de arriba y crear aqui algo pa guardar coords?
 			return (1);
 	}
+//	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D') && (i == 0 || i == vars->map_height))
+//		return (3);
 	return (player);
 }
 
@@ -49,7 +52,9 @@ int	valid_chars(t_map *vars, int i, int j)
 		j = -1;
 		while (vars->map[i][++j])
 			player = valid_chars_aux(vars, i, j, player);
+//		printf("-----------------------------------\n");
 	}
+	printf("valid chars returns: %d\n", player);
 	//if (player != 1)
 	return (player);
 	//return (1);
@@ -85,25 +90,26 @@ void	map_checker(t_map *vars)
 {
 	int	check;
 
+//	printf("HOLA 00000\n");
 	check = valid_chars(vars, -1, -1);
-	//printf("HOLA 11111\n");
+//	printf("HOLA 11111\n");
 	if (check == 0)
 	{
 		write (1, "Invalid characters in map\n", 26);
 		exit (1);
 	}
-	//printf("HOLA 22222\n");
+	printf("HOLA 22222\n");
 	if (check == 2)
 	{
 		write (1, "Multiple players in map\n", 24);
 		exit (1);
 	}
-	//printf("HOLA 33333\n");
-	if (open_walls(vars, 0, -1))
+	printf("HOLA 33333\n");
+	if (check == 3 || open_walls(vars, 0, -1))
 	{
 		write (1, "Map must have walls all around\n", 31);
 		exit (1);
 	}
-	//printf("HOLA 44444\n");
+	printf("HOLA 44444\n");
 	//TESTEAR TODO LO QUE SE TE OCURRA
 }

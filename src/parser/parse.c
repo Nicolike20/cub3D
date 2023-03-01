@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 14:12:34 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:38:04 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static void	get_lines(t_map *vars, int fd)
 	vars->map = (char **)malloc(sizeof(char *) * (vars->map_height + 1));
 	if (vars->map == NULL)
 	{
-		write (1, "Error\n", 6);
-		exit (1);
+		write(1, "Error\n", 6);
+		exit(1);
 	}
 	line = get_next_line(fd);
 	if (!line)
 	{
-		write (1, "Error\n", 6);
-		exit (1);
+		write(1, "Error\n", 6);
+		exit(1);
 	}
 	while (line)
 	{
