@@ -47,6 +47,9 @@ typedef struct s_raycast {
 	float	camY;
 	int	mapX;
 	int	mapY;
+	float	perpWallDist;
+	int	stepX;
+	int	stepY;
 	float	sideDistX;
 	float	sideDistY;
 	float	deltaDisX;
