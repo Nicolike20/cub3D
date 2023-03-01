@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 14:35:28 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:41:12 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,30 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		{
 			if (player == 0)
 				player = 1;
+			else if (i == 0 || i == vars->map_height)
+			{
+//				printf("return 3\n");
+				return (3);
+			}
 			else
+			{
+//				printf("return 2\n");
 				return (2);
+			}
 		}
 		else //quitar la D del if de arriba y crear aqui algo pa guardar coords?
+		{
+//			printf("return 1\n");
 			return (1);
+		}
 	}
-//	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D') && (i == 0 || i == vars->map_height))
-//		return (3);
+	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D')
+			&& (i == 0 || i == vars->map_height))
+	{
+//		printf("return 3\n");
+		return (3);
+	}
+//	printf("return player\n");
 	return (player);
 }
 
@@ -50,7 +66,7 @@ int	valid_chars(t_map *vars, int i, int j)
 			exit (1);
 		}
 		j = -1;
-		while (vars->map[i][++j])
+		while (vars->map[i][++j] && player != 3)
 			player = valid_chars_aux(vars, i, j, player);
 //		printf("-----------------------------------\n");
 	}
@@ -98,18 +114,18 @@ void	map_checker(t_map *vars)
 		write (1, "Invalid characters in map\n", 26);
 		exit (1);
 	}
-	printf("HOLA 22222\n");
+//	printf("HOLA 22222\n");
 	if (check == 2)
 	{
 		write (1, "Multiple players in map\n", 24);
 		exit (1);
 	}
-	printf("HOLA 33333\n");
+//	printf("HOLA 33333\n");
 	if (check == 3 || open_walls(vars, 0, -1))
 	{
 		write (1, "Map must have walls all around\n", 31);
 		exit (1);
 	}
-	printf("HOLA 44444\n");
+//	printf("HOLA 44444\n");
 	//TESTEAR TODO LO QUE SE TE OCURRA
 }

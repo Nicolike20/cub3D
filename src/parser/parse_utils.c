@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 14:10:06 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:30:19 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ t_map	vars_init(t_map *vars)
 
 void	freedom(t_map *vars)
 {
-	int	i;
+//	int	i;
 
-	i = -1;
-	while (++i < vars->map_height)
-		free(vars->map[i]);
-	free(vars->map);
+//	i = -1;
+//	while (++i < vars->map_height)
+//		free(vars->map[i]);
+//	free(vars->map);
 	free(vars->no);
 	free(vars->so);
 	free(vars->we);

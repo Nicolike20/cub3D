@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 14:38:04 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:30:52 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static int	is_map(char *line)
 	i = -1;
 	while (line[++i])
 	{
-		if ((line[i] != '1' && line[i] != ' ' && line[i] != '\n')
-			|| line[0] == '\n')
+		if ((line[i] != '1' && line[i] != ' ' && line[i] != '\n'
+				&& line[i] != '0' && line[i] != 'D' && line[i] != 'N'
+				&& line[i] != 'S' && line[i] != 'W' && line[i] != 'E')
+				|| line[0] == '\n')
 			return (0);
 	}
 	return (1);
@@ -61,6 +63,7 @@ static void	get_lines(t_map *vars, int fd)
 		{
 			in_map = is_map(line);
 			get_id(vars, line);
+			printf("huh?\n");
 		}
 		if (in_map == 2 && ft_strncmp(line, "\n", ft_strlen(line) != 0))
 		{
@@ -76,7 +79,10 @@ static void	get_lines(t_map *vars, int fd)
 				printf("teeeeest\n");
 			}
 			else
+			{
 				vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
+				printf("hace el substr de: %s\n", line);
+			}
 			vars->map[i] = NULL; //probar si funciona debajo de esto;
 		}
 		free(line);
