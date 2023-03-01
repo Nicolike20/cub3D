@@ -31,14 +31,14 @@ typedef struct s_crosshire {
 	int	color;
 }	t_crosshire;
 
-typedef struct s_plane {
+typedef struct s_player {
 	float	posX;
 	float	posY;
 	float	dirX;
 	float	dirY;
 	float	planeX;
 	float	planeY;
-}	t_plane;
+}	t_player;
 
 typedef struct s_raycast {
 	float	rayDirX;
@@ -53,6 +53,11 @@ typedef struct s_raycast {
 	float	deltaDisY;
 }	t_raycast;
 
+//incluir orientacion inicial
+//nombres width y height
+//player posicion inicial x, y (float)
+//no hacer free
+
 typedef struct s_map {
 	char	*no;
 	char	*so;
@@ -66,6 +71,8 @@ typedef struct s_map {
 	char	**map;
 	int	width;
 	int	height;
+	float	posX;
+	float	posY;
 	int	in_map;
 	int	ns;
 }	t_map;
@@ -77,7 +84,7 @@ typedef struct s_mlx {
 	t_map	*map;
 	t_minimap mmap;
 	t_raycast *ray;
-	t_plane plane;
+	t_player player;
 	t_keys	keys;
 	t_img	img;
 }	t_mlx;

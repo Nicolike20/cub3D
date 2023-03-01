@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 13:55:42 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:00:48 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 }
 	atexit(leaks);*/
 
-/*static void fill_map(t_map *map) {
+static void fill_map(t_map *map) {
 	map->map = (char **)malloc(sizeof(char *) * 6);
 	map->map[0] = ft_strdup("111111");
 	map->map[1] = ft_strdup("100101");
@@ -30,7 +30,7 @@
 	for (int i = 0; i < 6; i++) {
 		printf("%s\n", map->map[i]);
 	}
-}*/
+}
 
 int	main(int argc, char **argv)
 {
@@ -42,9 +42,9 @@ int	main(int argc, char **argv)
 	if (check_file(argv[1]))
 		return (1);
 	*mlx->map = vars_init(mlx->map);
-	file_read(argv[1], mlx->map);
-//	fill_map(mlx->map);
-//	(void)argv;
+//	file_read(argv[1], mlx->map);
+	fill_map(mlx->map);
+	(void)argv;
 	init_window(mlx);
 
 	return (0);

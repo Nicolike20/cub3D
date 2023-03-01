@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/02/26 12:41:42 by Vsavilov         ###   ########.fr        #
+#    Updated: 2023/03/01 15:52:25 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ SRCS_MAIN =	main.c
 SRCS_PARSER =	parse.c parse_utils.c check_map.c
 
 SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c draw.c crosshire.c \
-		mlx_functions.c minimap.c
+		mlx_functions.c minimap.c player.c
 
 SRCS_UTILS = error.c init.c
 

@@ -1,6 +1,6 @@
 #include <cub3d.h>
 
-void init_raycast(t_raycast *ray, t_plane *p, int x)
+void init_raycast(t_raycast *ray, t_player *p, int x)
 {
 	ray = (t_raycast *)malloc(sizeof(t_raycast));
 	ray->camX = (2 * x) / (float)WIN_W - 1;
