@@ -54,8 +54,6 @@ typedef struct s_raycast {
 }	t_raycast;
 
 typedef struct s_map {
-	int	width;
-	int	height;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -66,7 +64,8 @@ typedef struct s_map {
 	char	*tmp;
 	char	*tmp_aux;
 	char	**map;
-	int	map_len;
+	int	width;
+	int	height;
 	int	in_map;
 	int	ns;
 }	t_map;

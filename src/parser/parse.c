@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/02/25 10:46:22 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:50:37 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	get_lines(t_map *vars, int fd)
 
 	in_map = 0;
 	i = 0;
-	vars->map = (char **)malloc(sizeof(char *) * (vars->map_len + 1));
+	vars->map = (char **)malloc(sizeof(char *) * (vars->height + 1));
 	if (vars->map == NULL)
 	{
 		write (1, "Error\n", 6);
@@ -115,7 +115,7 @@ int	line_cmp(t_map *vars, char *l, int i)
 			else
 			{
 				vars->in_map = 1;
-				vars->map_len++;
+				vars->height++;
 			}
 		}
 	}
@@ -132,7 +132,7 @@ static void	first_read(t_map *vars, int fd)
 	{
 		i = -1;
 		if (vars->in_map == 1 && ft_strncmp("\n", line, ft_strlen(line) != 0))
-			vars->map_len++;
+			vars->height++;
 		else
 		{
 			while (*line == ' ' && *line && (++i || i == 0))
@@ -147,7 +147,19 @@ static void	first_read(t_map *vars, int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
-	printf("Map Length: %d\n", vars->map_len);
+	printf("Map Length: %d\n", vars->width);
+}
+
+void	get_width(t_map *vars)
+{
+	int	i;
+
+	i = -1;
+	while (vars->map[++i])
+	{
+		if ((int)ft_strlen(vars->map[i]) > vars->width)
+			vars->width = ft_strlen(vars->map[i]);
+	}
 }
 
 void	file_read(char *file, t_map *vars)
@@ -171,6 +183,7 @@ void	file_read(char *file, t_map *vars)
 	}
 	get_lines(vars, fd);
 	close(fd);
+	get_width(vars);
 	///////////TEST///////////////
 	int	i;
 

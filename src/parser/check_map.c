@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/01/25 20:04:22 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:51:17 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	valid_chars(t_map *vars, int i, int j)
 	int	player;
 
 	player = 0;
-	while (++i < vars->map_len)
+	while (++i < vars->height)
 	{
 		j = -1;
 		while (vars->map[i][++j] == ' ')
