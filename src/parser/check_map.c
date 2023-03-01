@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 17:35:32 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:50:20 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	valid_chars_aux(t_map *vars, int i, int j, int player)
 {
-//	printf("ayo???: %c\n", vars->map[i][j]);
 	if (vars->map[i][j] != '1' && vars->map[i][j] != '0'
 	&& vars->map[i][j] != ' ' && vars->map[i][j] != 'D')
 	{
@@ -22,31 +21,21 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		|| vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
 		{
 			if (player == 0)
+			{
 				player = 1;
-			else if (i == 0 || i == vars->map_height)
-			{
-//				printf("return 3\n");
+				vars->ori = vars->map[i][j];
+			}
+			else if (i == 0 || i == vars->height)
 				return (3);
-			}
 			else
-			{
-//				printf("return 2\n");
 				return (2);
-			}
 		}
 		else //quitar la D del if de arriba y crear aqui algo pa guardar coords?
-		{
-//			printf("return 1\n");
 			return (1);
-		}
 	}
 	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D')
-			&& (i == 0 || i == vars->map_height - 1))
-	{
-//		printf("return 3\n");
+			&& (i == 0 || i == vars->height - 1))
 		return (3);
-	}
-//	printf("return player\n");
 	return (player);
 }
 
@@ -55,7 +44,7 @@ int	valid_chars(t_map *vars, int i, int j)
 	int	player;
 
 	player = 0;
-	while (++i < vars->map_height)
+	while (++i < vars->height)
 	{
 		j = -1;
 		while (vars->map[i][++j] == ' ')
