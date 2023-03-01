@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 15:41:12 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:35:32 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		}
 	}
 	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D')
-			&& (i == 0 || i == vars->map_height))
+			&& (i == 0 || i == vars->map_height - 1))
 	{
 //		printf("return 3\n");
 		return (3);
@@ -70,7 +70,7 @@ int	valid_chars(t_map *vars, int i, int j)
 			player = valid_chars_aux(vars, i, j, player);
 //		printf("-----------------------------------\n");
 	}
-	printf("valid chars returns: %d\n", player);
+//	printf("valid chars returns: %d\n", player);
 	//if (player != 1)
 	return (player);
 	//return (1);
@@ -94,8 +94,11 @@ int	open_walls(t_map *vars, int i, int j)
 				//printf("i + 1, j: %c\n", vars->map[i + 1][j]);
 				if (vars->map[i - 1][j] == ' '
 				|| (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0')
-				|| (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0'))
+				|| (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0')
+				|| (int)ft_strlen(vars->map[i + 1]) < j + 1
+				|| (vars->map[i][0] != '1' && vars->map[i][0] != ' '))
 					return (1);
+//				printf("line    : %s\nline + 1: %s\nstrlen i + 1: %zu\nj: %d\n", vars->map[i], vars->map[i + 1], ft_strlen(vars->map[i + 1]), j);
 			}
 		}
 	}

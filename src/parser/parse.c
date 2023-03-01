@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 15:30:52 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:37:14 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 //TODO: puede haber saltos de linea tras el mapa?;
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
 //TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
-//TODO: '101' en la ultima linea no pilla que no hay paredes;
-//TODO: algo que no sea 1 en la primera linea de seg fault;
 //TODO: checkear cosas con \0
 //TODO: check leaks;
 
@@ -63,7 +61,6 @@ static void	get_lines(t_map *vars, int fd)
 		{
 			in_map = is_map(line);
 			get_id(vars, line);
-			printf("huh?\n");
 		}
 		if (in_map == 2 && ft_strncmp(line, "\n", ft_strlen(line) != 0))
 		{
@@ -79,10 +76,7 @@ static void	get_lines(t_map *vars, int fd)
 				printf("teeeeest\n");
 			}
 			else
-			{
 				vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
-				printf("hace el substr de: %s\n", line);
-			}
 			vars->map[i] = NULL; //probar si funciona debajo de esto;
 		}
 		free(line);
