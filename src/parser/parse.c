@@ -196,5 +196,6 @@ void	file_read(char *file, t_map *vars)
 	printf("Map width: %d\n", vars->width);
 	///////////TEST///////////////
 	map_checker(vars);
+	printf("pos x: %f\npos y: %f\n", vars->x, vars->y); ////TEST;
 	freedom(vars);
 }

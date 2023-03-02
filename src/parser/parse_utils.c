@@ -26,6 +26,8 @@ t_map	vars_init(t_map *vars)
 	vars->in_map = 0;
 	vars->ns = 0;
 	vars->ori = 0;
+	vars->x = 0.0;
+	vars->y = 0.0;
 	return (*vars);
 }
 

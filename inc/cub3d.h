@@ -35,6 +35,8 @@ typedef struct s_map
 	int		width;
 	int		in_map;
 	char	ori;
+	float	x;
+	float	y;
 	int		ns;
 }t_map;
 

@@ -24,6 +24,8 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 			{
 				player = 1;
 				vars->ori = vars->map[i][j];
+				vars->x = j;
+				vars->y = i;
 			}
 			else if (i == 0 || i == vars->height)
 				return (3);
