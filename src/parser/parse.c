@@ -12,11 +12,8 @@
 
 #include <cub3d.h>
 
-//TODO: guardar coordenadas de las puertas?;
-//TODO: puede haber saltos de linea tras el mapa?;
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
 //TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
-//TODO: checkear cosas con \0
 //TODO: check leaks;
 
 static int	is_map(char *line)
@@ -95,12 +92,6 @@ int	line_cmp(t_map *vars, char *l, int i)
 	{
 		if (vars->in_map == 0 && l[0] != '\n')
 		{
-			/*while(l[i] == ' ') por la cara aqui no entra
-			{
-				printf("VALOR DE I: %d\n", i);
-				l++;
-				i++;
-			}*/
 			if (i == -1 && ++i == 0)
 				vars->ns = 1;
 			if (l[i] != '1')
@@ -112,11 +103,8 @@ int	line_cmp(t_map *vars, char *l, int i)
 					write (1, "Invalid character in file\n", 26);
 				exit (1);
 			}
-			else
-			{
+			else if (++vars->height)
 				vars->in_map = 1;
-				vars->height++;
-			}
 		}
 	}
 	return (i);
