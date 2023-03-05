@@ -40,3 +40,11 @@ int manage_keys(int keycode, t_mlx *mlx)
 		exit_win_key(mlx);
 	return (0);
 }
+
+void init_keys(t_mlx *mlx)
+{
+	mlx->keys.a = FALSE;
+	mlx->keys.s = FALSE;
+	mlx->keys.d = FALSE;
+	mlx->keys.w = FALSE;
+}

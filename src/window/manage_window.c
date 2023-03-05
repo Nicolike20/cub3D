@@ -6,13 +6,11 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/02/27 18:11:46 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:01:04 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-
 
 static void mlx_key_events(t_mlx *mlx)
 {
@@ -24,10 +22,10 @@ int init_window(t_mlx *mlx) {
 	init_mlx(mlx);
 	minimap(mlx);
 
-	mlx_key_events(mlx);
+	/*mlx_key_events(mlx);
 	mlx_key_hook(mlx->win, manage_keys, mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);
-	free_mlx(mlx);
+	free_mlx(mlx);*/
 	return 0;
 }

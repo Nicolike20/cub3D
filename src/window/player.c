@@ -11,7 +11,7 @@ static t_player dir_plane(float dirX, float dirY, float planeX, float planeY)
 	return (p);
 }
 
-void	player_init(t_player *p, float posX, float posY, char c)
+void	init_player(t_player *p, float posX, float posY, char c)
 {
 	if (c == 'N')
 		*p = dir_plane(0, -1, -0.66, 0);

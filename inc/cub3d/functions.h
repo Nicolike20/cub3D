@@ -7,6 +7,7 @@
 int init_window(t_mlx *mlx);
 
 //keys.c
+void	init_keys(t_mlx *mlx);
 int manage_keys(int keycode, t_mlx *mlx);
 int key_press(int keycode, t_mlx *mlx);
 int key_relase(int keycode, t_mlx *mlx);
@@ -16,6 +17,9 @@ int game_loop(void *mlx);
 
 //draw.c
 void draw(t_mlx *mlx);
+
+//player.c
+void	init_player(t_player *p, float posX, float posY, char c);
 
 //minimap.c
 void	minimap(t_mlx *mlx);

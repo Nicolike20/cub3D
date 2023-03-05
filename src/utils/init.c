@@ -18,13 +18,6 @@ void init_raycast(t_raycast *ray, t_player *p, int x)
 		ray->deltaDisY = fabs(1 / ray->rayDirY);
 }
 
-void init_minimap(t_mlx *mlx)
-{
-	mlx->mmap.xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
-	mmap_mlx_image(mlx);
-//	mmap_background(mlx->mmap);
-}
-
 void init_crosshire(t_crosshire *chre, char c)
 {
 	if (c == 'W')
@@ -47,7 +40,11 @@ void init_crosshire(t_crosshire *chre, char c)
 
 void init_mlx(t_mlx *mlx)
 {
+	init_keys(mlx);
+	player_init(&mlx->player, mlx->map->posX, mlx->map->posY, mlx->map->ori);
 	mlx->mlx = mlx_init();
 	mlx->img.img = mlx_new_image(mlx->mlx, WIN_W, WIN_H);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp, &mlx->img.ln_len, &mlx->img.endian);
 	mlx->win = mlx_new_window(mlx->mlx, WIN_W, WIN_H, NAME);
+	init_minimap(mlx);
 }

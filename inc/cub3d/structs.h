@@ -74,6 +74,7 @@ typedef struct s_map {
 	char	**map;
 	int	width;
 	int	height;
+	char	ori;
 	float	posX;
 	float	posY;
 	int	in_map;
@@ -85,7 +86,7 @@ typedef struct s_mlx {
 	void	*mlx;
 	void	*win;
 	t_map	*map;
-	t_minimap mmap;
+	t_minimap *mmap;
 	t_raycast *ray;
 	t_player player;
 	t_keys	keys;

@@ -32,11 +32,6 @@ static	void draw_empty_minimap(t_mlx *mlx, int x, int y)
 
 void	draw_minimap(t_mlx *mlx)
 {
-	//borrar:
-	//mlx->map->width = 8;
-	//mlx->map->height = 8;
-
-	//borrar
 	mlx->mmap.y = -1;
 	while (++mlx->mmap.y < mlx->map->height)
 	{
@@ -73,4 +68,12 @@ void	mmap_mlx_image(t_mlx *mlx)
 void	minimap(t_mlx *mlx)
 {
 	init_minimap(mlx);
+}
+
+void init_minimap(t_mlx *mlx)
+{
+	mlx->mmap = (t_minimap *)malloc(sizeof(t_minimap));
+	mlx->mmap.xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
+	mmap_mlx_image(mlx);
+	//mmap_background(mlx->mmap);
 }

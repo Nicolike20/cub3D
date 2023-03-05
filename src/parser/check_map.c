@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 14:51:17 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:19:25 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		|| vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
 		{
 			if (player == 0)
+			{
 				player = 1;
+				vars->ori = vars->map[i][j];
+				vars->posX = j;
+				vars->posY = i;
+			}
+			else if (i == 0 || i == vars->height)
+				return (3);
 			else
 				return (2);
 		}
