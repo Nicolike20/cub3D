@@ -6,13 +6,14 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 17:40:48 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:19:51 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
+//TODO: klk si pongo dos veces una ruta a una textura (p.e. dos veces SO ./asdf;
 //TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
 //TODO: check leaks;
 
@@ -26,20 +27,46 @@ static int	is_map(char *line)
 		if ((line[i] != '1' && line[i] != ' ' && line[i] != '\n'
 				&& line[i] != '0' && line[i] != 'D' && line[i] != 'N'
 				&& line[i] != 'S' && line[i] != 'W' && line[i] != 'E')
-				|| line[0] == '\n')
+			|| line[0] == '\n')
 			return (0);
 	}
 	return (1);
 }
 
+static int	in_map_checks(t_map *vars, char *line, int i)
+{
+	if (vars->in_map == 0)
+	{
+		vars->in_map = is_map(line);
+		get_id(vars, line);
+		if (vars->tmp)
+			free(vars->tmp);
+		if (vars->tmp_aux)
+			free(vars->tmp_aux);
+	}
+	if (vars->in_map == 2 && ft_strncmp(line, "\n", ft_strlen(line) != 0))
+	{
+		write (1, "Invalid map\n", 12);
+		exit (1);
+	}
+	if (vars->in_map == 1)
+	{
+		if (line[0] == '\n')
+			vars->in_map = 2;
+		else
+			vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
+		vars->map[i] = NULL; //probar si funciona debajo de esto;
+	}
+	return (i);
+}
+
 static void	get_lines(t_map *vars, int fd)
 {
 	char	*line;
-	int		in_map;
 	int		i;
 
-	in_map = 0;
 	i = 0;
+	vars->in_map = 0;
 	vars->map = (char **)malloc(sizeof(char *) * (vars->height + 1));
 	if (vars->map == NULL)
 	{
@@ -54,32 +81,12 @@ static void	get_lines(t_map *vars, int fd)
 	}
 	while (line)
 	{
-		if (in_map == 0)
-		{
-			in_map = is_map(line);
-			get_id(vars, line);
-		}
-		if (in_map == 2 && ft_strncmp(line, "\n", ft_strlen(line) != 0))
-		{
-			write (1, "Invalid map\n", 12);
-			exit (1);
-		}
-		if (in_map == 1)
-		{
-			//vars->map[i++] = ft_strdup(line);
-			if (line[0] == '\n')
-			{
-				in_map = 2;
-				printf("teeeeest\n");
-			}
-			else
-				vars->map[i++] = ft_substr(line, 0, ft_strlen(line) - 1);
-			vars->map[i] = NULL; //probar si funciona debajo de esto;
-		}
+		i = in_map_checks(vars, line, i);
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nD=%s\nF=%s\nC=%s\n", vars->no, vars->so, vars->we, vars->ea, vars->d, vars->f, vars->c);
+	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nD=%s\nF=%s\nC=%s\n",
+		vars->no, vars->so, vars->we, vars->ea, vars->d, vars->f, vars->c);
 	free(line);
 }
 
@@ -97,7 +104,7 @@ int	line_cmp(t_map *vars, char *l, int i)
 			if (l[i] != '1')
 			{
 				if (l[i] == 'D' || l[i] == '0' || l[i] == 'N' || l[i] == 'S'
-				|| l[i] == 'E' || l[i] == 'W' || l[i] == ' ')
+					|| l[i] == 'E' || l[i] == 'W' || l[i] == ' ')
 					write (1, "Walls must be closed\n", 21);
 				else
 					write (1, "Invalid character in file\n", 26);

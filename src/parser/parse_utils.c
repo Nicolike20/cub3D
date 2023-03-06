@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 17:50:08 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:01:37 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_map	vars_init(t_map *vars)
 void	freedom(t_map *vars)
 {
 //	int	i;
-
+//
 //	i = -1;
 //	while (++i < vars->map_height)
 //		free(vars->map[i]);
@@ -101,10 +101,6 @@ void	get_id(t_map *vars, char *line)
 		vars->tmp = ft_strtrim(vars->tmp_aux, " ");
 		vars->c = ft_strdup(vars->tmp);
 	}
-	if (vars->tmp)
-		free(vars->tmp);
-	if (vars->tmp_aux)
-		free(vars->tmp_aux);
 }
 
 int	check_file(char *file)

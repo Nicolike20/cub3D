@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 17:50:20 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:37:37 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,14 @@ int	open_walls(t_map *vars, int i, int j)
 		while (++j <= len)
 		{
 			if (vars->map[i][j] != ' ' && vars->map[i][j]
-				!= '1' && vars->map[i][j]) //check diagonales;
+				!= '1' && vars->map[i][j])
 			{
-				//printf("tamos en: %c\n", vars->map[i][j]);
-				//printf("i - 1, j: %c\n", vars->map[i - 1][j]);
-				//printf("i + 1, j: %c\n", vars->map[i + 1][j]);
 				if (vars->map[i - 1][j] == ' '
 				|| (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0')
 				|| (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0')
 				|| (int)ft_strlen(vars->map[i + 1]) < j + 1
 				|| (vars->map[i][0] != '1' && vars->map[i][0] != ' '))
 					return (1);
-//				printf("line    : %s\nline + 1: %s\nstrlen i + 1: %zu\nj: %d\n", vars->map[i], vars->map[i + 1], ft_strlen(vars->map[i + 1]), j);
 			}
 		}
 	}
@@ -120,6 +116,4 @@ void	map_checker(t_map *vars)
 		write (1, "Map must have walls all around\n", 31);
 		exit (1);
 	}
-//	printf("HOLA 44444\n");
-	//TESTEAR TODO LO QUE SE TE OCURRA
 }
