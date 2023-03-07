@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 17:47:57 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:01:18 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct s_map
 
 /*parse.c*/
 void	file_read(char *file, t_map *vars);
+
+/*get_lines.c*/
+void	get_lines(t_map *vars, int fd);
 
 /*parse_utils.c*/
 t_map	vars_init(t_map *vars);
