@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:57:57 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/07 18:01:18 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:56:26 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 # include <stdio.h>
 # include <fcntl.h>
 //# include <mlx.h>
+
+typedef struct s_tex
+{
+	void	*north;
+	void	*south;
+	void	*west;
+	void	*east;
+	void	*door;
+}t_tex;
 
 typedef struct s_map
 {
