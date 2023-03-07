@@ -12,6 +12,9 @@ int manage_keys(int keycode, t_mlx *mlx);
 int key_press(int keycode, t_mlx *mlx);
 int key_relase(int keycode, t_mlx *mlx);
 
+//keys_move.c
+void	manage_move_keys(t_mlx *mlx);
+
 //game_loop.c
 int game_loop(void *mlx);
 

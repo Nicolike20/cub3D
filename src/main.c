@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/01 15:00:48 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:13:42 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void fill_map(t_map *map) {
 	map->map[0] = ft_strdup("111111");
 	map->map[1] = ft_strdup("100101");
 	map->map[2] = ft_strdup("100101");
-	map->map[3] = ft_strdup("1100N1");
+	map->map[3] = ft_strdup("11N001");
 	map->map[4] = ft_strdup("111001");
 	map->map[5] = ft_strdup("111111");
 	
