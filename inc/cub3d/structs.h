@@ -20,6 +20,8 @@ typedef struct s_minimap {
 	t_img	img;
 	int	x;
 	int	y;
+	int	osX; //map offsetX
+	int	osY; //map offsetY
 	int	xy_large; //lado mas largo del mapa
 	int	or_x; //orientacion x
 	int	or_y; //orientacion y
@@ -50,10 +52,16 @@ typedef struct s_raycast {
 	float	perpWallDist;
 	int	stepX;
 	int	stepY;
+	int	side;
 	float	sideDistX;
 	float	sideDistY;
 	float	deltaDisX;
 	float	deltaDisY;
+	float	bufferZ[WIN_W];
+	int	coll; //collision with objects
+	int	ln_height;
+	int	d_start;
+	int	d_end;
 }	t_raycast;
 
 //incluir orientacion inicial

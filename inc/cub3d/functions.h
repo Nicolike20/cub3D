@@ -18,14 +18,17 @@ int game_loop(void *mlx);
 //draw.c
 void draw(t_mlx *mlx);
 
+//raycast.c
+void	raycast(t_mlx *mlx);
+
 //player.c
 void	init_player(t_player *p, float posX, float posY, char c);
 
 //minimap.c
 void	minimap(t_mlx *mlx);
 void	mmap_background(t_minimap mmap);
-void	mmap_mlx_image(t_mlx *mlx);
-void	draw_minimap(t_mlx *mlx);
+void	mmap_mlx_image(t_minimap *map, void *ptr);
+//void	draw_minimap(t_mlx *mlx);
 
 //crosshire.c
 void crosshire(t_img img);

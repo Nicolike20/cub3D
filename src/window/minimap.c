@@ -2,9 +2,9 @@
 
 //Minimapa: Suelo 0, Muro 1, Pj NSWE Puerta open O close C
 
-static void minimap_put_pixel(t_mlx *mlx, int x, int y, int color)
+/*static void minimap_put_pixel(t_mlx *mlx, int x, int y, int color)
 {
-	mlx_put_pixel_color(mlx->mmap.img, x, y, color);
+	mlx_put_pixel_color(mlx->mmap->img, x, y, color);
 }
 
 static	void draw_empty_minimap(t_mlx *mlx, int x, int y)
@@ -45,6 +45,11 @@ void	draw_minimap(t_mlx *mlx)
 			draw_empty_minimap(mlx, mlx->mmap.x, mlx->mmap.y);
 		}
 	}
+}*/
+
+void	minimap(t_mlx *mlx)
+{
+	init_minimap(mlx);
 }
 
 void	mmap_background(t_minimap mmap)
@@ -58,22 +63,27 @@ void	mmap_background(t_minimap mmap)
 	}
 }
 
-void	mmap_mlx_image(t_mlx *mlx)
+void	mmap_mlx_image(t_minimap *map, void *ptr)
 {
-	mlx->mmap.img.img = mlx_new_image(mlx->mlx, mlx->mmap.xy_large, mlx->mmap.xy_large);
-	mlx->mmap.img.addr = mlx_get_data_addr(mlx->mmap.img.img, &mlx->mmap.img.bpp,
-			&mlx->mmap.img.ln_len, &mlx->mmap.img.endian);
+	map->img.img = mlx_new_image(ptr, map->xy_large, map->xy_large);
+	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bpp, &map->img.ln_len, &map->img.endian);
 }
 
-void	minimap(t_mlx *mlx)
+void	calculate_offset(t_minimap *map, int width, int height)
 {
-	init_minimap(mlx);
+	map->osX = 0;
+	map->osY = 0;
+	if (width > height)
+		map->osY = (width - height) * fmax(WIN_W, WIN_H) / MINIMAP_SCALE / width;
+	else if (height > width)
+		map->osX = (height - width) * fmax(WIN_W, WIN_H) / MINIMAP_SCALE / height;
 }
 
 void init_minimap(t_mlx *mlx)
 {
 	mlx->mmap = (t_minimap *)malloc(sizeof(t_minimap));
-	mlx->mmap.xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
-	mmap_mlx_image(mlx);
-	//mmap_background(mlx->mmap);
+	mlx->mmap->xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
+	calculate_offset(mlx->mmap, mlx->map->width, mlx->map->height);
+	mmap_mlx_image(mlx->mmap, mlx->mlx);
+	mmap_background(*mlx->mmap);
 }

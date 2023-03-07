@@ -2,12 +2,13 @@
 
 void init_raycast(t_raycast *ray, t_player *p, int x)
 {
-	ray = (t_raycast *)malloc(sizeof(t_raycast));
 	ray->camX = (2 * x) / (float)WIN_W - 1;
 	ray->rayDirX = p->dirX + p->planeX * ray->camX;
 	ray->rayDirY =p->dirY + p->planeY * ray->camX;
 	ray->mapX = (int)p->posX;
 	ray->mapY = (int)p->posY;
+	ray->coll = 0;
+	ray->side = 0;
 	if (ray->rayDirX == 0)
 		ray->deltaDisX = 1e30;
 	else
@@ -41,10 +42,11 @@ void init_crosshire(t_crosshire *chre, char c)
 void init_mlx(t_mlx *mlx)
 {
 	init_keys(mlx);
-	player_init(&mlx->player, mlx->map->posX, mlx->map->posY, mlx->map->ori);
+	init_player(&mlx->player, mlx->map->posX, mlx->map->posY, mlx->map->ori);
 	mlx->mlx = mlx_init();
 	mlx->img.img = mlx_new_image(mlx->mlx, WIN_W, WIN_H);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp, &mlx->img.ln_len, &mlx->img.endian);
 	mlx->win = mlx_new_window(mlx->mlx, WIN_W, WIN_H, NAME);
-	init_minimap(mlx);
+	mlx->ray = (t_raycast *)malloc(sizeof(t_raycast) * 100000);
+	//init_minimap(mlx);
 }
