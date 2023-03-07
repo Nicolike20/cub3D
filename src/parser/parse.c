@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/07 18:00:11 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:08:21 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //TODO: klk si pongo dos veces una ruta a una textura (p.e. dos veces SO ./asdf;
 //TODO: se puede lineas en el mapa rollo 111111    1 (sin conectar con el mapa);
 //TODO: check leaks;
+//TODO: proteger los mallocs de main;
 
 int	line_cmp(t_map *vars, char *l, int i)
 {
@@ -118,6 +119,6 @@ void	file_read(char *file, t_map *vars)
 	printf("Map width: %d\n", vars->width);
 	///////////TEST///////////////
 	map_checker(vars);
-	printf("pos x: %f\npos y: %f\n", vars->x, vars->y); ////TEST;
+	printf("pos x: %f\npos y: %f\n", vars->pos_x, vars->pos_y); ////TEST;
 	freedom(vars);
 }
