@@ -7,10 +7,10 @@ static void for_backward_steps(int key, t_mlx *mlx, float speed)
 (void)key;
 	p = &mlx->player;
 	map = mlx->map->map;
-	if (map[(int)p->posY][(int)(p->posX + p->dirX * speed)] == '0')
-		p->posX += p->dirX * speed;
-	if (map[(int)(p->posY + p->dirY * speed)][(int)p->posX] == '0')
-		p->posY += p->dirX * speed;
+	if (map[(int)p->pos_y][(int)(p->pos_x + p->dirX * speed)] == '0')
+		p->pos_x += p->dirX * speed;
+	if (map[(int)(p->pos_y + p->dirY * speed)][(int)p->pos_x] == '0')
+		p->pos_y += p->dirX * speed;
 }
 
 void	manage_move_keys(t_mlx *mlx)

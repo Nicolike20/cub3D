@@ -7,22 +7,22 @@ static void init_sideDist(t_raycast *ray, t_player *p)
 	if (ray->stepX < 0)
 	{
 		ray->stepX = -1;
-		ray->sideDistX = (p->posX - ray->mapX) * ray->deltaDisX;
+		ray->sideDistX = (p->pos_x - ray->mapX) * ray->deltaDisX;
 	}
 	else
 	{
 		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1 - p->posX) * ray->deltaDisX;
+		ray->sideDistX = (ray->mapX + 1 - p->pos_x) * ray->deltaDisX;
 	}
 	if (ray->stepY < 0)
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (p->posY - ray->mapY) * ray->deltaDisY;
+		ray->sideDistY = (p->pos_y - ray->mapY) * ray->deltaDisY;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1 - p->posY) * ray->deltaDisY;
+		ray->sideDistY = (ray->mapY + 1 - p->pos_y) * ray->deltaDisY;
 	}
 }
 
