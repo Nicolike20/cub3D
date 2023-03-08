@@ -6,6 +6,8 @@ typedef struct s_keys {
 	_Bool	s;
 	_Bool	d;
 	_Bool	w;
+	_Bool	left;
+	_Bool	right;
 }	t_keys;
 
 typedef struct s_img {

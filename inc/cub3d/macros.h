@@ -36,6 +36,17 @@
 #  define MAX_FPS 60
 # endif
 
+/* Map macros */
+
+# define FLOOR '0'
+# define WALL '1'
+# define DOOR 'D'
+# define DOPEN 'O'
+
+/* Movement */
+
+# define SPEED 0.05
+# define FPP_CAM_SPEED 0.03
 
 /* Keys */
 
