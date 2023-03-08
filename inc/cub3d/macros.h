@@ -36,6 +36,16 @@
 #  define MAX_FPS 60
 # endif
 
+/* Map macros */
+
+# define FLOOR '0'
+# define WALL '1'
+# define DOOR 'D'
+# define DOPEN 'O'
+
+/* Movement */
+
+# define SPEED 0.05
 
 /* Keys */
 
