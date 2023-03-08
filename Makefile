@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/03/07 19:32:59 by nortolan         ###   ########.fr        #
+#    Updated: 2023/03/08 13:54:50 by nortolan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -182,7 +182,8 @@ fclean: clean
 re: fclean all
 
 funsiona:
-	norminette $(INC_PATH)
-	norminette $(SRC_PATH)
+	-norminette $(INC_PATH)
+	-norminette $(SRC_PATH)
+	-norminette $(LIB_PATH)/$(LIBFT_PATH)
 
 .PHONY: all clean fclean re sanitize funsiona
