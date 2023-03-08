@@ -1,0 +1,21 @@
+NO ./ruta_a_la_textura_norte
+
+SO   ./ruta_a_la_textura_sur
+
+WE      ./ruta_a_la_textura_oeste
+EA ./ruta_a_la_textura_este
+
+D ./ruta_a_la_puerta
+
+   F 220,100,0
+C 225,30,0
+
+111111111
+100000001
+100000001
+100000001
+1000S000
+100000001
+100000001
+100000001
+111111111
