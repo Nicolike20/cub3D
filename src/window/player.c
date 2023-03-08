@@ -24,6 +24,6 @@ void	init_player(t_player *p, float posX, float posY, char c)
 	(void)posX;
 	(void)posY;
 	//posicion del personaje.
-	//p->posX = posX + 0.5;
-	//p->posY = posY + 0.5;
+	p->pos_x = posX + 0.5;
+	p->pos_y = posY + 0.5;
 }
