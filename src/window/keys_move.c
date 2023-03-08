@@ -6,11 +6,36 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:30:53 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/08 13:42:11 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:14:01 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+static void fpp_camera(int key, t_mlx *mlx, float speed)
+{
+	t_player *p;
+	float auxdirx;
+	float auxplanex;
+
+	p = &mlx->player;
+	auxdirx = p->dirX;
+	auxplanex = p->planeX;
+	if (key == KEY_LEFT)
+	{
+		p->dirX = p->dirX * cos(-speed) - p->dirY * sin(-speed);
+		p->dirY = auxdirx * sin(-speed) + p->dirY * cos(-speed);
+		p->planeX = p->planeX * cos(-speed) - p->planeY * sin(-speed);
+		p->planeY = auxplanex * sin(-speed) + p->planeY * cos(-speed);
+	}
+	if (key == KEY_RIGHT)
+	{
+		p->dirX = p->dirX * cos(speed) - p->dirY * sin(speed);
+		p->dirY = auxdirx * sin(speed) + p->dirY * cos(speed);
+		p->planeX = p->planeX * cos(speed) - p->planeY * sin(speed);
+		p->planeY = auxplanex *sin(speed) + p->planeY * cos(speed);
+	}
+}
 
 static void sidesteps(int key , t_mlx *mlx, float speed)
 {
@@ -68,5 +93,12 @@ void	manage_move_keys(t_mlx *mlx)
 			sidesteps(KEY_A, mlx, SPEED);
 		else if (mlx->keys.d == TRUE)
 			sidesteps(KEY_D, mlx, -SPEED);
+	}
+	if (mlx->keys.left != mlx->keys.right)
+	{
+		if (mlx->keys.left == TRUE)
+			fpp_camera(KEY_LEFT, mlx, FPP_CAM_SPEED);
+		else if (mlx->keys.right == TRUE)
+			fpp_camera(KEY_RIGHT, mlx, FPP_CAM_SPEED);
 	}
 }
