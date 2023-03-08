@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/07 20:13:44 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:55 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 		return (arg_error());
 	if (check_file(argv[1]))
 		return (1);
-	*mlx->map = vars_init(mlx->map);
+	vars_init(mlx->map);
 	file_read(argv[1], mlx->map);
 //	fill_map(mlx->map);
 //	(void)argv;

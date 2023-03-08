@@ -6,15 +6,15 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/07 19:41:10 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:36:40 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_map	vars_init(t_map *vars)
+void	vars_init(t_map *vars)
 {
-	vars = (t_map *)malloc(sizeof(t_map));
+//	vars = (t_map *)malloc(sizeof(t_map));
 	vars->no = NULL;
 	vars->so = NULL;
 	vars->we = NULL;
@@ -22,6 +22,7 @@ t_map	vars_init(t_map *vars)
 	vars->d = NULL;
 	vars->c = NULL;
 	vars->f = NULL;
+	vars->map = NULL;
 	vars->height = 0;
 	vars->width = 0;
 	vars->in_map = 0;
@@ -29,7 +30,7 @@ t_map	vars_init(t_map *vars)
 	vars->pos_y = 0.0;
 	vars->ns = 0;
 	vars->ori = 0;
-	return (*vars);
+//	return (*vars);
 }
 
 void	freedom(t_map *vars)

@@ -58,7 +58,7 @@ void	file_read(char *file, t_map *vars);
 void	get_lines(t_map *vars, int fd);
 
 /*parse_utils.c*/
-t_map	vars_init(t_map *vars);
+void	vars_init(t_map *vars);
 void	freedom(t_map *vars);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);
