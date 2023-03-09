@@ -2,54 +2,40 @@
 
 //Minimapa: Suelo 0, Muro 1, Pj NSWE Puerta open O close C
 
-/*static void minimap_put_pixel(t_mlx *mlx, int x, int y, int color)
+static void draw_minimap_pixel_put(t_minimap *m, int posSX, int posSY)
 {
-	mlx_put_pixel_color(mlx->mmap->img, x, y, color);
-}
+	float x;
+	float y;
 
-static	void draw_empty_minimap(t_mlx *mlx, int x, int y)
-{
-	int px;
-	int py;
-	int end_x;
-	int end_y;
-	//add color for every type of char map
-
-	end_y = (y + 1) * mlx->mmap.xy_large / fmax(mlx->map->width, mlx->map->height);
-	py = y * mlx->mmap.xy_large / fmax(mlx->map->width, mlx->map->height);
-	while (py < end_y)
+	y = -1;
+	while (++y < 5)
 	{
-		end_x = (x + 1) * mlx->mmap.xy_large / fmax(mlx->map->width, mlx->map->height);
-		px = x * mlx->mmap.xy_large / fmax(mlx->map->width, mlx->map->height);
-		while (px < end_x)
+		x = -1;
+		while (++x < 5)
 		{
-			minimap_put_pixel(mlx, x, y, WHITE);
-			x++;
+			mlx_put_pixel_color(m->img, posSX + x, posSY + y, RED);
 		}
-		y++;
 	}
 }
 
-void	draw_minimap(t_mlx *mlx)
+void draw_minimap(t_mlx *mlx)
 {
-	mlx->mmap.y = -1;
-	while (++mlx->mmap.y < mlx->map->height)
-	{
-		if (mlx->map->map[mlx->mmap.y] == NULL)
-			break ;
-		mlx->mmap.x = -1;
-		while (++mlx->mmap.x < mlx->map->width)
-		{
-			if (mlx->map->map[mlx->mmap.y][mlx->mmap.x] == '\0')
-				break ;
-			draw_empty_minimap(mlx, mlx->mmap.x, mlx->mmap.y);
-		}
-	}
-}*/
+	int ln;
+	int posSX; //position of minimapX
+	int posSY; //position of minimapY
+	t_minimap *map;
 
-void	minimap(t_mlx *mlx)
-{
-	init_minimap(mlx);
+	map = mlx->mmap;
+	posSX = (map->osX / 2) + (mlx->player.pos_x * ((map->img.ln_len / map->img.bpp * 8)
+		/ fmax(mlx->map->width, mlx->map->height)));
+	posSY = (map->osY / 2) +(mlx->player.pos_y * ((map->img.ln_len / map->img.bpp * 8)
+		/ fmax(mlx->map->width, mlx->map->height)));
+	ln = 10;
+	posSX -= ln / 2;
+	posSY -= ln / 2;
+	draw_minimap_pixel_put(map, posSX, posSY);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, map->img.img, WIN_W - (map->img.ln_len
+			/ map->img.bpp * 8) - 10, 5);
 }
 
 void	mmap_background(t_minimap mmap)
@@ -58,7 +44,7 @@ void	mmap_background(t_minimap mmap)
 	while (++mmap.y < mmap.xy_large)
 	{
 		mmap.x = -1;
-		while (mmap.x < mmap.xy_large)
+		while (++mmap.x < mmap.xy_large)
 			mlx_put_pixel_color(mmap.img, mmap.x, mmap.y, WHITE);
 	}
 }
@@ -66,7 +52,8 @@ void	mmap_background(t_minimap mmap)
 void	mmap_mlx_image(t_minimap *map, void *ptr)
 {
 	map->img.img = mlx_new_image(ptr, map->xy_large, map->xy_large);
-	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bpp, &map->img.ln_len, &map->img.endian);
+	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bpp,
+			&map->img.ln_len, &map->img.endian);
 }
 
 void	calculate_offset(t_minimap *map, int width, int height)
@@ -74,9 +61,53 @@ void	calculate_offset(t_minimap *map, int width, int height)
 	map->osX = 0;
 	map->osY = 0;
 	if (width > height)
-		map->osY = (width - height) * fmax(WIN_W, WIN_H) / MINIMAP_SCALE / width;
+		map->osY = (width - height) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / width);
 	else if (height > width)
-		map->osX = (height - width) * fmax(WIN_W, WIN_H) / MINIMAP_SCALE / height;
+		map->osX = (height - width) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / height);
+}
+
+static void mmap_put_pixel(t_minimap *m, int x, int y)
+{
+	mlx_put_pixel_color(m->img, x + (m->osX / 2), y + (m->osY / 2), BLUE);
+}
+
+static void mmap_draw_pixel(t_minimap *mmap, t_map *map)
+{
+	int px;
+	int py;
+	int d_y;
+	int d_x;
+
+	d_y = (mmap->y + 1) * mmap->xy_large / fmax(map->width, map->height);
+	py = mmap->y * mmap->xy_large / fmax(map->width, map->height);
+	while (py < d_y)
+	{
+		d_x = (mmap->x + 1) * mmap->xy_large / fmax(map->width, map->height);
+		px = mmap->x * mmap->xy_large / fmax(map->width, map->height);
+		while (px < d_x)
+		{
+			mmap_put_pixel(mmap, px, py);
+			px++;
+		}
+		py++;
+	}
+}	
+
+static void mmap_draw(t_minimap *mmap, t_map *map)
+{
+	mmap->y = -1;
+	while (++mmap->y < map->height)
+	{
+		if (map->map[mmap->y] == NULL)
+			break ;
+		mmap->x = -1;
+		while (++mmap->x < map->width)
+		{
+			if (map->map[mmap->y][mmap->x] == '\0')
+				break ;
+			mmap_draw_pixel(mmap, map);
+		}
+	}
 }
 
 void init_minimap(t_mlx *mlx)
@@ -86,4 +117,5 @@ void init_minimap(t_mlx *mlx)
 	calculate_offset(mlx->mmap, mlx->map->width, mlx->map->height);
 	mmap_mlx_image(mlx->mmap, mlx->mlx);
 	mmap_background(*mlx->mmap);
+	mmap_draw(mlx->mmap, mlx->map);
 }

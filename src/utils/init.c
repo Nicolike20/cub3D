@@ -45,8 +45,9 @@ void init_mlx(t_mlx *mlx)
 	init_player(&mlx->player, mlx->map->pos_x, mlx->map->pos_y, mlx->map->ori);
 	mlx->mlx = mlx_init();
 	mlx->img.img = mlx_new_image(mlx->mlx, WIN_W, WIN_H);
-	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp, &mlx->img.ln_len, &mlx->img.endian);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img,
+			&mlx->img.bpp, &mlx->img.ln_len, &mlx->img.endian);
 	mlx->win = mlx_new_window(mlx->mlx, WIN_W, WIN_H, NAME);
-	mlx->ray = (t_raycast *)malloc(sizeof(t_raycast) * 100000);
-	//init_minimap(mlx);
+	mlx->ray = (t_raycast *)malloc(sizeof(t_raycast));
+	init_minimap(mlx);
 }

@@ -27,10 +27,9 @@ void	raycast(t_mlx *mlx);
 void	init_player(t_player *p, float posX, float posY, char c);
 
 //minimap.c
-void	minimap(t_mlx *mlx);
 void	mmap_background(t_minimap mmap);
 void	mmap_mlx_image(t_minimap *map, void *ptr);
-//void	draw_minimap(t_mlx *mlx);
+void	draw_minimap(t_mlx *mlx);
 
 //crosshire.c
 void crosshire(t_img img);
