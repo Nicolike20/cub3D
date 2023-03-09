@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/09 20:05:33 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:01:16 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,16 @@
 //TODO: check leaks;
 //TODO: proteger los mallocs de main;
 
-int	line_cmp(t_map *vars, char *l, int i)
+void	line_cmp(t_map *vars, char *l, int *i)
 {
+	//printf("hey line: %s\ni: %d\n", l, i);
+	if (*i != -1) //borrar
+	{
+		printf("pepe: %zu\n", ft_strlen(l));
+		printf("test l[i]: %c\n", l[*i]);
+		printf("paco\n");
+		printf("ptr = %p\n", &l[*i]);
+	}
 	if (ft_strncmp(l, "NO ", 3) != 0 && ft_strncmp(l, "SO ", 3) != 0
 		&& ft_strncmp(l, "WE ", 3) != 0 && ft_strncmp(l, "EA ", 3) != 0
 		&& ft_strncmp(l, "F ", 2) != 0 && ft_strncmp(l, "C ", 2) != 0
@@ -27,12 +35,13 @@ int	line_cmp(t_map *vars, char *l, int i)
 	{
 		if (vars->in_map == 0 && l[0] != '\n')
 		{
-			if (i == -1 && ++i == 0)
+			if (*i == -1 && ++*i == 0)
 				vars->ns = 1;
-			if (l[i] != '1')
+			//printf("HOLA! i: %d\nline: %s\nline[i]: %c\n", i, l, l[i]);
+			if (l[*i] != '1')
 			{
-				if (l[i] == 'D' || l[i] == '0' || l[i] == 'N' || l[i] == 'S'
-					|| l[i] == 'E' || l[i] == 'W' || l[i] == ' ')
+				if (l[*i] == 'D' || l[*i] == '0' || l[*i] == 'N' || l[*i] == 'S'
+					|| l[*i] == 'E' || l[*i] == 'W' || l[*i] == ' ')
 					write (1, "Walls must be closed\n", 21);
 				else
 					write (1, "Invalid character in file\n", 26);
@@ -42,7 +51,7 @@ int	line_cmp(t_map *vars, char *l, int i)
 				vars->in_map = 1;
 		}
 	}
-	return (i);
+	//return (*i);
 }
 
 static void	first_read(t_map *vars, int fd)
@@ -61,7 +70,10 @@ static void	first_read(t_map *vars, int fd)
 			while (*line == ' ' && *line && (++i || i == 0))
 				line++;
 		}
-		i = line_cmp(vars, line, i);
+		//i = line_cmp(vars, line, &i);
+		printf("%d\n", i); //AQUI
+		//por que saltarse los espacios? si hay mas espacios que 1s peta porque i = al numero de espacios pero line esta incrementando tambien;
+		line_cmp(vars, line, &i);
 		if (vars->ns == 1)
 			i -= 1;
 		while (i-- >= 0)

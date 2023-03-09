@@ -20,7 +20,7 @@
 
 # define CROSSHIRE_LEN 8
 
-# define MINIMAP_SCALE 16
+# define MINIMAP_SCALE 8
 
 /* Window size */
 
