@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/08 12:18:23 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:25:02 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void init_sideDist(t_raycast *ray, t_player *p)
 	}
 }
 
-/*static void player_collision(t_map *map, t_raycast *ray)
+static void player_collision(t_map *map, t_raycast *ray)
 {
 	while (ray->coll == 0)
 	{
@@ -57,7 +57,7 @@ static void init_sideDist(t_raycast *ray, t_player *p)
 		if (map->map[ray->mapY][ray->mapX] == '1')
 			ray->coll = 1;
 	}
-}*/
+}
 
 static void calculate_line(t_raycast *ray)
 {
@@ -82,11 +82,11 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 	while (++y < WIN_H)
 	{
 		if (y < ray->d_start)
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, FUCHSIA);
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, CYAN);
 		if (y >= ray->d_start && y <= ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, RED);
 		if (y > ray->d_end)
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, BLUE);
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, WHITE);
 	}
 }
 
@@ -100,7 +100,7 @@ void raycast(t_mlx *mlx)
 	{
 		init_raycast(aux, &mlx->player, x);
 		init_sideDist(aux, &mlx->player);
-		//player_collision(mlx->map, aux);
+		player_collision(mlx->map, aux);
 		calculate_line(aux);
 		draw_line(mlx, aux, x);
 		aux->bufferZ[x] = aux->perpWallDist;
