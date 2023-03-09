@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 19:48:58 by vsavilov          #+#    #+#             */
+/*   Updated: 2023/03/09 19:49:25 by vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
-static t_player dir_plane(float dir_x, float dir_y, float pl_x, float pl_y)
+static t_player	dir_plane(float dir_x, float dir_y, float pl_x, float pl_y)
 {
-	t_player p;
+	t_player	p;
 
 	p.dir_x = dir_x;
 	p.dir_y = dir_y;

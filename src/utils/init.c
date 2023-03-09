@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 19:46:37 by vsavilov          #+#    #+#             */
+/*   Updated: 2023/03/09 19:46:56 by vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
-void init_raycast(t_raycast *ray, t_player *p, int x)
+void	init_raycast(t_raycast *ray, t_player *p, int x)
 {
 	ray->cam_x = (2 * x) / (float)WIN_W - 1;
 	ray->ray_dir_x = p->dir_x + p->plane_x * ray->cam_x;
@@ -19,7 +31,7 @@ void init_raycast(t_raycast *ray, t_player *p, int x)
 		ray->delta_dis_y = fabs(1 / ray->ray_dir_y);
 }
 
-void init_crosshire(t_crosshire *chre, char c)
+void	init_crosshire(t_crosshire *chre, char c)
 {
 	if (c == 'W')
 	{
@@ -39,7 +51,7 @@ void init_crosshire(t_crosshire *chre, char c)
 	chre->color = CYAN;
 }
 
-void init_mlx(t_mlx *mlx)
+void	init_mlx(t_mlx *mlx)
 {
 	mlx->frame_rate = -1;
 	init_keys(mlx);

@@ -6,15 +6,13 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:26:23 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:48:44 by vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//init ray-print walls- print sprites
-
-static void init_sideDist(t_raycast *ray, t_player *p)
+static void	init_side_dist(t_raycast *ray, t_player *p)
 {
 	if (ray->ray_dir_x < 0)
 	{
@@ -38,7 +36,7 @@ static void init_sideDist(t_raycast *ray, t_player *p)
 	}
 }
 
-static void player_collision(t_map *map, t_raycast *ray)
+static void	player_collision(t_map *map, t_raycast *ray)
 {
 	while (ray->coll == 0)
 	{
@@ -59,7 +57,7 @@ static void player_collision(t_map *map, t_raycast *ray)
 	}
 }
 
-static void calculate_line(t_raycast *ray)
+static void	calculate_line(t_raycast *ray)
 {
 	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dis_x;
@@ -76,7 +74,7 @@ static void calculate_line(t_raycast *ray)
 
 static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 {
-	int y;
+	int	y;
 
 	y = -1;
 	while (++y < WIN_H)
@@ -90,16 +88,17 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 	}
 }
 
-void raycast(t_mlx *mlx)
+void	raycast(t_mlx *mlx)
 {
-	int x = -1;
-	t_raycast *aux;
+	t_raycast	*aux;
+	int			x;
 
+	x = -1;
 	aux = mlx->ray;
 	while (++x < WIN_W)
 	{
 		init_raycast(aux, &mlx->player, x);
-		init_sideDist(aux, &mlx->player);
+		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
 		calculate_line(aux);
 		draw_line(mlx, aux, x);
