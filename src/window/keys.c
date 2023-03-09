@@ -8,9 +8,11 @@ static void exit_win_key(t_mlx *mlx)
 	exit(EXIT_SUCCESS);
 }
 
-int key_press(int keycode, t_mlx *mlx)
+int key_relase(int keycode, t_mlx *mlx)
 {
-	if (keycode == KEY_A)
+	if (keycode == KEY_ESC)
+		exit_win_key(mlx);
+	else if (keycode == KEY_A)
 		mlx->keys.a = FALSE;
 	else if (keycode == KEY_S)
 		mlx->keys.s = FALSE;
@@ -25,9 +27,11 @@ int key_press(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int key_relase(int keycode, t_mlx *mlx)
+int key_press(int keycode, t_mlx *mlx)
 {
-	if (keycode == KEY_A)
+	if (keycode == KEY_ESC)
+		exit_win_key(mlx);
+	else if (keycode == KEY_A)
 		mlx->keys.a = TRUE;
 	else if (keycode == KEY_S)
 		mlx->keys.s = TRUE;
@@ -39,13 +43,6 @@ int key_relase(int keycode, t_mlx *mlx)
 		mlx->keys.left = TRUE;
 	else if (keycode == KEY_RIGHT)
 		mlx->keys.right = TRUE;
-	return (0);
-}
-
-int manage_keys(int keycode, t_mlx *mlx)
-{
-	if (keycode == KEY_ESC)
-		exit_win_key(mlx);
 	return (0);
 }
 

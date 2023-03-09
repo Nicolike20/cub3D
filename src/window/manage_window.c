@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/08 13:51:07 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:10:12 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	x_close(int keycode, t_mlx *mlx)
 {
 	(void)keycode;
 	(void)mlx;
+	printf("x_close\n");
 	//free all is maybe good
 	exit(0);
 	return (0);
@@ -32,7 +33,6 @@ int init_window(t_mlx *mlx) {
 	init_mlx(mlx);
 
 	mlx_key_events(mlx);
-	mlx_key_hook(mlx->win, manage_keys, mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);
 	free_mlx(mlx);
