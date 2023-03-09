@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 14:25:02 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:45:01 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void init_sideDist(t_raycast *ray, t_player *p)
 {
-	if (ray->stepX < 0)
+	if (ray->rayDirX < 0)
 	{
 		ray->stepX = -1;
 		ray->sideDistX = (p->pos_x - ray->mapX) * ray->deltaDisX;
@@ -24,17 +24,17 @@ static void init_sideDist(t_raycast *ray, t_player *p)
 	else
 	{
 		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1 - p->pos_x) * ray->deltaDisX;
+		ray->sideDistX = (ray->mapX + 1.0 - p->pos_x) * ray->deltaDisX;
 	}
-	if (ray->stepY < 0)
+	if (ray->rayDirY < 0)
 	{
-		ray->stepY = 1;
+		ray->stepY = -1;
 		ray->sideDistY = (p->pos_y - ray->mapY) * ray->deltaDisY;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1 - p->pos_y) * ray->deltaDisY;
+		ray->sideDistY = (ray->mapY + 1.0 - p->pos_y) * ray->deltaDisY;
 	}
 }
 
@@ -54,7 +54,7 @@ static void player_collision(t_map *map, t_raycast *ray)
 			ray->mapY += ray->stepY;
 			ray->side = 1;
 		}
-		if (map->map[ray->mapY][ray->mapX] == '1')
+		if (map->map[ray->mapY][ray->mapX] == WALL)
 			ray->coll = 1;
 	}
 }

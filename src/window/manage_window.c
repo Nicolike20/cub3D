@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 14:10:12 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:10:00 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void mlx_key_events(t_mlx *mlx)
 
 int init_window(t_mlx *mlx) {
 	init_mlx(mlx);
-
 	mlx_key_events(mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);

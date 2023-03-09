@@ -4,7 +4,7 @@ void init_raycast(t_raycast *ray, t_player *p, int x)
 {
 	ray->camX = (2 * x) / (float)WIN_W - 1;
 	ray->rayDirX = p->dirX + p->planeX * ray->camX;
-	ray->rayDirY =p->dirY + p->planeY * ray->camX;
+	ray->rayDirY = p->dirY + p->planeY * ray->camX;
 	ray->mapX = (int)p->pos_x;
 	ray->mapY = (int)p->pos_y;
 	ray->coll = 0;
@@ -41,6 +41,7 @@ void init_crosshire(t_crosshire *chre, char c)
 
 void init_mlx(t_mlx *mlx)
 {
+	mlx->frameRate = -1;
 	init_keys(mlx);
 	init_player(&mlx->player, mlx->map->pos_x, mlx->map->pos_y, mlx->map->ori);
 	mlx->mlx = mlx_init();
