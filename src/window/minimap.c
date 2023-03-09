@@ -30,12 +30,12 @@ void draw_minimap(t_mlx *mlx)
 		/ fmax(mlx->map->width, mlx->map->height)));
 	posSY = (map->osY / 2) +(mlx->player.pos_y * ((map->img.ln_len / map->img.bpp * 8)
 		/ fmax(mlx->map->width, mlx->map->height)));
-	ln = 10;
+	ln = 5;
 	posSX -= ln / 2;
 	posSY -= ln / 2;
 	draw_minimap_pixel_put(map, posSX, posSY);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, map->img.img, WIN_W - (map->img.ln_len
-			/ map->img.bpp * 8) - 10, 5);
+			/ map->img.bpp * 8) - 15, 15);
 }
 
 void	mmap_background(t_minimap mmap)
