@@ -2,7 +2,7 @@
 
 //Minimapa: Suelo 0, Muro 1, Pj NSWE Puerta open O close C
 
-static void draw_minimap_pixel_put(t_minimap *m, int posSX, int posSY)
+static void draw_minimap_pixel_put(t_minimap *m, int pos_sx, int pos_sy)
 {
 	float x;
 	float y;
@@ -13,7 +13,7 @@ static void draw_minimap_pixel_put(t_minimap *m, int posSX, int posSY)
 		x = -1;
 		while (++x < 5)
 		{
-			mlx_put_pixel_color(m->img, posSX + x, posSY + y, RED);
+			mlx_put_pixel_color(m->img, pos_sx + x, pos_sy + y, RED);
 		}
 	}
 }
@@ -21,19 +21,19 @@ static void draw_minimap_pixel_put(t_minimap *m, int posSX, int posSY)
 void draw_minimap(t_mlx *mlx)
 {
 	int ln;
-	int posSX; //position of minimapX
-	int posSY; //position of minimapY
+	int pos_sx; //position of minimapX
+	int pos_sy; //position of minimapY
 	t_minimap *map;
 
 	map = mlx->mmap;
-	posSX = (map->osX / 2) + (mlx->player.pos_x * ((map->img.ln_len / map->img.bpp * 8)
+	pos_sx = (map->os_x / 2) + (mlx->player.pos_x * ((map->img.ln_len / map->img.bpp * 8)
 		/ fmax(mlx->map->width, mlx->map->height)));
-	posSY = (map->osY / 2) +(mlx->player.pos_y * ((map->img.ln_len / map->img.bpp * 8)
+	pos_sy = (map->os_y / 2) +(mlx->player.pos_y * ((map->img.ln_len / map->img.bpp * 8)
 		/ fmax(mlx->map->width, mlx->map->height)));
 	ln = 5;
-	posSX -= ln / 2;
-	posSY -= ln / 2;
-	draw_minimap_pixel_put(map, posSX, posSY);
+	pos_sx -= ln / 2;
+	pos_sy -= ln / 2;
+	draw_minimap_pixel_put(map, pos_sx, pos_sy);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, map->img.img, WIN_W - (map->img.ln_len
 			/ map->img.bpp * 8) - 15, 15);
 }
@@ -58,17 +58,17 @@ void	mmap_mlx_image(t_minimap *map, void *ptr)
 
 void	calculate_offset(t_minimap *map, int width, int height)
 {
-	map->osX = 0;
-	map->osY = 0;
+	map->os_x = 0;
+	map->os_y = 0;
 	if (width > height)
-		map->osY = (width - height) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / width);
+		map->os_y = (width - height) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / width);
 	else if (height > width)
-		map->osX = (height - width) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / height);
+		map->os_x = (height - width) * (fmax(WIN_W, WIN_H) / MINIMAP_SCALE / height);
 }
 
 static void mmap_put_pixel(t_minimap *m, int x, int y)
 {
-	mlx_put_pixel_color(m->img, x + (m->osX / 2), y + (m->osY / 2), BLUE);
+	mlx_put_pixel_color(m->img, x + (m->os_x / 2), y + (m->os_y / 2), BLUE);
 }
 
 static void mmap_draw_pixel(t_minimap *mmap, t_map *map)

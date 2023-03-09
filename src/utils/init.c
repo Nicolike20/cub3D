@@ -2,21 +2,21 @@
 
 void init_raycast(t_raycast *ray, t_player *p, int x)
 {
-	ray->camX = (2 * x) / (float)WIN_W - 1;
-	ray->rayDirX = p->dirX + p->planeX * ray->camX;
-	ray->rayDirY = p->dirY + p->planeY * ray->camX;
-	ray->mapX = (int)p->pos_x;
-	ray->mapY = (int)p->pos_y;
+	ray->cam_x = (2 * x) / (float)WIN_W - 1;
+	ray->ray_dir_x = p->dir_x + p->plane_x * ray->cam_x;
+	ray->ray_dir_y = p->dir_y + p->plane_y * ray->cam_x;
+	ray->map_x = (int)p->pos_x;
+	ray->map_y = (int)p->pos_y;
 	ray->coll = 0;
 	ray->side = 0;
-	if (ray->rayDirX == 0)
-		ray->deltaDisX = 1e30;
+	if (ray->ray_dir_x == 0)
+		ray->delta_dis_x = 1e30;
 	else
-		ray->deltaDisX = fabs(1 / ray->rayDirX);
-	if (ray->rayDirY == 0)
-		ray->deltaDisY = 1e30;
+		ray->delta_dis_x = fabs(1 / ray->ray_dir_x);
+	if (ray->ray_dir_y == 0)
+		ray->delta_dis_y = 1e30;
 	else
-		ray->deltaDisY = fabs(1 / ray->rayDirY);
+		ray->delta_dis_y = fabs(1 / ray->ray_dir_y);
 }
 
 void init_crosshire(t_crosshire *chre, char c)
@@ -41,7 +41,7 @@ void init_crosshire(t_crosshire *chre, char c)
 
 void init_mlx(t_mlx *mlx)
 {
-	mlx->frameRate = -1;
+	mlx->frame_rate = -1;
 	init_keys(mlx);
 	init_player(&mlx->player, mlx->map->pos_x, mlx->map->pos_y, mlx->map->ori);
 	mlx->mlx = mlx_init();
