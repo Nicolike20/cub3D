@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:35:24 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:44:30 by vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 # include "structs.h"
 
 //manage_window.c
-int init_window(t_mlx *mlx);
+int		init_window(t_mlx *mlx);
 
 //keys.c
 void	init_keys(t_mlx *mlx);
-int key_press(int keycode, t_mlx *mlx);
-int key_relase(int keycode, t_mlx *mlx);
+int		key_press(int keycode, t_mlx *mlx);
+int		key_relase(int keycode, t_mlx *mlx);
 
 //keys_move.c
 void	manage_move_keys(t_mlx *mlx);
 
 //game_loop.c
-int game_loop(void *mlx);
+int		game_loop(void *mlx);
 
 //draw.c
-void draw(t_mlx *mlx);
+void	draw(t_mlx *mlx);
 
 //raycast.c
 void	raycast(t_mlx *mlx);
@@ -44,22 +44,22 @@ void	mmap_mlx_image(t_minimap *map, void *ptr);
 void	draw_minimap(t_mlx *mlx);
 
 //crosshire.c
-void crosshire(t_img img);
+void	crosshire(t_img img);
 
 //mlx_functions.c
 void	mlx_put_pixel_color(t_img img, int x, int y, int color);
 
 //mlx_memory.c
-void free_mlx(t_mlx *mlx);
+void	free_mlx(t_mlx *mlx);
 
 //utils.c
-int arg_error(void);
+int		arg_error(void);
 
 //init.c
-void init_crosshire(t_crosshire *chre, char c);
-void init_minimap(t_mlx *mlx);
-void init_mlx(t_mlx *mlx);
-void init_raycast(t_raycast *ray, t_player *p, int x);
+void	init_crosshire(t_crosshire *chre, char c);
+void	init_minimap(t_mlx *mlx);
+void	init_mlx(t_mlx *mlx);
+void	init_raycast(t_raycast *ray, t_player *p, int x);
 
 /*parse.c*/
 void	file_read(char *file, t_map *vars);
