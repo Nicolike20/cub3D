@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
+/*   Updated: 2023/03/09 19:36:43 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
@@ -98,18 +110,18 @@ typedef struct s_map {
 	float	pos_y;
 	int		in_map;
 	int		ns;
-}t_map;
+}	t_map;
 
 typedef struct s_mlx {
-	int	frame_rate;
-	void	*mlx;
-	void	*win;
-	t_map	*map;
-	t_minimap *mmap;
-	t_raycast *ray;
-	t_player player;
-	t_keys	keys;
-	t_img	img;
-}	t_mlx;
+	int		frame_rate;
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_minimap	*mmap;
+	t_raycast	*ray;
+	t_player	player;
+	t_keys		keys;
+	t_img		img;
+}		t_mlx;
 
 #endif
