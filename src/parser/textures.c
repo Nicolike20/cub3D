@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:39:30 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/10 19:01:59 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:48:53 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 		write (1, "Failed to load textures\n", 24);
 		exit (1);
 	}
-	if (!(tex->img.addr = mlx_get_data_addr(tex->img, &tex->img.bpp, &tex->img.ln_len, &tex->img.endian)))
+	if (!(tex->img.addr = mlx_get_data_addr(tex->img.img, &tex->img.bpp, &tex->img.ln_len, &tex->img.endian)))
 	{
 		write (1, "Failed to get image address\n", 28);
 		exit (1);
@@ -36,10 +36,12 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 }
 void	loading_textures(t_mlx *mlx, t_map *vars)
 {
-	load_image(mlx, &vars->texture[0], vars->no);
-	load_image(mlx, &vars->texture[1], vars->so);
-	load_image(mlx, &vars->texture[2], vars->we);
-	load_image(mlx, &vars->texture[3], vars->ea);
-	load_image(mlx, &vars->texture[4], vars->d);
+	load_image(mlx, &vars->texture[0], "textures/wall_1.xpm");
+	printf("img loaded\n");
+	mlx->tex = vars->texture;
+	//load_image(mlx, &vars->texture[1], vars->so);
+	//load_image(mlx, &vars->texture[2], vars->we);
+	//load_image(mlx, &vars->texture[3], vars->ea);
+	//load_image(mlx, &vars->texture[4], vars->d);
 	//load_image(texture[4], texture[4]->tw. texture[4]->th, vars->no);
 }

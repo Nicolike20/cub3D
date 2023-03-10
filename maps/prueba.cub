@@ -1,4 +1,4 @@
-NO ./ruta_a_la_textura_norte
+NO ./textures/default/Wall.xpm
 
 SO   ./ruta_a_la_textura_sur
 
