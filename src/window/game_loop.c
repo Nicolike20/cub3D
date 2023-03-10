@@ -5,8 +5,8 @@ int game_loop(void *mlx)
 	t_mlx *tmp;
 
 	tmp = (t_mlx *)mlx;
-	if (++tmp->frameRate >= MAX_FPS)
-		tmp->frameRate = 0;
+	if (++tmp->frame_rate >= MAX_FPS)
+		tmp->frame_rate = 0;
 	manage_move_keys(tmp);
 	draw(tmp);
 	//printf("%d\n",tmp->keys.w);

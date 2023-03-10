@@ -6,66 +6,64 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 15:45:01 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:48:44 by vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//init ray-print walls- print sprites
-
-static void init_sideDist(t_raycast *ray, t_player *p)
+static void	init_side_dist(t_raycast *ray, t_player *p)
 {
-	if (ray->rayDirX < 0)
+	if (ray->ray_dir_x < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (p->pos_x - ray->mapX) * ray->deltaDisX;
+		ray->step_x = -1;
+		ray->side_dist_x = (p->pos_x - ray->map_x) * ray->delta_dis_x;
 	}
 	else
 	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - p->pos_x) * ray->deltaDisX;
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1.0 - p->pos_x) * ray->delta_dis_x;
 	}
-	if (ray->rayDirY < 0)
+	if (ray->ray_dir_y < 0)
 	{
-		ray->stepY = -1;
-		ray->sideDistY = (p->pos_y - ray->mapY) * ray->deltaDisY;
+		ray->step_y = -1;
+		ray->side_dist_y = (p->pos_y - ray->map_y) * ray->delta_dis_y;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - p->pos_y) * ray->deltaDisY;
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1.0 - p->pos_y) * ray->delta_dis_y;
 	}
 }
 
-static void player_collision(t_map *map, t_raycast *ray)
+static void	player_collision(t_map *map, t_raycast *ray)
 {
 	while (ray->coll == 0)
 	{
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->sideDistX += ray->deltaDisX;
-			ray->mapX += ray->stepX;
+			ray->side_dist_x += ray->delta_dis_x;
+			ray->map_x += ray->step_x;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sideDistY += ray->deltaDisY;
-			ray->mapY += ray->stepY;
+			ray->side_dist_y += ray->delta_dis_y;
+			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map->map[ray->mapY][ray->mapX] == WALL)
+		if (map->map[ray->map_y][ray->map_x] == WALL)
 			ray->coll = 1;
 	}
 }
 
-static void calculate_line(t_raycast *ray)
+static void	calculate_line(t_raycast *ray)
 {
 	if (ray->side == 0)
-		ray->perpWallDist = ray->sideDistX - ray->deltaDisX;
+		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dis_x;
 	else
-		ray->perpWallDist = ray->sideDistY - ray->deltaDisY;
-	ray->ln_height = (int)(WIN_H / ray->perpWallDist);
+		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dis_y;
+	ray->ln_height = (int)(WIN_H / ray->perp_wall_dist);
 	ray->d_start = -ray->ln_height / 2 + WIN_H / 2;
 	if (ray->d_start < 0)
 		ray->d_start = 0;
@@ -76,7 +74,7 @@ static void calculate_line(t_raycast *ray)
 
 static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 {
-	int y;
+	int	y;
 
 	y = -1;
 	while (++y < WIN_H)
@@ -90,19 +88,20 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 	}
 }
 
-void raycast(t_mlx *mlx)
+void	raycast(t_mlx *mlx)
 {
-	int x = -1;
-	t_raycast *aux;
+	t_raycast	*aux;
+	int			x;
 
+	x = -1;
 	aux = mlx->ray;
 	while (++x < WIN_W)
 	{
 		init_raycast(aux, &mlx->player, x);
-		init_sideDist(aux, &mlx->player);
+		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
 		calculate_line(aux);
 		draw_line(mlx, aux, x);
-		aux->bufferZ[x] = aux->perpWallDist;
+		aux->buffer_z[x] = aux->perp_wall_dist;
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   macros.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
+/*   Updated: 2023/03/09 19:41:42 by vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MACROS_H
 # define MACROS_H
 
@@ -45,7 +57,7 @@
 
 /* Movement */
 
-# define SPEED 0.5
+# define SPEED 0.05
 # define FPP_CAM_SPEED 0.03
 
 /* Keys */
@@ -80,6 +92,5 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 # define KEY_SHIFT 257
-
 
 #endif
