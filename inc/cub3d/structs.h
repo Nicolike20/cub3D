@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:41:27 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:00:01 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,19 @@ typedef struct s_raycast {
 	int		d_end;
 }	t_raycast;
 
-//incluir orientacion inicial
-//nombres width y height
-//player posicion inicial x, y (float)
-//no hacer free
-
 typedef struct s_tex
 {
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
-	void	*door;
-}t_tex;
+//	void	*north;
+//	void	*south;
+//	void	*west;
+//	void	*east;
+//	void	*door;
+	int	tw;
+	int	th;
+}	t_tex;
+
+//needed to load with xlm file to img-> mlx, path, tw, th (?);
+//que necesita la estructura tex?
 
 typedef struct s_map {
 	char	*no;
@@ -110,6 +110,7 @@ typedef struct s_map {
 	float	pos_y;
 	int		in_map;
 	int		ns;
+	t_tex	texture[5];
 }	t_map;
 
 typedef struct s_mlx {
