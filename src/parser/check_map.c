@@ -6,11 +6,19 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/09 20:27:30 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:07:15 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+static int	set_position(t_map *vars, int i, int j)
+{
+	vars->ori = vars->map[i][j];
+	vars->pos_x = j;
+	vars->pos_y = i;
+	return (1);
+}
 
 int	valid_chars_aux(t_map *vars, int i, int j, int player)
 {
@@ -21,19 +29,17 @@ int	valid_chars_aux(t_map *vars, int i, int j, int player)
 		|| vars->map[i][j] == 'W' || vars->map[i][j] == 'E')
 		{
 			if (player == 0)
-			{
-				player = 1;
-				vars->ori = vars->map[i][j];
-				vars->pos_x = j;
-				vars->pos_y = i;
-			}
+				player = set_position(vars, i, j);
 			else if (i == 0 || i == vars->height)
 				return (3);
 			else
 				return (2);
 		}
-		else //quitar la D del if de arriba y crear aqui algo pa guardar coords?
-			return (1);
+		else
+		{
+			write (1, "Invalid character in map\n", 25);
+			exit (1);
+		}
 	}
 	else if ((vars->map[i][j] == '0' || vars->map[i][j] == 'D')
 			&& (i == 0 || i == vars->height - 1))
@@ -46,6 +52,7 @@ int	valid_chars(t_map *vars, int i, int j)
 	int	player;
 
 	player = 0;
+//	printf("test valid map: %s\n", vars->map[0]);
 	while (++i < vars->height)
 	{
 		j = -1;
