@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 15:00:01 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:10:29 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ typedef struct s_tex
 //	void	*west;
 //	void	*east;
 //	void	*door;
-	int	tw;
-	int	th;
+//	char *path;
+	t_img	img;
+	int		tw;
+	int		th;
 }	t_tex;
 
 //needed to load with xlm file to img-> mlx, path, tw, th (?);

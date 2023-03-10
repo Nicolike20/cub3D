@@ -6,17 +6,17 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/10 13:07:15 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:11:47 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static int	set_position(t_map *vars, int i, int j)
+static int	set_position(t_map *vars, int y, int x)
 {
-	vars->ori = vars->map[i][j];
-	vars->pos_x = j;
-	vars->pos_y = i;
+	vars->ori = vars->map[y][x];
+	vars->pos_x = x;
+	vars->pos_y = y;
 	return (1);
 }
 

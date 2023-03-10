@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/03/09 19:05:35 by nortolan         ###   ########.fr        #
+#    Updated: 2023/03/10 18:10:55 by nortolan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ OBJ_DIR = $(addprefix $(OBJ_PATH)/, $(OBJ_DIR_ALL))
 
 SRCS_MAIN =	main.c
 
-SRCS_PARSER =	parse.c get_lines.c parse_utils.c check_map.c
+SRCS_PARSER =	parse.c get_lines.c parse_utils.c check_map.c textures.c
 
 SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c draw.c crosshire.c \
 		mlx_functions.c minimap.c raycast.c player.c keys_move.c
