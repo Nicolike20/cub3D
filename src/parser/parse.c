@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/10 15:00:42 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:23:43 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,5 @@ void	file_read(char *file, t_map *vars)
 	///////////TEST///////////////
 	map_checker(vars);
 	printf("pos x: %f\npos y: %f\n", vars->pos_x, vars->pos_y); ////TEST;
-	freedom(vars);
+//	freedom(vars);
 }
