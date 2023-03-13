@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:48:44 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:44:19 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,26 @@ static void	calculate_line(t_raycast *ray)
 		ray->d_end = WIN_H - 1;
 }
 
+static int a(t_img img, int x, int y)
+{
+	int c;
+	char *paco;
+
+	paco = img.addr + (y * img.ln_len + x * (img.bpp / 8));
+	c = *(unsigned int *)paco;
+	return c;
+}
+
 static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 {
 	int	y;
+	t_tex *tex = mlx->tex;
+	int c;
+	float wallDist = mlx->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
+	int text = (int)((wallDist - (int)wallDist) * 64.0);
+	text = mlx->tex->tw - text - 1;
+	float s_dis = mlx->tex->th / ray->ln_height;
+	float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;
 
 	y = -1;
 	while (++y < WIN_H)
@@ -82,7 +99,12 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 		if (y < ray->d_start)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, CYAN);
 		if (y >= ray->d_start && y <= ray->d_end)
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, RED);
+		{
+			pos_tex += s_dis;
+			c = a(tex->img, text, ((int)pos_tex & (tex->th - 1)));
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
+
+		}
 		if (y > ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, WHITE);
 	}

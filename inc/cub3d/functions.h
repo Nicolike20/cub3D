@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:44:30 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:46:02 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FUNCTIONS_H
 
 # include "structs.h"
+
+void loading_textures(t_mlx *mlx, t_map *map);
 
 //manage_window.c
 int		init_window(t_mlx *mlx);

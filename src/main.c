@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/10 12:43:42 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:45:36 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	vars_init(mlx->map);
 	file_read(argv[1], mlx->map);
 //	fill_map(mlx->map);
+	loading_textures(mlx, mlx->map);
 	init_window(mlx);
 	return (0);
 }

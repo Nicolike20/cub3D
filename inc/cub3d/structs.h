@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 18:10:29 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:17:09 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_mlx {
 	t_player	player;
 	t_keys		keys;
 	t_img		img;
+	t_tex		*tex;
 }	t_mlx;
 
 #endif

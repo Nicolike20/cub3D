@@ -6,7 +6,11 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:39:30 by nortolan          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/10 20:31:56 by nortolan         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/10 20:48:53 by Vsavilov         ###   ########.fr       */
+>>>>>>> 92ab37a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +40,12 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 }
 void	loading_textures(t_mlx *mlx, t_map *vars)
 {
-	load_image(mlx, &vars->texture[T_NORTH], vars->no);
+/*	load_image(mlx, &vars->texture[T_NORTH], vars->no);
 	load_image(mlx, &vars->texture[T_SOUTH], vars->so);
 	load_image(mlx, &vars->texture[T_WEST], vars->we);
 	load_image(mlx, &vars->texture[T_EAST], vars->ea);
-	load_image(mlx, &vars->texture[T_DOOR], vars->d);
-	//load_image(texture[4], texture[4]->tw. texture[4]->th, vars->no);
+	load_image(mlx, &vars->texture[T_DOOR], vars->d);*/
+	load_image(mlx, &vars->texture[0], "textures/wall_1.xpm");
+	printf("img loaded\n");
+	mlx->tex = vars->texture;
 }
