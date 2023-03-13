@@ -6,14 +6,13 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/13 17:23:43 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:57:55 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
-//TODO: klk si pongo dos veces una ruta a una textura (p.e. dos veces SO ./asdf;
 //TODO: check leaks;
 
 void	line_cmp_aux(t_map *vars, char *l, int *i)

@@ -1,5 +1,5 @@
-NO ./textures/custom/blue_bricks.xpm
-SO ./textures/custom/115_green_bricks.xpm
+NO ./textures/custom/115_green_bricks.xpm
+SO ./textures/custom/blue_bricks.xpm
 WE ./textures/custom/red_bricks.xpm
 EA ./textures/custom/orange_purple_bricks.xpm
 
