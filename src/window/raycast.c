@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 12:46:16 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:15:01 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,29 @@ int	pixel_color(t_img img, int x, int y)
 	return c;
 }
 
+static void copy_pixel(t_img img, int x, int y, int px)
+{
+	char *dst;
+
+	if (y >= WIN_H || x >= WIN_W || y < 0 || x < 0)
+		return ;
+	dst = img.addr + (y * img.ln_len) + x * (img.bpp / 8);
+	*(unsigned int *)dst = px;
+}
+
 static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 {
 	int	y;
-	t_tex *tex = mlx->tex;
+	t_tex *tex;
 	int c;
-	float wallDist = mlx->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
-	int text = (int)((wallDist - (int)wallDist) * 64.0);
-	text = mlx->tex->tw - text - 1;
-	float s_dis = mlx->tex->th / ray->ln_height;
-	float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;
+	int text_y;
+	//float wallDist = mlx->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
+	//int text = (int)((wallDist - (int)wallDist) * 64.0);
+	//text = mlx->tex->tw - text - 1;
+	//float s_dis = mlx->tex->th / ray->ln_height;
+	//float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;
 
+	tex = &mlx->map->texture[ray->text_id];
 	y = -1;
 	while (++y < WIN_H)
 	{
@@ -100,14 +112,62 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, CYAN);
 		if (y >= ray->d_start && y <= ray->d_end)
 		{
-			pos_tex += s_dis;
-			c = pixel_color(tex->img, text, ((int)pos_tex & (tex->th - 1)));
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
+			ray->tex_pos += ray->s_dis;
+			text_y = (int)ray->tex_pos & (tex->th - 1);
+			c = pixel_color(tex->img, ray->text_x, text_y);
+			//mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
+			copy_pixel(mlx->img, WIN_W - x - 1, y, c);
 
 		}
 		if (y > ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, WHITE);
 	}
+}
+
+static void get_texture(t_mlx *m, t_raycast *r)
+{
+	if (m->map->map[r->map_y][r->map_x] == DCLOSE)
+		r->text_id = T_DOOR;
+	else if ((r->map_y >= 1 && r->side == 1 && r->ray_dir_y >= 0
+			&& m->map->map[r->map_y -1][r->map_x] == DOPEN)
+		|| (r->map_x >= 1 && r->side == 0 && r->ray_dir_x >= 0
+			&& m->map->map[r->map_y][r->map_x - 1] == DOPEN))
+		r->text_id = T_DOOR;
+	else if (r->side == 0)
+	{
+		if (r->ray_dir_x < 0)
+			r->text_id = T_WEST;
+		else
+			r->text_id = T_EAST;
+	}
+	else
+	{
+		if (r->ray_dir_y < 0)
+			r->text_id = T_NORTH;
+		else
+			r->text_id = T_SOUTH;
+	}
+}
+
+static void texture_pos(t_mlx *m, t_raycast *r)
+{
+	/*int text = (int)((wallDist - (int)wallDist) * 64.0);
+	text = mlx->tex->tw - text - 1;
+	float s_dis = mlx->tex->th / ray->ln_height;
+	float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;*/
+	if (r->side == 0)
+		r->wall_dist = m->player.pos_y + r->perp_wall_dist * r->ray_dir_y;
+	else
+		r->wall_dist = m->player.pos_x + r->perp_wall_dist * r->ray_dir_x;
+	r->wall_dist -= floor(r->wall_dist);
+	r->text_x = (int)(r->wall_dist * T_MAX);
+	if (r->side == 0 && r->ray_dir_x > 0)
+		r->text_x = m->map->texture[r->text_id].tw - r->text_x - 1;
+	if (r->side == 1 && r->ray_dir_y < 0)
+		r->text_x = m->map->texture[r->text_id].tw - r->text_x - 1;
+	r->s_dis = m->map->texture[r->text_id].th / r->ln_height;
+	r->tex_pos = (r->ln_height / 2 + r->d_start - WIN_H / 2) * r->s_dis;
+
 }
 
 void	raycast(t_mlx *mlx)
@@ -123,6 +183,8 @@ void	raycast(t_mlx *mlx)
 		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
 		calculate_line(aux);
+		get_texture(mlx, aux);
+		texture_pos(mlx, aux);
 		draw_line(mlx, aux, x);
 		aux->buffer_z[x] = aux->perp_wall_dist;
 	}

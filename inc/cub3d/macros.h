@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 20:30:26 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:52:10 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@
 # define WALL '1'
 # define DOOR 'D'
 # define DOPEN 'O'
+# define DCLOSE 'C'
+
+# define T_MAX 64.0
+
+/* Texture oriantation*/
+
+# define T_NORTH 0
+# define T_SOUTH 1
+# define T_WEST 2
+# define T_EAST 3
+# define T_DOOR 4
 
 /* Movement */
 
@@ -92,13 +103,5 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 # define KEY_SHIFT 257
-
-/* Texture oriantation*/
-
-# define T_NORTH 0
-# define T_SOUTH 1
-# define T_WEST 2
-# define T_EAST 3
-# define T_DOOR 4
 
 #endif

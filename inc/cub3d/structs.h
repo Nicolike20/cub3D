@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 12:27:52 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:59:22 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ typedef struct s_raycast {
 	int		ln_height;
 	int		d_start;
 	int		d_end;
+	int		text_id;
+	int		text_x;
+	float		wall_dist;
+	float		s_dis;
+	float		tex_pos;
 }	t_raycast;
 
 typedef struct s_tex
