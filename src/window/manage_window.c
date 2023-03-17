@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 16:10:00 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:04:21 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	x_close(int keycode, t_mlx *mlx)
 {
 	(void)keycode;
 	(void)mlx;
-	printf("x_close\n");
 	//free all is maybe good
 	exit(0);
 	return (0);

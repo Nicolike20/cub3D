@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 20:17:09 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:27:52 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_keys {
 	_Bool	s;
 	_Bool	d;
 	_Bool	w;
+	_Bool	e;
 	_Bool	left;
 	_Bool	right;
 }	t_keys;
@@ -32,6 +33,7 @@ typedef struct s_img {
 
 typedef struct s_minimap {
 	t_img	img;
+	t_img	ply;
 	int		x;
 	int		y;
 	int		os_x; //map offsetX
@@ -39,6 +41,7 @@ typedef struct s_minimap {
 	int		xy_large; //lado mas largo del mapa
 	int		or_x; //orientacion x
 	int		or_y; //orientacion y
+	int		door[2];
 }	t_minimap;
 
 typedef struct s_crosshire {

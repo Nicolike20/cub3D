@@ -1,11 +1,9 @@
-NO ./textures/default/Wall.xpm
+NO ./textures/default/wall_1.xpm
+SO ./textures/default/wall_1.xpm
+WE ./textures/default/wall_1.xpm
+EA ./textures/default/wall_1.xpm
 
-SO   ./ruta_a_la_textura_sur
-
-WE      ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
-
-D ./ruta_a_la_puerta
+D ./textures/default/door.xpm
 
 F 220,100,0
 C 225,30,0

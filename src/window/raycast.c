@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 20:44:19 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:46:16 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ static void	calculate_line(t_raycast *ray)
 		ray->d_end = WIN_H - 1;
 }
 
-static int a(t_img img, int x, int y)
+int	pixel_color(t_img img, int x, int y)
 {
 	int c;
-	char *paco;
+	char *color;
 
-	paco = img.addr + (y * img.ln_len + x * (img.bpp / 8));
-	c = *(unsigned int *)paco;
+	color = img.addr + (y * img.ln_len + x * (img.bpp / 8));
+	c = *(unsigned int *)color;
 	return c;
 }
 
@@ -101,7 +101,7 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 		if (y >= ray->d_start && y <= ray->d_end)
 		{
 			pos_tex += s_dis;
-			c = a(tex->img, text, ((int)pos_tex & (tex->th - 1)));
+			c = pixel_color(tex->img, text, ((int)pos_tex & (tex->th - 1)));
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
 
 		}

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 20:46:02 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:42:58 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	draw(t_mlx *mlx);
 
 //raycast.c
 void	raycast(t_mlx *mlx);
+int	pixel_color(t_img img, int x, int y);
 
 //player.c
 void	init_player(t_player *p, float posX, float posY, char c);
