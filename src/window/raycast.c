@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 14:15:01 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:26:47 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 	//float s_dis = mlx->tex->th / ray->ln_height;
 	//float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;
 
-	tex = &mlx->map->texture[ray->text_id];
+	tex = &mlx->tex[ray->text_id];
 	y = -1;
 	while (++y < WIN_H)
 	{
@@ -117,7 +117,6 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 			c = pixel_color(tex->img, ray->text_x, text_y);
 			//mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
 			copy_pixel(mlx->img, WIN_W - x - 1, y, c);
-
 		}
 		if (y > ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, WHITE);
@@ -162,11 +161,11 @@ static void texture_pos(t_mlx *m, t_raycast *r)
 	r->wall_dist -= floor(r->wall_dist);
 	r->text_x = (int)(r->wall_dist * T_MAX);
 	if (r->side == 0 && r->ray_dir_x > 0)
-		r->text_x = m->map->texture[r->text_id].tw - r->text_x - 1;
+		r->text_x = m->tex[r->text_id].tw - r->text_x - 1;
 	if (r->side == 1 && r->ray_dir_y < 0)
-		r->text_x = m->map->texture[r->text_id].tw - r->text_x - 1;
-	r->s_dis = m->map->texture[r->text_id].th / r->ln_height;
-	r->tex_pos = (r->ln_height / 2 + r->d_start - WIN_H / 2) * r->s_dis;
+		r->text_x = m->tex[r->text_id].tw - r->text_x - 1;
+	r->s_dis = 1.0 * m->tex[r->text_id].th / r->ln_height;
+	r->tex_pos = (r->d_start - WIN_H / 2 + r->ln_height / 2) * r->s_dis;
 
 }
 

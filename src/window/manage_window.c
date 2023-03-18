@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 12:04:21 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/18 19:06:35 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void mlx_key_events(t_mlx *mlx)
 
 int init_window(t_mlx *mlx) {
 	init_mlx(mlx);
+	//loading_textures(mlx, mlx->map);
 	mlx_key_events(mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);

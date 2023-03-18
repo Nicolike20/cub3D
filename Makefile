@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/03/13 18:00:48 by nortolan         ###   ########.fr        #
+#    Updated: 2023/03/18 19:14:37 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
 CFLAGS += -O3
 
-CFLAGS += -fsanitize=address -g3
+#CFLAGS += -fsanitize=address -g3
 
 MLX = -framework OpenGL -framework AppKit
 
