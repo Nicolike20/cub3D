@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 12:42:58 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:23:04 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ int		check_file(char *file);
 
 /*check_map.c*/
 void	map_checker(t_map *vars);
+
+/*check_colors.c*/
+void	check_colors(char *color);
 
 #endif

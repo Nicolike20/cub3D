@@ -6,13 +6,16 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/13 18:57:55 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:24:26 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
+//TODO: si no pasan texturas o colores klk?;
+//TODO: alguna comprobacion mas para colores?;
+//TODO: se lo transformo yo a hex? le hace falta en array o doble array?;
 //TODO: check leaks;
 
 void	line_cmp_aux(t_map *vars, char *l, int *i)
@@ -121,6 +124,8 @@ void	file_read(char *file, t_map *vars)
 	get_lines(vars, fd);
 	close(fd);
 	get_width(vars);
+	check_colors(vars->c);
+	check_colors(vars->f);
 	///////////TEST///////////////
 	int	i;
 
