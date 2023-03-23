@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 19:57:04 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/23 16:35:26 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:01:47 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ int	arr_to_hex(t_map *vars, char **tmp)
 {
 	int	result;
 	int		n;
-	int		i;
 
-	i = 2;
 	result = 0x000000;
 	n = ft_atoi(tmp[0]);
 	if (n >= 16)

@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/23 16:35:49 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:01:06 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	line_cmp(t_map *vars, char *l, int i)
 			if (i != -1)
 				i = -1;
 			if (l[++i] != '1' && l[i] != 'D' && l[i] != '0' && l[i] != 'N'
-				&& l[i] != 'S' && l[i] != 'E' && l[i] != 'W' & l[i] != ' ')
+				&& l[i] != 'S' && l[i] != 'E' && l[i] != 'W' && l[i] != ' ')
 			{
 				write (1, "Invalid character in file\n", 26);
 				exit (1);
@@ -137,7 +137,7 @@ void	file_read(char *file, t_map *vars)
 	{
 		printf("<'%s'\n", vars->map[i]);
 	}
-	printf("<%s\n", vars->map[i]);
+//	printf("<'%s'\n", vars->map[i]);
 	printf("Map height: %d\n", vars->height);
 	printf("Map width: %d\n", vars->width);
 	///////////TEST///////////////

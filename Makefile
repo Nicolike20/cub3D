@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/03/21 20:06:32 by nortolan         ###   ########.fr        #
+#    Updated: 2023/03/23 16:58:41 by nortolan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ UNAME_S := $(shell uname -s)
 ###   Compiler and flags   ###
 ##############################
 
-CC = gcc
+CC = gcc-11
 
 CFLAGS = -Wall -Wextra -Werror
 
