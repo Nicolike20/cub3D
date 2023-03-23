@@ -30,17 +30,26 @@ UNAME_S := $(shell uname -s)
 ###   Compiler and flags   ###
 ##############################
 
-CC = gcc-11
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
-CFLAGS += -O3
+#CFLAGS += -O3
 
 #CFLAGS += -fsanitize=address -g3
 
-MLX = -framework OpenGL -framework AppKit
+LDFLAGS = -L ./lib/libft -lft
+
+ifeq ($(UNAME_S),Darwin)
+LDFLAGS += -framework OpenGL -framework AppKit
+endif
+ifeq ($(UNAME_S),Linux)
+LDFLAGS +=  -L ./lib/minilibx_linux -lmlx -I minilibx_linux -lXext -lX11 -lm -lz
+endif
+
+# -L/usr/lib
 
 #CFLAGS += -fsanitize=address -g3
 
@@ -58,7 +67,12 @@ LIB_PATH = lib
 
 LIBFT_PATH = libft
 
+ifeq ($(UNAME_S),Darwin)
 MLX_PATH = minilibx_macos
+endif
+ifeq ($(UNAME_S),Linux)
+MLX_PATH = minilibx_linux
+endif
 
 #######################
 ###   Directories   ###
@@ -142,18 +156,16 @@ $(OBJ_PATH):
 
 $(LIBFT_NAME):
 	$(MAKE) all -sC $(LIBFT)
-	cp -r $(addprefix $(LIBFT)/, $(LIBFT_NAME)) $(LIBFT_NAME)
 
 $(LMLX_NAME):
 	$(MAKE) all -sC $(LMLX)
-	cp -r $(addprefix $(LMLX)/, $(LMLX_NAME)) $(LMLX_NAME)
 
 ######################
 ###   Compile .o   ###
 ######################
 
 $(NAME): $(LMLX_NAME) $(LIBFT_NAME) $(OBJS)
-	$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME) $(LMLX_NAME) $(LIBFT_NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 ############################
 ###   Sanitize (Linux)   ###
@@ -177,8 +189,6 @@ fclean: clean
 	$(MAKE) fclean -sC $(LIBFT)
 	$(MAKE) clean -sC $(LMLX)
 	rm -rf $(NAME)
-	rm $(LIBFT_NAME)
-	rm $(LMLX_NAME)
 
 re: fclean all
 
