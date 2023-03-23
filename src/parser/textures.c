@@ -23,7 +23,9 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 		write (1, "Texture path is null\n", 21);
 		exit (1);
 	}
-	if (!(tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th)))
+	tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th);
+//	if (!(tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th)))
+	if (tex->img.img == NULL)
 	{
 		write (1, "Failed to load textures\n", 24);
 		exit (1);
