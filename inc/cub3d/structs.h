@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/21 20:04:36 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:30:07 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ typedef struct s_map {
 	char	*d;
 	char	*c;
 	char	*f;
+	char	*c_hex;
+	char	*f_hex;
 	char	*tmp;
 	char	*tmp_aux;
 	char	**map;
