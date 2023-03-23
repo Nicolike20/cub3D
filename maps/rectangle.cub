@@ -1,12 +1,12 @@
-NO ./textures/custom/orange_purple_bricks.xpm
-WE ./textures/custom/115_green_bricks.xpm
-SO ./textures/custom/blue_bricks.xpm
-EA ./textures/custom/red_bricks.xpm
+NO ./textures/orange_purple_bricks.xpm
+WE ./textures/115_green_bricks.xpm
+SO ./textures/blue_bricks.xpm
+EA ./textures/red_bricks.xpm
 
-D ./textures/custom/crimson_door.xpm
+D ./textures/crimson_door.xpm
 
-F 220,115,0
-C 225, 3,0
+F  198, 97, 237
+C 74, 232, 182
 
 111111111
 1001D1001

@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/18 19:26:47 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:50:53 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 	while (++y < WIN_H)
 	{
 		if (y < ray->d_start)
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, CYAN);
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, mlx->map->c_hex);
 		if (y >= ray->d_start && y <= ray->d_end)
 		{
 			ray->tex_pos += ray->s_dis;
@@ -119,7 +119,7 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 			copy_pixel(mlx->img, WIN_W - x - 1, y, c);
 		}
 		if (y > ray->d_end)
-			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, WHITE);
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, mlx->map->f_hex);
 	}
 }
 

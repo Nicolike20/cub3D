@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/23 13:57:22 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:35:49 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,10 @@ void	file_read(char *file, t_map *vars)
 	get_lines(vars, fd);
 	close(fd);
 	get_width(vars);
-	check_colors(vars, vars->c, 0);
-	check_colors(vars, vars->f, 1);
+	check_colors(vars, vars->c, 0, 0);
+	check_colors(vars, vars->f, 1, 0);
 	///////////TEST///////////////
-	printf("vars->c_hex: %s\nvars->f_hex: %s\n", vars->c_hex, vars->f_hex);
+	printf("vars->c_hex: %x\nvars->f_hex: %x\n", vars->c_hex, vars->f_hex);
 	int	i;
 
 	i = -1;

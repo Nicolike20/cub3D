@@ -6,14 +6,14 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/21 20:25:37 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:29:26 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//TODO: aceptar colores para suelo y cielo como parametro;
-//TODO char * o char **? -> pasar lo que pasen a hex y usar eso como color;
+//TODO: pintar todo el minimapa de azul antes de pintar suelo
+//TODO: puertas;
 //TODO: check leaks;
 
 /*void	leaks(void)
