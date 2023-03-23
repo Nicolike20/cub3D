@@ -43,10 +43,10 @@ CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 LDFLAGS = -L ./lib/libft -lft
 
 ifeq ($(UNAME_S),Darwin)
-LDFLAGS += -framework OpenGL -framework AppKit
+LDFLAGS += -L ./lib/minilibx_macos -lmlx -I minilibx_macos -framework OpenGL -framework AppKit
 endif
 ifeq ($(UNAME_S),Linux)
-LDFLAGS +=  -L ./lib/minilibx_linux -lmlx -I minilibx_linux -lXext -lX11 -lm -lz
+LDFLAGS += -L ./lib/minilibx_linux -lmlx -I minilibx_linux -lXext -lX11 -lm -lz
 endif
 
 # -L/usr/lib
