@@ -17,6 +17,9 @@
 //TODO: quitar comments y printfs
 //TODO: check leaks;
 
+//TODO: linux -> se cierra al abrir y no pulsar nada;
+//TODO: linux -> se cierra al minimizar y abrir;
+
 /*void	leaks(void)
 {
 	system("leaks -q cub3D");
