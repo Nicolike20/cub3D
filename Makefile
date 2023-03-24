@@ -16,9 +16,6 @@
 
 NAME = cub3D
 
-LIBFT_NAME = libft.a
-
-LMLX_NAME = libmlx.a
 
 ##############
 ###   OS   ###
@@ -34,22 +31,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
+CFLAGS += -I ./$(INC_PATH)
 
 #CFLAGS += -O3
-
-#CFLAGS += -fsanitize=address -g3
-
-LDFLAGS = -L ./lib/libft -lft
-
-ifeq ($(UNAME_S),Darwin)
-LDFLAGS += -L ./lib/minilibx_macos -lmlx -I minilibx_macos -framework OpenGL -framework AppKit
-endif
-ifeq ($(UNAME_S),Linux)
-LDFLAGS += -L ./lib/minilibx_linux -lmlx -I minilibx_linux -lXext -lX11 -lm -lz
-endif
-
-# -L/usr/lib
 
 #CFLAGS += -fsanitize=address -g3
 
@@ -65,14 +49,36 @@ INC_PATH = inc
 
 LIB_PATH = lib
 
-LIBFT_PATH = libft
+################
+###   Libs   ###
+################
+
+LFT_NAME = libft.a
+LFT_DIR = $(LIB_PATH)/libft
+LFT = $(LFT_DIR)/$(LFT_NAME)
+
+LMLX_NAME = libmlx.a
+ifeq ($(UNAME_S),Linux)
+LMLX_DIR = $(LIB_PATH)/minilibx_linux
+endif
+ifeq ($(UNAME_S),Darwin)
+LMLX_DIR = $(LIB_PATH)/minilibx_macos
+endif
+LMLX = $(LMLX_DIR)/$(LMLX_NAME)
+LDFLAGS = -L ./$(LFT_DIR) -lft
 
 ifeq ($(UNAME_S),Darwin)
-MLX_PATH = minilibx_macos
+LDFLAGS += -L ./$(LMLX_DIR) -lmlx -framework OpenGL -framework AppKit
 endif
 ifeq ($(UNAME_S),Linux)
-MLX_PATH = minilibx_linux
+LDFLAGS += -L ./$(LMLX_DIR) -lmlx -lXext -lX11 -lm -lz
 endif
+
+CFLAGS += -I ./$(LFT_DIR)/inc -I ./$(LMLX_DIR)
+
+# -L/usr/lib
+
+#CFLAGS += -fsanitize=address -g3
 
 #######################
 ###   Directories   ###
@@ -123,14 +129,6 @@ SRCS = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 
-#######################
-###   Create libs   ###
-#######################
-
-LIBFT =	$(LIB_PATH)/$(LIBFT_PATH)
-
-LMLX = $(LIB_PATH)/$(MLX_PATH)
-
 #################################
 ###   Rules can be executed   ###
 #################################
@@ -154,17 +152,17 @@ $(OBJ_PATH):
 ###   Compile libs   ###
 ########################
 
-$(LIBFT_NAME):
-	$(MAKE) all -sC $(LIBFT)
+$(LFT):
+	$(MAKE) all -sC $(LFT_DIR)
 
-$(LMLX_NAME):
-	$(MAKE) all -sC $(LMLX)
+$(LMLX):
+	$(MAKE) all -sC $(LMLX_DIR)
 
 ######################
 ###   Compile .o   ###
 ######################
 
-$(NAME): $(LMLX_NAME) $(LIBFT_NAME) $(OBJS)
+$(NAME): $(LMLX) $(LFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 ############################
@@ -184,10 +182,10 @@ sanitize: $(NAME)
 
 clean:
 	rm -rf $(OBJ_PATH)
+	$(MAKE) fclean -sC $(LFT_DIR)
+	$(MAKE) clean -sC $(LMLX_DIR)
 
 fclean: clean
-	$(MAKE) fclean -sC $(LIBFT)
-	$(MAKE) clean -sC $(LMLX)
 	rm -rf $(NAME)
 
 re: fclean all
@@ -195,6 +193,6 @@ re: fclean all
 funsiona:
 	-norminette $(INC_PATH)
 	-norminette $(SRC_PATH)
-	-norminette $(LIB_PATH)/$(LIBFT_PATH)
+	-norminette $(LFT_DIR)
 
 .PHONY: all clean fclean re sanitize funsiona
