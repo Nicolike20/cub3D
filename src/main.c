@@ -14,6 +14,7 @@
 
 //TODO: pintar todo el minimapa de azul antes de pintar suelo
 //TODO: puertas;
+//TODO: quitar comments y printfs
 //TODO: check leaks;
 
 /*void	leaks(void)
@@ -57,7 +58,7 @@ int	main(int argc, char **argv)
 	vars_init(mlx->map);
 	file_read(argv[1], mlx->map);
 //	fill_map(mlx->map);
-	loading_textures(mlx, mlx->map);
+//	loading_textures(mlx, mlx->map);
 	freedom (mlx->map);
 	init_window(mlx);
 	return (0);

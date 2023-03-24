@@ -15,7 +15,7 @@
 
 # include "structs.h"
 
-void loading_textures(t_mlx *mlx, t_map *map);
+void loading_textures(t_mlx *mlx);
 
 //manage_window.c
 int		init_window(t_mlx *mlx);

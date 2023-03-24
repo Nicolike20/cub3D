@@ -42,11 +42,13 @@ void	get_id_aux(t_map *vars, char *line)
 {
 	if (!ft_strncmp(line, "D ", 2))
 	{
+		printf ("ILLOOO??: %s\n", line);
 		vars->tmp_aux = ft_substr(line, 2, ft_strlen(line) - 3);
 		vars->tmp = ft_strtrim(vars->tmp_aux, " ");
 		if (vars->d != NULL)
 			get_id_error();
 		vars->d = ft_strdup(vars->tmp);
+		printf("OLLIIIII???: %s\n", vars->d);
 	}
 	if (!ft_strncmp(line, "NO ", 3))
 	{
@@ -90,4 +92,5 @@ void	get_id(t_map *vars, char *line)
 			get_id_error();
 		vars->c = ft_strdup(vars->tmp);
 	}
+	printf("tetetetetetete: %s\n", vars->d);
 }

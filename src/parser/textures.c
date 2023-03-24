@@ -23,10 +23,10 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 		write (1, "Texture path is null\n", 21);
 		exit (1);
 	}
-	printf("path1: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
-	tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th);
-	perror("error:");
-	printf("path2: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
+//	printf("path1: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
+	tex->img.img = mlx_xpm_file_to_image(mlx->mlx, path, &tex->tw, &tex->th);
+//	perror("error:");
+//	printf("path2: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
 //	if (!(tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th)))
 	if (tex->img.img == NULL)
 	{
@@ -41,16 +41,15 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 	}
 	printf("img loaded with texture: '%s'\n", path);
 }
-void	loading_textures(t_mlx *mlx, t_map *vars)
+void	loading_textures(t_mlx *mlx)
 {
 //	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
-	printf("test tex: %d\n", mlx->tex[T_NORTH].tw);
-	printf("test tex: %d\n", mlx->tex[T_NORTH].th);
-	load_image(mlx, &mlx->tex[T_NORTH], vars->no);
-	load_image(mlx, &mlx->tex[T_SOUTH], vars->so);
-	load_image(mlx, &mlx->tex[T_WEST], vars->we);
-	load_image(mlx, &mlx->tex[T_EAST], vars->ea);
-	load_image(mlx, &mlx->tex[T_DOOR], vars->d);
+	printf("ESTO QUE ES: %s\n", mlx->map->d);
+	load_image(mlx, &mlx->tex[T_NORTH], mlx->map->no);
+	load_image(mlx, &mlx->tex[T_SOUTH], mlx->map->so);
+	load_image(mlx, &mlx->tex[T_WEST], mlx->map->we);
+	load_image(mlx, &mlx->tex[T_EAST], mlx->map->ea);
+	load_image(mlx, &mlx->tex[T_DOOR], mlx->map->d);
 
 //	load_image(mlx, &vars->texture[0], "textures/custom/blue_bricks.xpm");
 	//mlx->tex = vars->texture;

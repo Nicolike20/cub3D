@@ -43,11 +43,11 @@ void	freedom(t_map *vars)
 //	while (++i < vars->map_height)
 //		free(vars->map[i]);
 //	free(vars->map);
-	free(vars->no);
-	free(vars->so);
-	free(vars->we);
-	free(vars->ea);
-	free(vars->d);
+//	free(vars->no);
+//	free(vars->so);
+//	free(vars->we);
+//	free(vars->ea);
+//	free(vars->d);
 	free(vars->f);
 	free(vars->c);
 	//liberar c_hex y f_hex?;
