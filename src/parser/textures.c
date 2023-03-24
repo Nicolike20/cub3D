@@ -23,10 +23,10 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 		write (1, "Texture path is null\n", 21);
 		exit (1);
 	}
-	printf("path1: %s\nmlx: %p\ntex->tw: %p\ntex->th: %p\n", path, mlx, &tex->tw, &tex->th);
+	printf("path1: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
 	tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th);
 	perror("error:");
-	printf("path2: %s\nmlx: %p\ntex->tw: %p\ntex->th: %p\n", path, mlx, &tex->tw, &tex->th);
+	printf("path2: %s\nmlx: %p\ntex->tw: %d\ntex->th: %d\n", path, mlx, tex->tw, tex->th);
 //	if (!(tex->img.img = mlx_xpm_file_to_image(mlx, path, &tex->tw, &tex->th)))
 	if (tex->img.img == NULL)
 	{
@@ -44,8 +44,8 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 void	loading_textures(t_mlx *mlx, t_map *vars)
 {
 //	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
-	printf("test tex: %p\n", &(mlx->tex[T_NORTH].tw));
-	printf("test tex: %p\n", &(mlx->tex[T_NORTH].th));
+	printf("test tex: %d\n", mlx->tex[T_NORTH].tw);
+	printf("test tex: %d\n", mlx->tex[T_NORTH].th);
 	load_image(mlx, &mlx->tex[T_NORTH], vars->no);
 	load_image(mlx, &mlx->tex[T_SOUTH], vars->so);
 	load_image(mlx, &mlx->tex[T_WEST], vars->we);
