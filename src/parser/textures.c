@@ -43,7 +43,7 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 }
 void	loading_textures(t_mlx *mlx, t_map *vars)
 {
-	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
+//	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
 	printf("test tex: %p\n", &(mlx->tex[T_NORTH].tw));
 	printf("test tex: %p\n", &(mlx->tex[T_NORTH].th));
 	load_image(mlx, &mlx->tex[T_NORTH], vars->no);

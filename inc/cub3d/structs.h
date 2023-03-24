@@ -135,7 +135,7 @@ typedef struct s_mlx {
 	t_player	player;
 	t_keys		keys;
 	t_img		img;
-	t_tex		*tex;
+	t_tex		tex[5];
 }	t_mlx;
 
 #endif
