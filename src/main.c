@@ -19,6 +19,7 @@
 
 //TODO: linux -> se cierra al abrir y no pulsar nada;
 //TODO: linux -> se cierra al minimizar y abrir;
+//TODO: investigar exit_win_key(mlx) / comportamiento del esc
 
 /*void	leaks(void)
 {
