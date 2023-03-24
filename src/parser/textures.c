@@ -43,14 +43,14 @@ void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 }
 void	loading_textures(t_mlx *mlx, t_map *vars)
 {
-	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
-	printf("test tex: %p\n", &mlx->tex[T_NORTH].tw);
-	printf("test tex: %p\n", &mlx->tex[T_NORTH].th);
-	load_image(mlx, &mlx->tex[T_NORTH], vars->no);
-	load_image(mlx, &mlx->tex[T_SOUTH], vars->so);
-	load_image(mlx, &mlx->tex[T_WEST], vars->we);
-	load_image(mlx, &mlx->tex[T_EAST], vars->ea);
-	load_image(mlx, &mlx->tex[T_DOOR], vars->d);
+//	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5); //proteger este malloc;
+	//printf("test tex: %p\n", &(mlx->map->tex[T_NORTH].tw));
+	//printf("test tex: %p\n", &(mlx->map->tex[T_NORTH].th));
+	load_image(mlx, &mlx->map->texture[T_NORTH], vars->no);
+	load_image(mlx, &mlx->map->texture[T_SOUTH], vars->so);
+	load_image(mlx, &mlx->map->texture[T_WEST], vars->we);
+	load_image(mlx, &mlx->map->texture[T_EAST], vars->ea);
+	load_image(mlx, &mlx->map->texture[T_DOOR], vars->d);
 
 //	load_image(mlx, &vars->texture[0], "textures/custom/blue_bricks.xpm");
 	//mlx->tex = vars->texture;
