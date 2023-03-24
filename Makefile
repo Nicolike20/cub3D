@@ -33,6 +33,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 CFLAGS += -I ./$(INC_PATH)
 
+ifeq ($(UNAME_S),Linux)
+CFLAGS += -D LINUX
+endif
+ifeq ($(UNAME_S),Darwin)
+CFLAGS += -D OSX
+endif
+
 #CFLAGS += -O3
 
 #CFLAGS += -fsanitize=address -g3
