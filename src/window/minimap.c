@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:49:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 13:13:59 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:13:40 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	mmap_background(t_minimap mmap)
 	{
 		mmap.x = -1;
 		while (++mmap.x < mmap.xy_large)
-			mlx_put_pixel_color(mmap.img, mmap.x, mmap.y, WHITE);
+			mlx_put_pixel_color(mmap.img, mmap.x, mmap.y, BLUE);
 	}
 }
 
