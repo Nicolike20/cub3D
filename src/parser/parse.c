@@ -6,20 +6,13 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/23 17:01:06 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:44:46 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-//TODO: espacios entre los elementos (en la propia linea rollo 540,   30, 23)?;
-//TODO: si no pasan texturas o colores klk?;
-//TODO: alguna comprobacion mas para colores?;
-//TODO: se lo transformo yo a hex? le hace falta en array o doble array?;
-//TODO: hacer funciones estaticas;
-//TODO: check leaks;
-
-void	line_cmp_aux(t_map *vars, char *l, int *i)
+static void	line_cmp_aux(t_map *vars, char *l, int *i)
 {
 	vars->in_map = 1;
 	while (l[++*i] != '\n')
@@ -38,7 +31,7 @@ void	line_cmp_aux(t_map *vars, char *l, int *i)
 	}
 }
 
-int	line_cmp(t_map *vars, char *l, int i)
+static int	line_cmp(t_map *vars, char *l, int i)
 {
 	int	aux;
 
@@ -92,7 +85,7 @@ static void	first_read(t_map *vars, int fd)
 	free(line);
 }
 
-void	get_width(t_map *vars)
+static void	get_width(t_map *vars)
 {
 	int	i;
 
@@ -134,14 +127,10 @@ void	file_read(char *file, t_map *vars)
 	i = -1;
 	printf("---------TEST-----------\n");
 	while (vars->map[++i])
-	{
 		printf("<'%s'\n", vars->map[i]);
-	}
-//	printf("<'%s'\n", vars->map[i]);
 	printf("Map height: %d\n", vars->height);
 	printf("Map width: %d\n", vars->width);
 	///////////TEST///////////////
 	map_checker(vars);
 	printf("pos x: %f\npos y: %f\n", vars->pos_x, vars->pos_y); ////TEST;
-//	freedom(vars);
 }

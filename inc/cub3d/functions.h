@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/23 16:36:05 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:49:29 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,14 @@ void	get_lines(t_map *vars, int fd);
 /*parse_utils.c*/
 void	vars_init(t_map *vars);
 void	freedom(t_map *vars);
+void	free_tmp(char **tmp, int i);
 void	get_id(t_map *vars, char *line);
 int		check_file(char *file);
 
 /*check_map.c*/
 void	map_checker(t_map *vars);
 
-/*check_colors.c*/
+/*colors.c*/
 void	check_colors(t_map *vars, char *color, int check, int i);
 
 #endif

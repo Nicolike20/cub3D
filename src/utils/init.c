@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:37 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:46:56 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:56:12 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	init_mlx(t_mlx *mlx)
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img,
 			&mlx->img.bpp, &mlx->img.ln_len, &mlx->img.endian);
 	mlx->win = mlx_new_window(mlx->mlx, WIN_W, WIN_H, NAME);
-	printf("test tex pre: %s\n", mlx->map->no);
 	loading_textures(mlx);
 	mlx->ray = (t_raycast *)malloc(sizeof(t_raycast));
 	init_minimap(mlx);

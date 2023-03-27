@@ -6,19 +6,19 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:58:00 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/13 17:58:36 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:39:54 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	get_id_error(void)
+static void	get_id_error(void)
 {
 	write (1, "Multiple textures for the same ID\n", 34);
 	exit (1);
 }
 
-void	get_id_aux_two(t_map *vars, char *line)
+static void	get_id_aux_two(t_map *vars, char *line)
 {
 	if (!ft_strncmp(line, "WE ", 3))
 	{
@@ -38,17 +38,15 @@ void	get_id_aux_two(t_map *vars, char *line)
 	}
 }
 
-void	get_id_aux(t_map *vars, char *line)
+static void	get_id_aux(t_map *vars, char *line)
 {
 	if (!ft_strncmp(line, "D ", 2))
 	{
-		printf ("ILLOOO??: %s\n", line);
 		vars->tmp_aux = ft_substr(line, 2, ft_strlen(line) - 3);
 		vars->tmp = ft_strtrim(vars->tmp_aux, " ");
 		if (vars->d != NULL)
 			get_id_error();
 		vars->d = ft_strdup(vars->tmp);
-		printf("OLLIIIII???: %s\n", vars->d);
 	}
 	if (!ft_strncmp(line, "NO ", 3))
 	{
@@ -92,5 +90,4 @@ void	get_id(t_map *vars, char *line)
 			get_id_error();
 		vars->c = ft_strdup(vars->tmp);
 	}
-	printf("tetetetetetete: %s\n", vars->d);
 }

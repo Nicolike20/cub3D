@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:58:27 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/10 13:07:50 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:50:21 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	is_map(char *line)
 
 static int	in_map_checks(t_map *vars, char *line, int i)
 {
-//	printf ("esto que es: '%s\n'", line);
 	if (vars->in_map == 0)
 	{
 		vars->in_map = is_map(line);

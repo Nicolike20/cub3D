@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:07:23 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/23 15:43:39 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:48:18 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	vars_init(t_map *vars)
 {
-//	vars = (t_map *)malloc(sizeof(t_map));
 	vars->no = NULL;
 	vars->so = NULL;
 	vars->we = NULL;
@@ -51,6 +50,13 @@ void	freedom(t_map *vars)
 	free(vars->f);
 	free(vars->c);
 	//liberar c_hex y f_hex?;
+}
+
+void	free_tmp(char **tmp, int i)
+{
+	while (--i >= 0)
+		free(tmp[i]);
+	free(tmp);
 }
 
 int	check_file(char *file)
