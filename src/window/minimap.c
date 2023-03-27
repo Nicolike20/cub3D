@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:49:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 13:13:59 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:42:12 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void	draw_minimap_pixel_put(t_img img, int pos_sx, int pos_sy)
 	{
 		x = -1;
 		while (++x < 5)
-		{
 			mlx_put_pixel_color(img, pos_sx + x, pos_sy + y, RED);
-		}
 	}
 }
 
@@ -97,6 +95,19 @@ void	calculate_offset(t_minimap *map, int width, int height)
 				/ MINIMAP_SCALE / height);
 }
 
+static int	get_mmap_color(char **map, int x, int y)
+{
+	int color;
+
+	if (map[y][x] == FLOOR || map[y][x] == DOOR)
+		color = SILVER;
+	else if (map[y][x] == WALL)
+		color = BLUE;
+	else
+		color = WHITE;
+	return color;
+}
+
 static void	mmap_draw_pixel(t_minimap *mmap, t_map *map)
 {
 	int	px;
@@ -113,10 +124,7 @@ static void	mmap_draw_pixel(t_minimap *mmap, t_map *map)
 		px = mmap->x * mmap->xy_large / fmax(map->width, map->height);
 		while (px < d_x)
 		{
-			if (map->map[mmap->y][mmap->x] == FLOOR)
-				color = SILVER;
-			else
-				color = BLUE;
+			color = get_mmap_color(map->map, mmap->x, mmap->y);
 			mlx_put_pixel_color(mmap->img, px + (mmap->os_x / 2),
 					py + (mmap->os_y / 2), color);
 			px++;
