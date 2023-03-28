@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 13:59:22 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:23:32 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_raycast {
 	float	cam_y;
 	int		map_x;
 	int		map_y;
+	int		door;
 	float	perp_wall_dist;
 	int		step_x;
 	int		step_y;

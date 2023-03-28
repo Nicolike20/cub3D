@@ -1,15 +1,14 @@
-NO ./ruta_a_la_textura_norte
-SO ./ruta_a_la_textura_sur
-WE ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
-D ./ruta_a_la_puerta
-
+NO ./textures/custom/purple_bricks.xpm
+SO ./textures/custom/purple_bricks.xpm
+WE ./textures/custom/purple_bricks.xpm
+EA ./textures/custom/purple_bricks.xpm
+D ./textures/custom/purple_bricks.xpm
 F 220,100,0
 C 225,30,0
 
          111111111111111111111111
          100000000000000000000001
-         101  1100111111111111101
+         101111100111111111111101
          101  1001            101
          10111001             101
          1000001     1111111111D1111111111

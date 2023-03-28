@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:49:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 12:42:12 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:30:25 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,10 @@ static int	get_mmap_color(char **map, int x, int y)
 {
 	int color;
 
-	if (map[y][x] == FLOOR || map[y][x] == DOOR)
+	if (map[y][x] == FLOOR)
 		color = SILVER;
+	else if (map[y][x] == DOOR)
+		color = BROWN;
 	else if (map[y][x] == WALL)
 		color = BLUE;
 	else

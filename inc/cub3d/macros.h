@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 13:52:10 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:22:09 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define YELLOW 0xFFFF00
 # define BLUE 0x0000FF
 # define CYAN 0x00FFFF
+# define BROWN 0x804000
 
 # define FALSE 0
 # define TRUE 1

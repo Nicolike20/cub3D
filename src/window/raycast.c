@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/18 19:26:47 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:23:09 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,19 @@ static void texture_pos(t_mlx *m, t_raycast *r)
 
 }
 
+/*static void door_collision(t_mlx *mlx, t_raycast *ray, int x)
+{
+	int	door_x;
+	int	door_y;
+	char	**m;
+
+	door_x = mlx->mmap->door[0];
+	door_y = mlx->mmap->door[1];
+	m = mlx->map->map;
+	if (m[ray->map_y][ray->map_x] == WALL
+		|| m[ray->map_y][ray->map_x])
+}*/
+
 void	raycast(t_mlx *mlx)
 {
 	t_raycast	*aux;
@@ -181,6 +194,7 @@ void	raycast(t_mlx *mlx)
 		init_raycast(aux, &mlx->player, x);
 		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
+		//door_collision(mlx, aux, x);
 		calculate_line(aux);
 		get_texture(mlx, aux);
 		texture_pos(mlx, aux);

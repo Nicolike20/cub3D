@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/17 12:42:58 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:13:00 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void loading_textures(t_mlx *mlx, t_map *map);
 
 //manage_window.c
 int		init_window(t_mlx *mlx);
+
+//door.c
+void	input_door(t_mlx *mlx);
 
 //keys.c
 void	init_keys(t_mlx *mlx);
