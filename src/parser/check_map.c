@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:47:49 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/27 15:35:09 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:02:25 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ static int	open_walls(t_map *vars, int i, int j)
 				if (vars->map[i - 1][j] == ' '
 				|| (vars->map[i][j + 1] == ' ' || vars->map[i][j + 1] == '\0')
 				|| (vars->map[i][j - 1] == ' ' || vars->map[i][j - 1] == '\0')
-				|| (int)ft_strlen(vars->map[i + 1]) < j + 1
+				|| ((int)ft_strlen(vars->map[i + 1]) < j + 1
+				|| (vars->map[i + 1] && vars->map[i + 1][j] == ' '))
 				|| (vars->map[i][0] != '1' && vars->map[i][0] != ' '))
 					return (1);
 			}
