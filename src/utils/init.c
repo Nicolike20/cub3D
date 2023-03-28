@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:37 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/09 19:46:56 by vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:46:12 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_raycast(t_raycast *ray, t_player *p, int x)
 	ray->map_y = (int)p->pos_y;
 	ray->coll = 0;
 	ray->side = 0;
+	ray->io_door = 0;
 	if (ray->ray_dir_x == 0)
 		ray->delta_dis_x = 1e30;
 	else

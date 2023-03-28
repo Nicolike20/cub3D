@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 15:22:09 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:01:16 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 
 # define FALSE 0
 # define TRUE 1
+
+# define Y 0
+# define X 1
 
 # define CROSSHIRE_LEN 8
 
@@ -55,7 +58,6 @@
 # define WALL '1'
 # define DOOR 'D'
 # define DOPEN 'O'
-# define DCLOSE 'C'
 
 # define T_MAX 64.0
 

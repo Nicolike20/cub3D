@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 13:23:32 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:29:10 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ typedef struct s_keys {
 	_Bool	s;
 	_Bool	d;
 	_Bool	w;
-	_Bool	e;
 	_Bool	left;
 	_Bool	right;
 }	t_keys;
@@ -41,7 +40,6 @@ typedef struct s_minimap {
 	int		xy_large; //lado mas largo del mapa
 	int		or_x; //orientacion x
 	int		or_y; //orientacion y
-	int		door[2];
 }	t_minimap;
 
 typedef struct s_crosshire {
@@ -66,7 +64,8 @@ typedef struct s_raycast {
 	float	cam_y;
 	int		map_x;
 	int		map_y;
-	int		door;
+	int		io_door;
+	int		door[2];
 	float	perp_wall_dist;
 	int		step_x;
 	int		step_y;

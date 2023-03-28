@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:30:53 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/10 11:31:02 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:50:04 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void sidesteps(int key , t_mlx *mlx, float speed)
 	{
 		p->pos_x += p->plane_x * speed;
 		p->pos_y += p->plane_y * speed;
-		if (map[(int)p->pos_y][(int)p->pos_x] == WALL)
+		if (map[(int)p->pos_y][(int)p->pos_x] == WALL
+			|| map[(int)p->pos_y][(int)p->pos_x] == DOOR)
 		{
 			p->pos_x = aux_x;
 			p->pos_y = aux_y;
@@ -62,7 +63,8 @@ static void sidesteps(int key , t_mlx *mlx, float speed)
 	{
 		p->pos_x -= p->plane_x * speed;
 		p->pos_y -= p->plane_y * speed;
-		if (map[(int)p->pos_y][(int)p->pos_x] == WALL)
+		if (map[(int)p->pos_y][(int)p->pos_x] == WALL
+			|| map[(int)p->pos_y][(int)p->pos_x] == DOOR)
 		{
 			p->pos_x = aux_x;
 			p->pos_y = aux_y;
@@ -85,7 +87,8 @@ static void for_backward_steps(int key, t_mlx *mlx, float speed)
 	{
 		p->pos_x += p->dir_x * speed;
 		p->pos_y += p->dir_y * speed;
-		if (map[(int)p->pos_y][(int)p->pos_x] == WALL)
+		if (map[(int)p->pos_y][(int)p->pos_x] == WALL
+			|| map[(int)p->pos_y][(int)p->pos_x] == DOOR)
 		{
 			p->pos_x = aux_x;
 			p->pos_y = aux_y;
@@ -95,7 +98,8 @@ static void for_backward_steps(int key, t_mlx *mlx, float speed)
 	{
 		p->pos_x -= p->dir_x * speed;
 		p->pos_y -= p->dir_y * speed;
-		if (map[(int)p->pos_y][(int)p->pos_x] == WALL)
+		if (map[(int)p->pos_y][(int)p->pos_x] == WALL
+			|| map[(int)p->pos_y][(int)p->pos_x] == DOOR)
 		{
 			p->pos_x = aux_x;
 			p->pos_y = aux_y;

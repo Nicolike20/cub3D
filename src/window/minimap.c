@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:49:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 18:30:25 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:47:16 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,6 @@ void	init_minimap(t_mlx *mlx)
 {
 	mlx->mmap = (t_minimap *)malloc(sizeof(t_minimap));
 	mlx->mmap->xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
-	mlx->mmap->door[0] = -1;
-	mlx->mmap->door[1] = -1;
 	calculate_offset(mlx->mmap, mlx->map->width, mlx->map->height);
 	mmap_mlx_image(mlx->mmap, mlx->mlx);
 	mmap_background(*mlx->mmap);

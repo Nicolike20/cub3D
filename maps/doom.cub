@@ -2,7 +2,7 @@ NO ./textures/custom/purple_bricks.xpm
 SO ./textures/custom/purple_bricks.xpm
 WE ./textures/custom/purple_bricks.xpm
 EA ./textures/custom/purple_bricks.xpm
-D ./textures/custom/purple_bricks.xpm
+D ./textures/default/door.xpm
 F 220,100,0
 C 225,30,0
 

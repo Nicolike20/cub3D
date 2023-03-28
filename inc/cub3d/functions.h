@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 13:13:00 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:44:55 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		init_window(t_mlx *mlx);
 
 //door.c
 void	input_door(t_mlx *mlx);
+void	io_door(char **map, t_raycast *ray, int x);
 
 //keys.c
 void	init_keys(t_mlx *mlx);
