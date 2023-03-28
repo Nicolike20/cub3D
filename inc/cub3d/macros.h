@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/23 15:14:55 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:17:08 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@
 # define YELLOW 0xFFFF00
 # define BLUE 0x0000FF
 # define CYAN 0x00FFFF
+# define BROWN 0x804000
 
 # define FALSE 0
 # define TRUE 1
+
+# define Y 0
+# define X 1
 
 # define CROSSHIRE_LEN 8
 
@@ -54,7 +58,6 @@
 # define WALL '1'
 # define DOOR 'D'
 # define DOPEN 'O'
-# define DCLOSE 'C'
 
 # define T_MAX 64.0
 

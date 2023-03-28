@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/23 15:50:53 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:20:08 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void	player_collision(t_map *map, t_raycast *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map->map[ray->map_y][ray->map_x] == WALL)
+		if (map->map[ray->map_y][ray->map_x] == WALL
+			|| map->map[ray->map_y][ray->map_x] == DOOR)
 			ray->coll = 1;
 	}
 }
@@ -82,27 +83,12 @@ int	pixel_color(t_img img, int x, int y)
 	return c;
 }
 
-static void copy_pixel(t_img img, int x, int y, int px)
-{
-	char *dst;
-
-	if (y >= WIN_H || x >= WIN_W || y < 0 || x < 0)
-		return ;
-	dst = img.addr + (y * img.ln_len) + x * (img.bpp / 8);
-	*(unsigned int *)dst = px;
-}
-
 static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 {
 	int	y;
 	t_tex *tex;
 	int c;
 	int text_y;
-	//float wallDist = mlx->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
-	//int text = (int)((wallDist - (int)wallDist) * 64.0);
-	//text = mlx->tex->tw - text - 1;
-	//float s_dis = mlx->tex->th / ray->ln_height;
-	//float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;
 
 	tex = &mlx->tex[ray->text_id];
 	y = -1;
@@ -115,8 +101,8 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 			ray->tex_pos += ray->s_dis;
 			text_y = (int)ray->tex_pos & (tex->th - 1);
 			c = pixel_color(tex->img, ray->text_x, text_y);
-			//mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
-			copy_pixel(mlx->img, WIN_W - x - 1, y, c);
+			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
+			//copy_pixel(mlx->img, WIN_W - x - 1, y, c);
 		}
 		if (y > ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, mlx->map->f_hex);
@@ -125,7 +111,8 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 
 static void get_texture(t_mlx *m, t_raycast *r)
 {
-	if (m->map->map[r->map_y][r->map_x] == DCLOSE)
+	if (m->map->map[r->map_y][r->map_x] == DOOR
+		|| m->map->map[r->map_y][r->map_x] == DOPEN)
 		r->text_id = T_DOOR;
 	else if ((r->map_y >= 1 && r->side == 1 && r->ray_dir_y >= 0
 			&& m->map->map[r->map_y -1][r->map_x] == DOPEN)
@@ -150,10 +137,6 @@ static void get_texture(t_mlx *m, t_raycast *r)
 
 static void texture_pos(t_mlx *m, t_raycast *r)
 {
-	/*int text = (int)((wallDist - (int)wallDist) * 64.0);
-	text = mlx->tex->tw - text - 1;
-	float s_dis = mlx->tex->th / ray->ln_height;
-	float pos_tex = (ray->ln_height / 2 + ray->d_start - WIN_H / 2) * s_dis;*/
 	if (r->side == 0)
 		r->wall_dist = m->player.pos_y + r->perp_wall_dist * r->ray_dir_y;
 	else
@@ -181,6 +164,7 @@ void	raycast(t_mlx *mlx)
 		init_raycast(aux, &mlx->player, x);
 		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
+		io_door(mlx->map->map, aux, x);
 		calculate_line(aux);
 		get_texture(mlx, aux);
 		texture_pos(mlx, aux);

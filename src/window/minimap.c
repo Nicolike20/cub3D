@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:49:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/27 15:13:40 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:22:42 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void	draw_minimap_pixel_put(t_img img, int pos_sx, int pos_sy)
 	{
 		x = -1;
 		while (++x < 5)
-		{
 			mlx_put_pixel_color(img, pos_sx + x, pos_sy + y, RED);
-		}
 	}
 }
 
@@ -71,7 +69,7 @@ void	mmap_background(t_minimap mmap)
 	{
 		mmap.x = -1;
 		while (++mmap.x < mmap.xy_large)
-			mlx_put_pixel_color(mmap.img, mmap.x, mmap.y, BLUE);
+			mlx_put_pixel_color(mmap.img, mmap.x, mmap.y, WHITE);
 	}
 }
 
@@ -97,6 +95,21 @@ void	calculate_offset(t_minimap *map, int width, int height)
 				/ MINIMAP_SCALE / height);
 }
 
+static int	get_mmap_color(char **map, int x, int y)
+{
+	int color;
+
+	if (map[y][x] == FLOOR)
+		color = SILVER;
+	else if (map[y][x] == DOOR)
+		color = BROWN;
+	else if (map[y][x] == WALL)
+		color = BLUE;
+	else
+		color = WHITE;
+	return color;
+}
+
 static void	mmap_draw_pixel(t_minimap *mmap, t_map *map)
 {
 	int	px;
@@ -113,10 +126,7 @@ static void	mmap_draw_pixel(t_minimap *mmap, t_map *map)
 		px = mmap->x * mmap->xy_large / fmax(map->width, map->height);
 		while (px < d_x)
 		{
-			if (map->map[mmap->y][mmap->x] == FLOOR)
-				color = SILVER;
-			else
-				color = BLUE;
+			color = get_mmap_color(map->map, mmap->x, mmap->y);
 			mlx_put_pixel_color(mmap->img, px + (mmap->os_x / 2),
 					py + (mmap->os_y / 2), color);
 			px++;
@@ -146,8 +156,6 @@ void	init_minimap(t_mlx *mlx)
 {
 	mlx->mmap = (t_minimap *)malloc(sizeof(t_minimap));
 	mlx->mmap->xy_large = fmax(WIN_W, WIN_H) / MINIMAP_SCALE;
-	mlx->mmap->door[0] = -1;
-	mlx->mmap->door[1] = -1;
 	calculate_offset(mlx->mmap, mlx->map->width, mlx->map->height);
 	mmap_mlx_image(mlx->mmap, mlx->mlx);
 	mmap_background(*mlx->mmap);

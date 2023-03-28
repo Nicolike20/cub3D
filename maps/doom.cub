@@ -2,7 +2,7 @@ NO ./textures/orange_purple_bricks.xpm
 SO ./textures/blue_bricks.xpm
 WE ./textures/yellow_bricks.xpm
 EA ./textures/grey_purple_bricks.xpm
-D ./textures/brown_door.xpm
+D ./textures/green_door.xpm
 
 F  198, 97, 237
 C 74, 232, 182
