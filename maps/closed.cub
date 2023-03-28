@@ -1,12 +1,10 @@
-NO ./ruta_a_la_textura_norte
-SO ./ruta_a_la_textura_sur
-WE ./ruta_a_la_textura_oeste
-EA ./ruta_a_la_textura_este
-D ./ruta_a_la_puerta
-
-F 220,100,0
-C 225,30,0
-
+NO ./textures/orange_purple_bricks.xpm
+SO ./textures/blue_bricks.xpm
+WE ./textures/yellow_bricks.xpm
+EA ./textures/grey_purple_bricks.xpm
+D ./textures/brown_door.xpm
+F 198, 97, 237
+C 74, 232, 182
 111
 1N1
 111
