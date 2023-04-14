@@ -5,6 +5,7 @@ void	io_door(char **map, t_raycast *ray, int x)
 	if (map[ray->map_y][ray->map_x] == DOOR
 		|| map[ray->map_y][ray->map_x] == DOPEN)
 	{
+		//printf("Char when: [%c]\n", map[ray->map_y][ray->map_x]);
 		ray->io_door = 1;
 		if (x == WIN_W / 2)
 		{
@@ -29,7 +30,10 @@ void	input_door(t_mlx *mlx)
 		return ;
 	if (m[door_y][door_x] == DOOR && ((int)p->pos_x != door_x
 			|| (int)p->pos_y != door_y))
+	{
 		m[door_y][door_x] = DOPEN;
+	//	printf("Join into DOPEN var-> %c\n", m[door_y][door_x]);
+	}
 	else if (m[door_y][door_x] == DOPEN && ((int)p->pos_x != door_x
 			|| (int)p->pos_y != door_y))
 		m[door_y][door_x] = DOOR;

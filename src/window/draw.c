@@ -10,6 +10,8 @@ void draw(t_mlx *mlx)
 	crosshire(mlx->img);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 	draw_minimap(mlx);
-	printf("%d\n", mlx->ray->door[X]);
-	printf("%d\n", mlx->ray->door[Y]);
+//	printf("%d\n", mlx->ray->door[X]);
+//	printf("%d\n", mlx->ray->door[Y]);
+//	if (mlx->map->map[mlx->ray->map_y][mlx->ray->map_x] != '1')
+//		printf("[%c]\n", mlx->map->map[mlx->ray->map_y][mlx->ray->map_x]);
 }
