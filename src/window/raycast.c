@@ -164,6 +164,8 @@ void	raycast(t_mlx *mlx)
 		init_raycast(aux, &mlx->player, x);
 		init_side_dist(aux, &mlx->player);
 		player_collision(mlx->map, aux);
+		printf("Char in io_door: %c\n", mlx->map->map[aux->map_y][aux->map_x]);
+		//TODO: Check all the map in mlx->map, swap D->O.
 		io_door(mlx->map->map, aux, x);
 		calculate_line(aux);
 		get_texture(mlx, aux);
