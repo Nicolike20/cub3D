@@ -6,36 +6,11 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:30:53 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/28 13:50:04 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:05:19 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-static void fpp_camera(int key, t_mlx *mlx, float speed)
-{
-	t_player *p;
-	float auxdirx;
-	float auxplanex;
-
-	p = &mlx->player;
-	auxdirx = p->dir_x;
-	auxplanex = p->plane_x;
-	if (key == KEY_LEFT)
-	{
-		p->dir_x = p->dir_x * cos(-speed) - p->dir_y * sin(-speed);
-		p->dir_y = auxdirx * sin(-speed) + p->dir_y * cos(-speed);
-		p->plane_x = p->plane_x * cos(-speed) - p->plane_y * sin(-speed);
-		p->plane_y = auxplanex * sin(-speed) + p->plane_y * cos(-speed);
-	}
-	if (key == KEY_RIGHT)
-	{
-		p->dir_x = p->dir_x * cos(speed) - p->dir_y * sin(speed);
-		p->dir_y = auxdirx * sin(speed) + p->dir_y * cos(speed);
-		p->plane_x = p->plane_x * cos(speed) - p->plane_y * sin(speed);
-		p->plane_y = auxplanex *sin(speed) + p->plane_y * cos(speed);
-	}
-}
 
 static void sidesteps(int key , t_mlx *mlx, float speed)
 {
@@ -104,6 +79,31 @@ static void for_backward_steps(int key, t_mlx *mlx, float speed)
 			p->pos_x = aux_x;
 			p->pos_y = aux_y;
 		}
+	}
+}
+
+void fpp_camera(int key, t_mlx *mlx, float speed)
+{
+	t_player *p;
+	float auxdirx;
+	float auxplanex;
+
+	p = &mlx->player;
+	auxdirx = p->dir_x;
+	auxplanex = p->plane_x;
+	if (key == KEY_LEFT)
+	{
+		p->dir_x = p->dir_x * cos(-speed) - p->dir_y * sin(-speed);
+		p->dir_y = auxdirx * sin(-speed) + p->dir_y * cos(-speed);
+		p->plane_x = p->plane_x * cos(-speed) - p->plane_y * sin(-speed);
+		p->plane_y = auxplanex * sin(-speed) + p->plane_y * cos(-speed);
+	}
+	if (key == KEY_RIGHT)
+	{
+		p->dir_x = p->dir_x * cos(speed) - p->dir_y * sin(speed);
+		p->dir_y = auxdirx * sin(speed) + p->dir_y * cos(speed);
+		p->plane_x = p->plane_x * cos(speed) - p->plane_y * sin(speed);
+		p->plane_y = auxplanex *sin(speed) + p->plane_y * cos(speed);
 	}
 }
 

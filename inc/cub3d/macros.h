@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:41:34 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/28 15:01:16 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:07:14 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@
 
 # define SPEED 0.05
 # define FPP_CAM_SPEED 0.03
+# define MOUSE_SPEED 200
 
 /* Keys */
 
@@ -100,6 +101,7 @@
 # define KEY_J 38
 # define KEY_K 40
 # define KEY_N 45
+# define KEY_M 46
 # define KEY_ESC 53
 # define KEY_LEFT 123
 # define KEY_RIGHT 124

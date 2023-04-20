@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/18 19:06:35 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:11:11 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void mlx_key_events(t_mlx *mlx)
 	mlx_hook(mlx->win, 2, (1L << 0), key_press, mlx);
 	mlx_hook(mlx->win, 3, (1L << 1), key_relase, mlx);
 	mlx_hook(mlx->win, 17, (1L << 17), x_close, mlx);
+	mlx_hook(mlx->win, 6, (1L << 6), handle_mouse, mlx);
 }
 
 int init_window(t_mlx *mlx) {

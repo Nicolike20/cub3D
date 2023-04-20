@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/03/27 12:46:30 by Vsavilov         ###   ########.fr        #
+#    Updated: 2023/04/20 16:08:19 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ SRCS_PARSER =	parse.c			get_lines.c			get_id.c\
 				parse_utils.c	check_map.c			textures.c
 
 SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c draw.c crosshire.c \
-		mlx_functions.c minimap.c raycast.c player.c keys_move.c door.c
+		mlx_functions.c minimap.c raycast.c player.c keys_move.c door.c mouse.c
 
 SRCS_UTILS = error.c init.c
 

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/28 14:44:55 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:19:15 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int		key_relase(int keycode, t_mlx *mlx);
 
 //keys_move.c
 void	manage_move_keys(t_mlx *mlx);
+void	fpp_camera(int key, t_mlx *mlx, float speed);
+
+//mouse.c
+void	input_mouse(t_mlx *mlx);
+int	handle_mouse(int x, int y, t_mlx *mlx);
 
 //game_loop.c
 int		game_loop(void *mlx);
