@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/28 19:17:48 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:45:24 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_keys {
 	_Bool	w;
 	_Bool	left;
 	_Bool	right;
+	_Bool	mouse;
 }	t_keys;
 
 typedef struct s_img {
@@ -118,6 +119,8 @@ typedef struct s_map {
 
 typedef struct s_mlx {
 	int			frame_rate;
+	int			mouse_x;
+	int			prev_x;
 	void		*mlx;
 	void		*win;
 	t_map		*map;

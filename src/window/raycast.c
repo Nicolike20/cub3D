@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:17:03 by vsavilov          #+#    #+#             */
-/*   Updated: 2023/03/28 19:20:08 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:45:54 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init_side_dist(t_raycast *ray, t_player *p)
 	}
 }
 
-static void	player_collision(t_map *map, t_raycast *ray)
+static void	player_collision(t_map *map, t_raycast *ray, int x)
 {
 	while (ray->coll == 0)
 	{
@@ -55,6 +55,7 @@ static void	player_collision(t_map *map, t_raycast *ray)
 		if (map->map[ray->map_y][ray->map_x] == WALL
 			|| map->map[ray->map_y][ray->map_x] == DOOR)
 			ray->coll = 1;
+		io_door(map->map, ray, x);
 	}
 }
 
@@ -102,7 +103,6 @@ static void	draw_line(t_mlx *mlx, t_raycast *ray, int x)
 			text_y = (int)ray->tex_pos & (tex->th - 1);
 			c = pixel_color(tex->img, ray->text_x, text_y);
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, c);
-			//copy_pixel(mlx->img, WIN_W - x - 1, y, c);
 		}
 		if (y > ray->d_end)
 			mlx_put_pixel_color(mlx->img, WIN_W - x - 1, y, mlx->map->f_hex);
@@ -163,10 +163,7 @@ void	raycast(t_mlx *mlx)
 	{
 		init_raycast(aux, &mlx->player, x);
 		init_side_dist(aux, &mlx->player);
-		player_collision(mlx->map, aux);
-		printf("Char in io_door: %c\n", mlx->map->map[aux->map_y][aux->map_x]);
-		//TODO: Check all the map in mlx->map, swap D->O.
-		io_door(mlx->map->map, aux, x);
+		player_collision(mlx->map, aux, x);
 		calculate_line(aux);
 		get_texture(mlx, aux);
 		texture_pos(mlx, aux);

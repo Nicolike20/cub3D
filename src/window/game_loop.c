@@ -9,6 +9,5 @@ int game_loop(void *mlx)
 		tmp->frame_rate = 0;
 	manage_move_keys(tmp);
 	draw(tmp);
-	//printf("%d\n",tmp->keys.w);
 	return (0);
 }

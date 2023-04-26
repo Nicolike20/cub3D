@@ -40,14 +40,13 @@ int key_press(int keycode, t_mlx *mlx)
 	else if (keycode == KEY_W)
 		mlx->keys.w = TRUE;
 	else if (keycode == KEY_E)
-	{
 		input_door(mlx);
-		printf("paco\n");
-	}
 	else if (keycode == KEY_LEFT)
 		mlx->keys.left = TRUE;
 	else if (keycode == KEY_RIGHT)
 		mlx->keys.right = TRUE;
+	else if (keycode == KEY_M)
+		input_mouse(mlx);
 	return (0);
 }
 
@@ -59,4 +58,6 @@ void init_keys(t_mlx *mlx)
 	mlx->keys.w = FALSE;
 	mlx->keys.left = FALSE;
 	mlx->keys.right = FALSE;
+	mlx->keys.mouse = FALSE;
+	mlx->mouse_x = -1;
 }
