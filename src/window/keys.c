@@ -29,7 +29,6 @@ int key_relase(int keycode, t_mlx *mlx)
 
 int key_press(int keycode, t_mlx *mlx)
 {
-	printf("La tecla code es = [%d]\n", keycode);
 	if (keycode == KEY_ESC)
 		exit_win_key(mlx);
 	else if (keycode == KEY_A)

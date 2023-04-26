@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/26 14:16:19 by Vsavilov          #+#    #+#             */
+/*   Updated: 2023/04/26 14:16:20 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
 void draw(t_mlx *mlx)
@@ -6,12 +18,7 @@ void draw(t_mlx *mlx)
 	mlx->ray->door[Y] = -1;
 	ft_bzero(mlx->img.addr, WIN_W * WIN_H * (mlx->img.bpp / 8));
 	raycast(mlx);
-	//printf("posX = %f -- posY= %f\n", mlx->player.pos_x, mlx->player.pos_y);
 	crosshire(mlx->img);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 	draw_minimap(mlx);
-//	printf("%d\n", mlx->ray->door[X]);
-//	printf("%d\n", mlx->ray->door[Y]);
-//	if (mlx->map->map[mlx->ray->map_y][mlx->ray->map_x] != '1')
-//		printf("[%c]\n", mlx->map->map[mlx->ray->map_y][mlx->ray->map_x]);
 }
