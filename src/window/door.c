@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:16:06 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/26 14:16:07 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:16:28 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	io_door(char **map, t_raycast *ray, int x)
 void	input_door(t_mlx *mlx)
 {
 	t_player	*p;
-	char	**m;
-	int	door_x;
-	int	door_y;
+	char		**m;
+	int			door_x;
+	int			door_y;
 
 	p = &mlx->player;
 	door_x = mlx->ray->door[X];

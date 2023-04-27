@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/20 16:00:25 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:02:03 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,17 @@ typedef struct s_raycast {
 	int		d_end;
 	int		text_id;
 	int		text_x;
-	float		wall_dist;
-	float		s_dis;
-	float		tex_pos;
+	float	wall_dist;
+	float	s_dis;
+	float	tex_pos;
 }	t_raycast;
 
 typedef struct s_tex
 {
-//	void	*north;
-//	void	*south;
-//	void	*west;
-//	void	*east;
-//	void	*door;
-//	char *path;
 	t_img	img;
 	int		tw;
 	int		th;
 }	t_tex;
-
-//needed to load with xlm file to img-> mlx, path, tw, th (?);
-//que necesita la estructura tex?
 
 typedef struct s_map {
 	char	*no;
