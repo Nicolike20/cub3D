@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/27 14:17:26 by Vsavilov          #+#    #+#             */
+/*   Updated: 2023/04/27 14:18:55 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cub3d.h>
 
-static void exit_win_key(t_mlx *mlx)
+static void	exit_win_key(t_mlx *mlx)
 {
-	(void)mlx;
-	//mlx_destroy_image(mlx->mlx, mlx->img.img);
-	//free(mlx);
+	mlx_destroy_image(mlx->mlx, mlx->img.img);
+	free(mlx);
 	exit(EXIT_SUCCESS);
 }
 
-int key_relase(int keycode, t_mlx *mlx)
+int	key_relase(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 		exit_win_key(mlx);
@@ -27,7 +38,7 @@ int key_relase(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int key_press(int keycode, t_mlx *mlx)
+int	key_press(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 		exit_win_key(mlx);
@@ -50,7 +61,7 @@ int key_press(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-void init_keys(t_mlx *mlx)
+void	init_keys(t_mlx *mlx)
 {
 	mlx->keys.a = FALSE;
 	mlx->keys.s = FALSE;

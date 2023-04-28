@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/26 15:44:02 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:31:06 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fpp_camera(int key, t_mlx *mlx, float speed);
 
 //mouse.c
 void	input_mouse(t_mlx *mlx);
-int	handle_mouse(int x, int y, t_mlx *mlx);
+int		handle_mouse(int x, int y, t_mlx *mlx);
 
 //game_loop.c
 int		game_loop(void *mlx);
@@ -43,9 +43,14 @@ int		game_loop(void *mlx);
 //draw.c
 void	draw(t_mlx *mlx);
 
+//raycast_utils.c
+void	init_side_dist(t_raycast *ray, t_player *p);
+void	player_collision(t_map *map, t_raycast *ray, int x);
+void	calculate_line(t_raycast *ray);
+
 //raycast.c
 void	raycast(t_mlx *mlx);
-int	pixel_color(t_img img, int x, int y);
+int		pixel_color(t_img img, int x, int y);
 
 //player.c
 void	init_player(t_player *p, float posX, float posY, char c);
@@ -66,6 +71,7 @@ void	free_mlx(t_mlx *mlx);
 
 //utils.c
 int		arg_error(void);
+int		put_error(char *s, int e);
 
 //init.c
 void	init_crosshire(t_crosshire *chre, char c);
@@ -75,6 +81,7 @@ void	init_raycast(t_raycast *ray, t_player *p, int x);
 
 /*parse.c*/
 void	file_read(char *file, t_map *vars);
+//void	loading_textures(t_mlx *mlx, t_map *map);
 
 /*get_lines.c*/
 void	get_lines(t_map *vars, int fd);

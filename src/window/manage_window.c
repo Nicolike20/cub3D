@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/20 16:11:11 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:48:47 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ static int	x_close(int keycode, t_mlx *mlx)
 {
 	(void)keycode;
 	(void)mlx;
-	//free all is maybe good
 	exit(0);
 	return (0);
 }
 
-static void mlx_key_events(t_mlx *mlx)
+static void	mlx_key_events(t_mlx *mlx)
 {
 	mlx_hook(mlx->win, 2, (1L << 0), key_press, mlx);
 	mlx_hook(mlx->win, 3, (1L << 1), key_relase, mlx);
@@ -29,12 +28,12 @@ static void mlx_key_events(t_mlx *mlx)
 	mlx_hook(mlx->win, 6, (1L << 6), handle_mouse, mlx);
 }
 
-int init_window(t_mlx *mlx) {
+int	init_window(t_mlx *mlx)
+{
 	init_mlx(mlx);
-	//loading_textures(mlx, mlx->map);
 	mlx_key_events(mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);
 	free_mlx(mlx);
-	return 0;
+	return (0);
 }
