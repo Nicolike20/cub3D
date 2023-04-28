@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/28 18:31:06 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:08:18 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FUNCTIONS_H
 
 # include "structs.h"
-
-void loading_textures(t_mlx *mlx);
 
 //manage_window.c
 int		init_window(t_mlx *mlx);
@@ -95,6 +93,9 @@ int		check_file(char *file);
 
 /*check_map.c*/
 void	map_checker(t_map *vars);
+
+/*textures.c*/
+void	loading_textures(t_mlx *mlx);
 
 /*colors.c*/
 void	check_colors(t_map *vars, char *color, int check, int i);

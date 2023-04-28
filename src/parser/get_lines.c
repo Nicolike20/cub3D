@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:58:27 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/27 15:50:21 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:05:37 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,5 @@ void	get_lines(t_map *vars, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("---------------\nNO=%s\nSO=%s\nWE=%s\nEA=%s\nD=%s\nF=%s\nC=%s\n",
-		vars->no, vars->so, vars->we, vars->ea, vars->d, vars->f, vars->c);
 	free(line);
 }

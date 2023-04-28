@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:44:53 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/27 15:44:46 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:05:17 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,5 @@ void	file_read(char *file, t_map *vars)
 	get_width(vars);
 	check_colors(vars, vars->c, 0, 0);
 	check_colors(vars, vars->f, 1, 0);
-	///////////TEST///////////////
-	printf("vars->c_hex: %x\nvars->f_hex: %x\n", vars->c_hex, vars->f_hex);
-	int	i;
-
-	i = -1;
-	printf("---------TEST-----------\n");
-	while (vars->map[++i])
-		printf("<'%s'\n", vars->map[i]);
-	printf("Map height: %d\n", vars->height);
-	printf("Map width: %d\n", vars->width);
-	///////////TEST///////////////
 	map_checker(vars);
-	printf("pos x: %f\npos y: %f\n", vars->pos_x, vars->pos_y); ////TEST;
 }

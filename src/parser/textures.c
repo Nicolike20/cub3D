@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:39:30 by nortolan          #+#    #+#             */
-/*   Updated: 2023/04/28 18:51:17 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:15:08 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 		write (1, "Failed to get image address\n", 28);
 		exit (1);
 	}
-	printf("img loaded with texture: '%s'\n", path);
 }
 
 void	loading_textures(t_mlx *mlx)

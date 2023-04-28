@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/28 18:41:50 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:07:04 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ typedef struct s_minimap {
 	t_img	ply;
 	int		x;
 	int		y;
-	int		os_x; //map offsetX
-	int		os_y; //map offsetY
-	int		xy_large; //lado mas largo del mapa
-	int		or_x; //orientacion x
-	int		or_y; //orientacion y
+	int		os_x;
+	int		os_y;
+	int		xy_large;
+	int		or_x;
+	int		or_y;
 }	t_minimap;
 
 typedef struct s_crosshire {
@@ -76,7 +76,7 @@ typedef struct s_raycast {
 	float	delta_dis_x;
 	float	delta_dis_y;
 	float	buffer_z[WIN_W];
-	int		coll; //collision with objects
+	int		coll;
 	int		ln_height;
 	int		d_start;
 	int		d_end;
