@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:58:25 by nortolan          #+#    #+#             */
-/*   Updated: 2023/04/28 19:05:53 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:09:14 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		return (put_error("Error: malloc.\n", 2));
 	vars_init(mlx->map);
 	file_read(argv[1], mlx->map);
-	freedom (mlx->map);
+	freedom(mlx->map);
 	init_window(mlx);
 	return (0);
 }

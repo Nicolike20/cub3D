@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:19:11 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/27 14:48:47 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:08:05 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int	init_window(t_mlx *mlx)
 	mlx_key_events(mlx);
 	mlx_loop_hook(mlx->mlx, game_loop, mlx);
 	mlx_loop(mlx->mlx);
-	free_mlx(mlx);
 	return (0);
 }

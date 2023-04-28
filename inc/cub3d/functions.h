@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:23 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/28 19:08:18 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:07:13 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ void	crosshire(t_img img);
 
 //mlx_functions.c
 void	mlx_put_pixel_color(t_img img, int x, int y, int color);
-
-//mlx_memory.c
-void	free_mlx(t_mlx *mlx);
 
 //utils.c
 int		arg_error(void);

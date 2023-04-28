@@ -6,7 +6,7 @@
 #    By: nortolan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/05 16:57:19 by nortolan          #+#    #+#              #
-#    Updated: 2023/04/28 18:17:48 by nortolan         ###   ########.fr        #
+#    Updated: 2023/04/28 20:06:56 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 ############################
 
 NAME = cub3D
-
 
 ##############
 ###   OS   ###
@@ -110,8 +109,8 @@ SRCS_MAIN =	main.c
 SRCS_PARSER =	parse.c			get_lines.c			get_id.c\
 				parse_utils.c	check_map.c			textures.c		colors.c
 
-SRCS_WINDOW =	manage_window.c game_loop.c keys.c mlx_memory.c draw.c crosshire.c \
-		mlx_functions.c minimap.c raycast.c player.c keys_move.c door.c mouse.c \
+SRCS_WINDOW =	manage_window.c game_loop.c keys.c draw.c crosshire.c mlx_functions.c \
+		minimap.c raycast.c player.c keys_move.c door.c mouse.c \
 		minimap_utils.c raycast_utils.c
 
 SRCS_UTILS = error.c init.c

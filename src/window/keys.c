@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 14:17:26 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/27 14:18:55 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:05:59 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	exit_win_key(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img.img);
-	free(mlx);
+	(void)mlx;
 	exit(EXIT_SUCCESS);
 }
 
