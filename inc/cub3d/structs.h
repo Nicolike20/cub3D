@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/27 14:02:03 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:36:16 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ typedef struct s_map {
 	float	pos_y;
 	int		in_map;
 	int		ns;
-	t_tex	texture[5];
 }	t_map;
 
 typedef struct s_mlx {
