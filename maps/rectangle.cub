@@ -1,8 +1,7 @@
 NO ./textures/orange_purple_bricks.xpm
-WE ./textures/115_green_bricks.xpm
+WE ./textures/grey_purple_bricks.xpm
 SO ./textures/blue_bricks.xpm
 EA ./textures/red_bricks.xpm
-
 D ./textures/crimson_door.xpm
 
 F  198, 97, 237

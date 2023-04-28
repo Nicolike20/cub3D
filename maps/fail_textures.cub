@@ -1,15 +1,15 @@
 NO ./textures/orange_purple_bricks.xpm
-SO ./textures/blue_bricks.xpm
+
 WE ./textures/yellow_bricks.xpm
 EA ./textures/grey_purple_bricks.xpm
 D ./textures/brown_door.xpm
 F 198, 97, 237
 C 74, 232, 182
 
-                 11111111111111111111111111
-    111111111111110101
-11111000000D011111111
-10000000111111
+111111111
+100000001
+100000001
+100000001
 1000S0001
 100000001
 100000001
