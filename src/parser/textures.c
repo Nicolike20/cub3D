@@ -6,7 +6,7 @@
 /*   By: nortolan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:39:30 by nortolan          #+#    #+#             */
-/*   Updated: 2023/03/27 15:52:59 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:51:17 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 {
 	if (path == NULL)
 	{
-		write (1, "Texture path is null\n", 21);
+		write (1, "Texture paths can't be null\n", 21);
 		exit (1);
 	}
 	tex->img.img = mlx_xpm_file_to_image(mlx->mlx, path, &tex->tw, &tex->th);
@@ -37,6 +37,9 @@ static void	load_image(t_mlx *mlx, t_tex *tex, char *path)
 
 void	loading_textures(t_mlx *mlx)
 {
+	mlx->tex = (t_tex *)malloc(sizeof(t_tex) * 5);
+	if (!mlx->tex)
+		exit(put_error("Exit: malloc", 2));
 	load_image(mlx, &mlx->tex[T_NORTH], mlx->map->no);
 	load_image(mlx, &mlx->tex[T_SOUTH], mlx->map->so);
 	load_image(mlx, &mlx->tex[T_WEST], mlx->map->we);

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:35:37 by Vsavilov          #+#    #+#             */
-/*   Updated: 2023/04/28 18:35:01 by nortolan         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:41:50 by nortolan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ typedef struct s_map {
 	float	pos_y;
 	int		in_map;
 	int		ns;
-	t_tex	texture[5];
 }	t_map;
 
 typedef struct s_mlx {
@@ -129,7 +128,7 @@ typedef struct s_mlx {
 	t_player	player;
 	t_keys		keys;
 	t_img		img;
-	t_tex		tex[5];
+	t_tex		*tex;
 }	t_mlx;
 
 #endif
