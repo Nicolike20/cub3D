@@ -80,21 +80,9 @@ The map must be closed (surrounded by walls) and properly formatted.
 
 ---
 
-## 🚀 Bonus Features (if implemented)
-
-✅ Doors, sprites, or enemies  
-✅ Mouse movement support  
-✅ Animated textures or skyboxes  
-✅ Minimap with player tracking  
-✅ Save screenshots  
-✅ More advanced collision or wall rendering logic
-
----
-
 ## 📁 Project Status
 
 ✅ Completed – fully functional and compliant with the mandatory requirements.  
-🎯 Bonus – extra features and improvements implemented *(if applicable)*.
 
 ---
 
